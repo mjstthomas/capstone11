@@ -1,26 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
+import LandingPage from './Routes/LandingPage';
+import SignUp from './Routes/signup';
+import Login from './Routes/login';
 import './App.css';
 
-function App() {
+class App extends React.Component {
+
+  render(){
+    const context = {}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppContext.Provider value={context}>
+      <div className="App">
+        <Route path='/' exact component={LandingPage} />
+        <Route path='/SignUp' exact component={SignUp} />
+        <Route path='/Login' exact component={Login} />
+      </div>
+    </AppContext.Provider>
+  )};
 }
 
 export default App;
