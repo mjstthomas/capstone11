@@ -12,6 +12,7 @@ import Login from './Routes/login';
 // import FreelanceDash from './Routes/Freelance/FreelanceDash';
 // import OffersPage from './Routes/Freelance/OffersPage';
 // import Offer from './Routes/Freelance/Offer';
+
 import AppContext from './AppContext';
 import './App.css';
 
@@ -34,6 +35,7 @@ class App extends React.Component {
         <Route path='/Freelancer' exact component={FreelanceDash} />
         <Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} />} */}
+
       </div>
     </AppContext.Provider>
     )
