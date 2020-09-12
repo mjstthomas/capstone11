@@ -15,5 +15,5 @@
   height: 40px;
   border-radius: 100px;
   box-shadow: var(--box-shadow);
-  background-color: var(--primary-color);
+  background-color: "tomato";
 }
