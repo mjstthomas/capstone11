@@ -1,7 +1,4 @@
 import React from 'react';
-import LargeButton from '../Components/Utilities/LargeButton/LargeButton'
-import ConfirmButton from '../Components/Utilities/ConfirmButton/ConfirmButton'
-import DenyButton from '../Components/Utilities/DenyButton/DenyButton'
 import './login.css';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +25,7 @@ const handleSubmit = event =>{
                         <input className="login-input" />
                     </article>
                     <article className="login-btn-container">
-                        <DenyButton onClick={()=> console.log('hello')}/>
+                        <button className="login-btn">Log in</button>
                     </article>
                 </form>
             </section>
