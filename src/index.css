@@ -9,11 +9,14 @@
   --heading-size: 2.5rem;
   --main-margin: 0;
   --main-padding: 0.625em;
-  --box-shadow: -3px 3px 15px 0px black;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
 }
-
