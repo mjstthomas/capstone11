@@ -1,5 +1,5 @@
 import React from 'react';
-import LargeButton from '../Components/LargeButton/LargeButton'
+import LargeButton from '../Components/Utilities/LargeButton/LargeButton'
 import './login.css';
 import { Link } from 'react-router-dom';
 
