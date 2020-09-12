@@ -18,17 +18,26 @@ function AddSkill() {
 
   return (
     <article>
-      <label htmlFor="skill-level">Skill Level </label>
-      <select id="skill-level" name="skill-level">
-        <option default>---</option>
-        <option>Entry Level</option>
-        <option>Intermediate</option>
-        <option>Expert</option>
-      </select>
+      <section className="container">
+        <label htmlFor="skill-level">Skill Level </label>
+        <select id="skill-level" name="skill-level">
+          <option default>---</option>
+          <option>Entry Level</option>
+          <option>Intermediate</option>
+          <option>Expert</option>
+        </select>
+      </section>
       <span> in </span>
-      <label htmlFor="skill-name">Skill </label>
-      <input type="text" id="skill-name" name="skill-name" list="skill-list" />
-      <datalist id="skill-list">{options}</datalist>
+      <section className="container">
+        <label htmlFor="skill-name">Skill </label>
+        <input
+          type="text"
+          id="skill-name"
+          name="skill-name"
+          list="skill-list"
+        />
+        <datalist id="skill-list">{options}</datalist>
+      </section>
     </article>
   );
 }
