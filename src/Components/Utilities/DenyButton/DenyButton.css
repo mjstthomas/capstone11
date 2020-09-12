@@ -1,19 +1,19 @@
 :root {
-    --primary-color: "tomato";
-    --secondary-color: "papayawhip";
-    --main-bg-color: "white";
-    --error-color: "red";
-    --normal-size: 1.125rem;
-    --heading-size: 2.5rem;
-    --main-margin: 0;
-    --main-padding: 0.625em;
-    --box-shadow: -3px 3px 15px 0px black;
-  }
+  --primary-color: "tomato";
+  --secondary-color: "papayawhip";
+  --main-bg-color: "white";
+  --error-color: "red";
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
 
-.deny-btn{
-    width: 40px;
-    height: 40px;
-    border-radius: 100px;
-    box-shadow: var(--box-shadow);
-    background-color: var(--primary-color);
+.deny-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  box-shadow: var(--box-shadow);
+  background-color: "tomato";
 }
