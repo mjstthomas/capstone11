@@ -1,4 +1,26 @@
 :root {
+<<<<<<< HEAD
+    --primary-color: "tomato";
+    --secondary-color: "papayawhip";
+    --main-bg-color: "white";
+    --error-color: "red";
+    --normal-size: 1.125rem;
+    --heading-size: 2.5rem;
+    --main-margin: 0;
+    --main-padding: 0.625em;
+    --box-shadow: -3px 3px 15px 0px black;
+  }
+
+.large-btn{
+    width: 100%;
+    height: 66px;
+    margin: .5em 0;
+    font-size: 1rem;
+    font-weight: 900;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+=======
   --primary-color: "tomato";
   --secondary-color: "papayawhip";
   --main-bg-color: "white";
@@ -20,3 +42,4 @@
   padding: var(--main-padding);
   box-shadow: var(--box-shadow);
 }
+>>>>>>> f6a9780411ec76488df2e90958987282641d99d4
