@@ -1,4 +1,5 @@
 import React from "react";
+import Cancel from "../DenyButton/DenyButton";
 import "./AddSkill.css";
 
 function getOptions() {
@@ -13,22 +14,46 @@ function getOptions() {
   return options;
 }
 
-function AddSkill() {
+function AddSkill(props) {
   const options = getOptions();
 
   return (
-    <article>
-      <label htmlFor="skill-level">Skill Level </label>
-      <select id="skill-level" name="skill-level">
-        <option default>---</option>
-        <option>Entry Level</option>
-        <option>Intermediate</option>
-        <option>Expert</option>
-      </select>
+    <article className="skill-input">
+      <section className="container">
+        <label htmlFor="skill-level">Experience</label>
+        <select
+          onChange={(e) =>
+            props.setLevel(e.target.value, props.index, props.typeOfSkill)
+          }
+          id="skill-level"
+          name="skill-level"
+        >
+          <option default>---</option>
+          <option>Entry Level</option>
+          <option>Intermediate</option>
+          <option>Expert</option>
+        </select>
+      </section>
       <span> in </span>
-      <label htmlFor="skill-name">Skill </label>
-      <input type="text" id="skill-name" name="skill-name" list="skill-list" />
-      <datalist id="skill-list">{options}</datalist>
+      <section className="container">
+        <label htmlFor="skill-name">Skill</label>
+        <input
+          type="text"
+          id="skill-name"
+          name="skill-name"
+          list="skill-list"
+          onChange={(e) =>
+            props.setSkill(e.target.value, props.index, props.typeOfSkill)
+          }
+        />
+        <datalist id="skill-list">{options}</datalist>
+      </section>
+      <Cancel
+        onClick={(e) => {
+          e.preventDefault();
+          props.removeSkill(props.index, props.typeOfSkill);
+        }}
+      />
     </article>
   );
 }

@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
+
 :root {
-  --primary-color: "tomato";
-  --secondary-color: "papayawhip";
-  --main-bg-color: "white";
-  --error-color: "red";
+  --primary-color: tomato;
+  --secondary-color: papayawhip;
+  --main-bg-color: white;
+  --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
   --main-margin: 0;

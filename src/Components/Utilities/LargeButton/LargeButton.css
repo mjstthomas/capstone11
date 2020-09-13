@@ -1,9 +1,9 @@
 :root {
 <<<<<<< HEAD
-    --primary-color: "tomato";
-    --secondary-color: "papayawhip";
-    --main-bg-color: "white";
-    --error-color: "red";
+    --primary-color: tomato;
+    --secondary-color: papayawhip;
+    --main-bg-color: white;
+    --error-color: red;
     --normal-size: 1.125rem;
     --heading-size: 2.5rem;
     --main-margin: 0;
@@ -21,10 +21,10 @@
     box-shadow: var(--box-shadow);
 }
 =======
-  --primary-color: "tomato";
-  --secondary-color: "papayawhip";
-  --main-bg-color: "white";
-  --error-color: "red";
+  --primary-color: tomato;
+  --secondary-color: papayawhip;
+  --main-bg-color: white;
+  --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
   --main-margin: 0;
