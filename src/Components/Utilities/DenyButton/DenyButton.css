@@ -1,8 +1,8 @@
 :root {
-  --primary-color: "tomato";
-  --secondary-color: "papayawhip";
-  --main-bg-color: "white";
-  --error-color: "red";
+  --primary-color: tomato;
+  --secondary-color: papayawhip;
+  --main-bg-color: white;
+  --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
   --main-margin: 0;
@@ -11,9 +11,10 @@
 }
 
 .deny-btn {
-  width: 40px;
-  height: 40px;
+  background-color: tomato;
   border-radius: 100px;
   box-shadow: var(--box-shadow);
-  background-color: "tomato";
+  height: 40px;
+  width: 40px;
+  margin: var(--main-padding);
 }
