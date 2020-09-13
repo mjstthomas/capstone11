@@ -1,0 +1,18 @@
+.skill-btn{
+    width: 70px;
+    background-color: rgb(158, 155, 155);
+    padding: .3rem;
+    padding-right: .1rem;
+    margin: .5rem;
+    border-radius: 10px;
+    font-size: .75em;
+    box-shadow: var(--box-shadow);
+}
+.skill-btn-container{
+    width: 25%;
+    margin: 0;
+}
+.delete{
+    margin-left: 10px;
+    margin-right: 0;
+}
