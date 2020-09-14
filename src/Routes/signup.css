@@ -1,0 +1,32 @@
+
+
+.radio-container{
+    padding: 2em;
+    border-top: 1px solid black;
+}
+.radio-input{
+    margin-top: 1em;
+    margin-left: 3em;
+}
+.signup-container {
+    margin-top: 8em;
+    text-align: center;
+  }
+.signup-form {
+    margin: auto;
+    width: 90%;
+    text-align: left;
+  }
+.signup-input {
+    width: 100%;
+  height: 36px;
+  box-shadow: var(--box-shadow);
+  border-radius: 7px;
+  }
+  .signup-btn {
+    margin: 1rem;
+  }
+  .signup-btn-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }

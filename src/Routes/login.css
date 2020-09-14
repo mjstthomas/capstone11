@@ -1,36 +1,35 @@
 :root {
-    --primary-color: "tomato";
-    --secondary-color: "papayawhip";
-    --main-bg-color: "white";
-    --error-color: "red";
-    --normal-size: 1.125rem;
-    --heading-size: 2.5rem;
-    --main-margin: 0;
-    --main-padding: 0.625em;
-  }
-.input-container{
-    margin: 2em;
+  --primary-color: tomato;
+  --secondary-color: papayawhip;
+  --main-bg-color: white;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
 }
-.login-form{
-    margin: auto;
-    width: 90%;
-    text-align: left;
+.input-container {
+  margin: 2em;
 }
-.login-container{
-    margin-top: 8em;
-    text-align: center;
+.login-form {
+  margin: auto;
+  width: 90%;
+  text-align: left;
 }
-.login-input{
-    width: 100%;
-    height: 24px;
-    box-shadow: var(--box-shadow);
-    border-radius: 10px;
+.login-container {
+  margin-top: 8em;
+  text-align: center;
 }
-.login-btn{
-    margin: 1rem;
+.login-input {
+  width: 100%;
+  height: 36px;
+  box-shadow: var(--box-shadow);
+  border-radius: 7px;
 }
-.login-btn-container{
-    display: flex;
-    flex-direction: row-reverse;
+.login-btn {
+  margin: 1rem;
 }
-
+.login-btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+}

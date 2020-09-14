@@ -1,0 +1,43 @@
+:root {
+  --primary-color: tomato;
+  --secondary-color: papayawhip;
+  --main-bg-color: white;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container input {
+  border: 1px solid #a0a0a0;
+  border-radius: 5%;
+  box-shadow: var(--box-shadow);
+  font-size: 1rem;
+  margin-right: var(--main-padding);
+}
+
+.container select {
+  border: 1px solid #a0a0a0;
+  border-radius: 5%;
+  box-shadow: var(--box-shadow);
+  height: 1.5rem;
+  font-size: 1rem;
+}
+
+.skill-input {
+  display: inline-flex;
+  font-size: var(--normal-size);
+  padding: var(--main-padding);
+}
+
+span {
+  align-self: center;
+  padding: var(--main-padding) var(--main-padding) 0 var(--main-padding);
+}

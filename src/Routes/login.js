@@ -10,7 +10,7 @@ const handleSubmit = event =>{
         return (
             <section className="login-container">
                 <h1>Log In</h1>
-                <p>Need an account? <Link to='SignUp'>Sign up!</Link></p>
+                <p>Need an account? <Link to='/SignUp'>Sign up!</Link></p>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <article className="input-container">
                         <label htmlFor="username">Username:</label>

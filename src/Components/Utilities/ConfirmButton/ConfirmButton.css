@@ -1,8 +1,8 @@
 :root {
-  --primary-color: "tomato";
-  --secondary-color: "papayawhip";
-  --main-bg-color: "white";
-  --error-color: "red";
+  --primary-color: tomato;
+  --secondary-color: papayawhip;
+  --main-bg-color: white;
+  --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
   --main-margin: 0;
@@ -10,9 +10,10 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 .confirm-btn {
-  width: 40px;
-  height: 40px;
+  background-color: #6fcf97;
   border-radius: 100px;
   box-shadow: var(--box-shadow);
-  background-color: #6fcf97;
+  height: 40px;
+  margin: var(--main-padding);
+  width: 40px;
 }
