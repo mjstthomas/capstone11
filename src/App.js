@@ -45,9 +45,13 @@ class App extends React.Component {
     prevState[typeOfSkill].splice(index, 1);
     this.setState(prevState);
   };
-
+  testContext = () =>{
+    console.log('well it worked')
+  }
   render(props) {
-    let context = {};
+    let context = {
+      testContext: this.testContext
+    };
     return (
       <AppContext.Provider value={context}>
         <div className="App">
