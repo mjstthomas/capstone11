@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-// import LandingPage from './Routes/LandingPage';
+import Navbar from "./Routes/Navbar";
+import LandingPage from "./Routes/LandingPage";
 // import SignUp from './Routes/signup';
 import Login from "./Routes/login";
 // import BizDash from './Routes/Business/BizDash';
@@ -51,8 +52,9 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          {/* {<Route path='/' exact component={LandingPage} />
-        <Route path='/SignUp' exact component={SignUp} />} */}
+          <Navbar />
+          <Route path="/" exact component={LandingPage} />
+          {/*<Route path="/SignUp" exact component={SignUp} />*/}
           {<Route path="/Login" exact component={Login} />}
           {/* <Route path='/Business' exact component={BizDash} /> */}
           <Route
