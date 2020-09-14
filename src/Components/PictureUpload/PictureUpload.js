@@ -3,9 +3,9 @@ import Spinner from "./Spinner";
 import Image from "./Image";
 import ImageButton from "./ImageButton";
 import { API_URL } from "./config";
-import "./ProfileUpload.css";
+import "./PictureUpload.css";
 
-export default class App extends Component {
+export default class PictureUpload extends Component {
   state = {
     uploading: false,
     image: [],
@@ -86,7 +86,7 @@ export default class App extends Component {
     };
 
     return (
-      <article>
+      <article className="">
         {this.state.error && <p>{this.state.error}</p>}
         <section className="buttons">{content()}</section>
       </article>
