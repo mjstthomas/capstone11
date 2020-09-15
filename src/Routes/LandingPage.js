@@ -6,7 +6,7 @@ import { SmallButton } from "../Components/Utilities/SmallButton/SmallButton";
 function LandingPage() {
   return (
     <div className="landing-container">
-      <h1>Dev.It</h1>
+      <h1>DEV.IT</h1>
       <div className="landing-btns">
         <SmallButton
           className="btns"
@@ -14,15 +14,15 @@ function LandingPage() {
           buttonSize="btn-large"
           type="submit"
         >
-          SIGN UP
+          BECOME A FREELANCER
         </SmallButton>
         <SmallButton
           className="btns"
-          buttonStyle="btn-outline"
+          buttonStyle="btn-primary"
           buttonSize="btn-large"
           type="submit"
         >
-          LOG IN
+          FIND A DEVELOPER
         </SmallButton>
       </div>
       <p>
