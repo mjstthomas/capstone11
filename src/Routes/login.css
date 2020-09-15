@@ -22,9 +22,9 @@
 }
 .login-input {
   width: 100%;
-  height: 24px;
+  height: 36px;
   box-shadow: var(--box-shadow);
-  border-radius: 10px;
+  border-radius: 7px;
 }
 .login-btn {
   margin: 1rem;
