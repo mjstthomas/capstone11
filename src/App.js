@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import Navbar from "./Routes/Navbar";
 import LandingPage from "./Routes/LandingPage";
-// import SignUp from './Routes/signup';
+import SignUp from './Routes/signup';
 import Login from "./Routes/login";
 import BizDash from './Routes/Business/BizDash/BizDash';
 import Search from "./Routes/Business/Search/Search";
