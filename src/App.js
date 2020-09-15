@@ -55,6 +55,8 @@ class App extends React.Component {
   }
   render(props) {
     let context = {
+      MustHaveSkills: this.state.MustHaveSkills,
+      NiceToHaveSkills: this.state.NiceToHaveSkills,
       testContext: this.testContext,
       removeSkill: this.removeSkill,
       addSkill: this.addSkill,

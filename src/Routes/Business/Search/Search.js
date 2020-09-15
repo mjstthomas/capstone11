@@ -36,7 +36,7 @@ function Search(props) {
         <AddButton
           onClick={(e) => {
             e.preventDefault();
-            context.addSkills(e);
+            context.addSkill(e);
           }}
         />
       </section>
@@ -49,7 +49,7 @@ function Search(props) {
         <AddButton
           onClick={(e) => {
             e.preventDefault();
-            context.addSkills(e);
+            context.addSkill(e);
           }}
         />
       </section>
