@@ -7,16 +7,18 @@
     --heading-size: 2.5rem;
     --main-margin: 0;
     --main-padding: 0.625em;
-    --box-shadow: -3px 5px 5px 0px black;
   }
-  
-  .large-btn {
-    width: 60%;
-    height: 100%;
-    margin: 0.625em 0;
-    font-size: 1rem;
-    font-weight: 900;
-    border-radius: 15px;
-    padding: var(--main-padding);
+.modal-container{
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+}
+
+.modal{
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 1em;
     box-shadow: var(--box-shadow);
-  }
+    font-size: var(--normal-size);
+}
