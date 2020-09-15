@@ -23,25 +23,12 @@ export default class PictureUpload extends Component {
       this.setState({ ...prevState, error: msg });
     }
 
-    const types = ["image/png", "image/jpeg", "image/gif"];
-
-    file.forEach((file, i) => {
-      // Catching files that are too large on the client
-      if (file.size > 150000) {
-        const msg = `'${file.name}' is too large, please pick a smaller file`;
-        prevState = this.state;
-        this.setState({ ...prevState, error: msg });
-      }
-
-      // Catching wrong file types on the client
-      if (types.every((type) => file.type !== type)) {
-        const msg = `'${file.type}' is not a supported format`;
-        prevState = this.state;
-        this.setState({ ...prevState, error: msg });
-      }
-
-      formData.append(i, file);
-    });
+    // Catching files that are too large on the client
+    if (file[0].size > 150000) {
+      const msg = `'${file.name}' is too large, please pick a smaller file`;
+      prevState = this.state;
+      this.setState({ ...prevState, error: msg });
+    }
 
     this.setState({ uploading: true });
 

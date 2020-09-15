@@ -10,3 +10,15 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 
+i {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360 deg);
+  }
+}

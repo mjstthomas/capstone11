@@ -7,7 +7,12 @@ function ImageButton(props) {
         <label htmlFor="image">
           <i class="fas fa-file-image"></i>
         </label>
-        <input type="file" id="image" onChange={props.onChange} />
+        <input
+          type="file"
+          id="image"
+          accept="image/*"
+          onChange={props.onChange}
+        />
       </section>
     </article>
   );

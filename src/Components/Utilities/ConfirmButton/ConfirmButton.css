@@ -11,9 +11,9 @@
 }
 .confirm-btn {
   background-color: #6fcf97;
-  border-radius: 100px;
+  border-radius: 100%;
   box-shadow: var(--box-shadow);
-  height: 40px;
+  height: 2.5rem;
   margin: var(--main-padding);
-  width: 40px;
+  width: 2.5rem;
 }
