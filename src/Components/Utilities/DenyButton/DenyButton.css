@@ -12,9 +12,9 @@
 
 .deny-btn {
   background-color: tomato;
-  border-radius: 100px;
+  border-radius: 100%;
   box-shadow: var(--box-shadow);
-  height: 40px;
-  width: 40px;
+  height: 2.5rem;
+  width: 2.5rem;
   margin: var(--main-padding);
 }
