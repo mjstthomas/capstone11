@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Cancel from "../DenyButton/DenyButton";
 import "./AddSkill.css";
+import AppContext from "../../../AppContext";
 
 function getOptions() {
   //fetch skills from server
@@ -15,6 +16,7 @@ function getOptions() {
 }
 
 function AddSkill(props) {
+  const { setLevel, setSkill, removeSkill } = useContext(AppContext);
   const options = getOptions();
 
   return (
@@ -23,7 +25,7 @@ function AddSkill(props) {
         <label htmlFor="skill-level">Experience</label>
         <select
           onChange={(e) =>
-            props.setLevel(e.target.value, props.index, props.typeOfSkill)
+            setLevel(e.target.value, props.index, props.typeOfSkill)
           }
           id="skill-level"
           name="skill-level"
@@ -34,7 +36,7 @@ function AddSkill(props) {
           <option>Expert</option>
         </select>
       </section>
-      <span> in </span>
+      <span>in</span>
       <section className="container">
         <label htmlFor="skill-name">Skill</label>
         <input
@@ -43,7 +45,7 @@ function AddSkill(props) {
           name="skill-name"
           list="skill-list"
           onChange={(e) =>
-            props.setSkill(e.target.value, props.index, props.typeOfSkill)
+            setSkill(e.target.value, props.index, props.typeOfSkill)
           }
         />
         <datalist id="skill-list">{options}</datalist>
@@ -51,7 +53,7 @@ function AddSkill(props) {
       <Cancel
         onClick={(e) => {
           e.preventDefault();
-          props.removeSkill(props.index, props.typeOfSkill);
+          removeSkill(props.index, props.typeOfSkill);
         }}
       />
     </article>
