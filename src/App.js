@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 // import LandingPage from './Routes/LandingPage';
-// import SignUp from './Routes/signup';
+import SignUp from './Routes/signup';
 import Login from "./Routes/login";
 import FLDetsForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
 // import BizDash from './Routes/Business/BizDash';
@@ -10,7 +10,7 @@ import Search from "./Routes/Business/Search/Search";
 // import FLProfile from './Routes/Business/FLProfile';
 // import MakeOffer from './Routes/Business/MakeOffer';
 // import BizOffersDash from './Routes/Business/BizOffersDash';
-// import FreelanceDash from './Routes/Freelance/FreelanceDash';
+import FreelanceDash from './Routes/Freelance/FreelanceDash/FreelanceDash';
 // import OffersPage from './Routes/Freelance/OffersPage';
 // import Offer from './Routes/Freelance/Offer';
 
@@ -54,7 +54,9 @@ class App extends React.Component {
     addSkills: this.addSkills,
     removeSkill: this.removeSkill,
   };
-
+  testContext = () =>{
+    console.log('well it worked')
+  }
   render(props) {
     let context = this.state;
     return (
@@ -69,9 +71,9 @@ class App extends React.Component {
           {/* <Route path='/Business/Results' exact component={Results} />
         <Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
         <Route path='/Business/Results/:freelanceID/MakeOffer' exact component={MakeOffer} />
-        <Route path='/Business/BizOffersDash' exact component={BizOffersDash} />
+            <Route path='/Business/BizOffersDash' exact component={BizOffersDash} />*/}
         <Route path='/Freelancer' exact component={FreelanceDash} />
-        <Route path='/Freelancer/OffersPage' exact component={OffersPage} />
+        {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
         </div>
       </AppContext.Provider>
