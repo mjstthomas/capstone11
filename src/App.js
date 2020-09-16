@@ -69,7 +69,7 @@ class App extends React.Component {
 
     return (
       <AppContext.Provider value={context}>
-        <div className="App">
+        <main className="App">
           <Route path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
@@ -95,7 +95,7 @@ class App extends React.Component {
           <Route path="/Freelancer" exact component={FreelanceDash} />
           {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
-        </div>
+        </main>
       </AppContext.Provider>
     );
   }

@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
+import "./Search.css";
 import Header from "../../../Components/Header/Header";
 import AddSkillComponent from "../../../Components/Utilities/AddSkill/AddSkill";
 import AddButton from "../../../Components/Utilities/AddButton/AddButton";
+import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
-function Search(props) {
+const search = (e) => {};
+
+function Search() {
   const context = useContext(AppContext);
 
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
@@ -25,7 +29,7 @@ function Search(props) {
     />
   ));
   return (
-    <form>
+    <form id="search-form">
       <Header />
       <h1>Looking for Help?</h1>
       <section>
@@ -53,6 +57,13 @@ function Search(props) {
           }}
         />
       </section>
+      <SmallButton
+        buttonStyle="small-btn"
+        type="Submit"
+        onClick={(e) => search(e)}
+      >
+        Search
+      </SmallButton>
     </form>
   );
 }
