@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
 .landing-container {
   background: url("../imgs/landingbg.png") center center/cover no-repeat;
   height: 100vh;
@@ -13,7 +25,7 @@
 }
 
 .landing-container > h1 {
-  color: #fff;
+  color: var(--primary-color);
   font-size: 4rem;
   margin-top: 0.5em;
   font-family: "Audiowide", cursive;
@@ -21,7 +33,7 @@
 
 .landing-container > p {
   margin-top: 0.5em;
-  color: #fff;
+  color: var(--primary-color);
   text-align: center;
   font-size: 1.5rem;
 }

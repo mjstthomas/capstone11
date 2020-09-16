@@ -7,7 +7,8 @@ import FLDetailForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
 import BizDash from "./Routes/Business/BizDash/BizDash";
 import Search from "./Routes/Business/Search/Search";
 // import Results from './Routes/Business/Results';
-// import FLProfile from './Routes/Business/FLProfile';
+import BizProfile from "./Routes/Business/BizProfile/BizProfile";
+import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 // import MakeOffer from './Routes/Business/MakeOffer';
 // import BizOffersDash from './Routes/Business/BizOffersDash';
 import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
@@ -19,6 +20,7 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
+    user: { profile: true },
     AddSkills: [{ level: "", skill: "" }],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
@@ -57,6 +59,7 @@ class App extends React.Component {
   };
   render(props) {
     let context = {
+      user: this.state.user,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
@@ -69,24 +72,17 @@ class App extends React.Component {
 
     return (
       <AppContext.Provider value={context}>
-        <main className="App">
+        <div className="App">
           <Route path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
           <Route path="/Business" exact component={BizDash} />
+          <Route path="/Business/Search" component={Search} />
+          <Route path="/Business/Profile/:businessID" component={BizProfile} />
           <Route
-            path="/Business/Search"
-            render={(props) => (
-              <Search
-                MustHaveSkills={this.state.MustHaveSkills}
-                NiceToHaveSkills={this.state.NiceToHaveSkills}
-                setLevel={this.setLevel}
-                setSkill={this.setSkill}
-                addSkill={this.addSkill}
-                removeSkill={this.removeSkill}
-              />
-            )}
+            path="/Freelancer/Profile/:freelanceID"
+            component={FLProfile}
           />
           {/* <Route path='/Business/Results' exact component={Results} />
         <Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
@@ -95,7 +91,7 @@ class App extends React.Component {
           <Route path="/Freelancer" exact component={FreelanceDash} />
           {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
-        </main>
+        </div>
       </AppContext.Provider>
     );
   }
