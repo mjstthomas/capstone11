@@ -1,4 +1,4 @@
-const userArray = [
+let userArray = [
     {
       id: 1,
       nickname: "testperson1",
@@ -31,4 +31,4 @@ const userArray = [
     }
   ];
 
-export default userArray
+  export default userArray;
