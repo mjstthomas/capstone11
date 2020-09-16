@@ -1,12 +1,15 @@
 import React from 'react';
 import LargeButton from '../../../Components/Utilities/LargeButton/LargeButton';
+import {useContext} from 'react';
+import AppContext from '../../../AppContext';
 import './BizDash.css';
 
 export default function BizDash(props){
+    const context = useContext(AppContext)
 
     return (
         <section className="business-dash-container">
-            <h2>Business Dashboard</h2>
+            <h2>{context.user.nickname}'s Dashboard</h2>
             <article className="BD-btn-container">
                 <LargeButton name="Look For a Freelancer" onClick={()=> props.history.push('/Business/Search')} />
             </article>

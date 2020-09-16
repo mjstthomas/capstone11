@@ -29,8 +29,16 @@
 }
 .login-btn {
   margin: 1rem;
+  box-shadow: var(--box-shadow);
+  height: 2rem;
+  width: 4rem;
+  border-radius: 7px;
 }
 .login-btn-container {
   display: flex;
   flex-direction: row-reverse;
+  padding-right: 5%;
+}
+.red{
+    color:   red;
 }

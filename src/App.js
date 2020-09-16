@@ -13,17 +13,43 @@ import Search from "./Routes/Business/Search/Search";
 import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
 // import OffersPage from './Routes/Freelance/OffersPage';
 // import Offer from './Routes/Freelance/Offer';
-
+import userArray from './userArray';
 import AppContext from "./AppContext";
 import "./App.css";
 
 class App extends React.Component {
   state = {
+    userFunctions
+    user: {},
+    userArray: [...userArray],
     AddSkills: [{ level: "", skill: "" }],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
+    error: '',
+  };
+  
+  //Sign in / Sign Up functions
+  signInUser = (user)=>{
+    let newUser = this.state.userArray.find(item => user.userName == item.nickname && user.password == item.password);
+    if (newUser == null){
+     return this.setState({error: 'User Not Found'})
+    }
+     this.setState({user: newUser});
+     return newUser;
   };
 
+  signUpUser = (user) =>{
+    user.id = this.state.userArray.length;
+    if (user.profile === 'Freelancer'){
+      user.profile = true;
+    } else {
+      user.profile = false;
+    }
+    const newUserArray = [...this.state.userArray, user];
+    console.log(newUserArray)
+    this.setState({userArray: newUserArray});
+  }
+  //Skill Search Functions
   setLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].level = level;
@@ -57,14 +83,17 @@ class App extends React.Component {
   };
   render(props) {
     let context = {
+      user: this.state.user,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
-      testContext: this.testContext,
+      signInUser: this.signInUser,
+      signUpUser: this.signUpUser,
       removeSkill: this.removeSkill,
       addSkill: this.addSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
+      error: this.state.error
     };
 
     return (
@@ -74,20 +103,8 @@ class App extends React.Component {
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
-          <Route path="/Business" exact component={BizDash} />
-          <Route
-            path="/Business/Search"
-            render={(props) => (
-              <Search
-                MustHaveSkills={this.state.MustHaveSkills}
-                NiceToHaveSkills={this.state.NiceToHaveSkills}
-                setLevel={this.setLevel}
-                setSkill={this.setSkill}
-                addSkill={this.addSkill}
-                removeSkill={this.removeSkill}
-              />
-            )}
-          />
+          <Route path='/Business' exact component={BizDash} />
+          <Route path="/Business/Search" exact component={Search} />
           {/* <Route path='/Business/Results' exact component={Results} />
         <Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
         <Route path='/Business/Results/:freelanceID/MakeOffer' exact component={MakeOffer} />
