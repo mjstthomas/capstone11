@@ -1,7 +1,7 @@
 :root {
-  --primary-color: tomato;
+  --primary-color: white;
   --secondary-color: papayawhip;
-  --main-bg-color: white;
+  --main-bg-color: black;
   --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
@@ -9,7 +9,6 @@
   --main-padding: 0.625em;
   --box-shadow: -3px 5px 5px 0px black;
 }
-
 img {
   border-radius: 100%;
   box-shadow: var(--box-shadow);

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Spinner from "./Spinner";
 import Image from "./Image";
 import ImageButton from "./ImageButton";
-import { API_URL } from "./config";
+// import { API_URL } from "./config";
 import "./PictureUpload.css";
 
 export default class PictureUpload extends Component {
@@ -36,18 +36,18 @@ export default class PictureUpload extends Component {
 
     formData.append(0, file);
 
-    fetch(`${API_URL}/image-upload`, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((image) => {
-        this.setState({
-          uploading: false,
-          image,
-          error: "",
-        });
-      });
+    // fetch(`${API_URL}/image-upload`, {
+    //   method: "POST",
+    //   body: formData,
+    // })
+    //   .then((res) => res.json())
+    //   .then((image) => {
+    //     this.setState({
+    //       uploading: false,
+    //       image,
+    //       error: "",
+    //     });
+    //   });
   };
 
   removeImage = () => {
@@ -57,13 +57,13 @@ export default class PictureUpload extends Component {
   };
 
   render() {
-    const { uploading, images } = this.state;
+    const { uploading, image } = this.state;
 
     const content = () => {
       switch (true) {
         case uploading:
           return <Spinner />;
-        case images.length > 0:
+        case image.length > 0:
           return (
             <Image image={this.state.image} removeImage={this.removeImage} />
           );
