@@ -1,24 +1,25 @@
 :root {
-    --primary-color: tomato;
-    --secondary-color: papayawhip;
-    --main-bg-color: white;
-    --error-color: red;
-    --normal-size: 1.125rem;
-    --heading-size: 2.5rem;
-    --main-margin: 0;
-    --main-padding: 0.625em;
-  }
-.modal-container{
-    position: fixed;
-    top: 30%;
-    left: 30%;
-    width: 40%;
+  --primary-color: white;
+  --secondary-color: papayawhip;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+.modal-container {
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  width: 40%;
 }
 
-.modal{
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    padding: 1em;
-    box-shadow: var(--box-shadow);
-    font-size: var(--normal-size);
+.modal {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  padding: 1em;
+  box-shadow: var(--box-shadow);
+  font-size: var(--normal-size);
 }

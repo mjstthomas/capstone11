@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import "./LandingPage.css";
-import { SmallButton } from "../Components/Utilities/SmallButton/SmallButton";
+import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
 function LandingPage() {
   return (
