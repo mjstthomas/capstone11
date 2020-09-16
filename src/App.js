@@ -19,7 +19,6 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    userFunctions
     user: {},
     userArray: [...userArray],
     AddSkills: [{ level: "", skill: "" }],
