@@ -1,9 +1,10 @@
 import React from "react";
 import "../App.css";
 import "./LandingPage.css";
+import Login from './login'
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
-function LandingPage() {
+function LandingPage(props) {
   return (
     <div className="landing-container">
       <h1>DEV.IT</h1>
@@ -13,16 +14,9 @@ function LandingPage() {
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="submit"
+          onClick={()=>props.history.push('/login')}
         >
-          BECOME A FREELANCER
-        </SmallButton>
-        <SmallButton
-          className="btns"
-          buttonStyle="btn-primary"
-          buttonSize="btn-large"
-          type="submit"
-        >
-          FIND A DEVELOPER
+          Join
         </SmallButton>
       </div>
       <p>

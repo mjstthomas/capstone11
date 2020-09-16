@@ -9,7 +9,7 @@ export default function FreelanceDash(props){
 
     return (
         <section className="Freelance-dash-container">
-            <h1>Freelancer Dashboard</h1>
+            <h1>{context.user.nickname}'s Dashboard</h1>
             <article className="FL-btn-container">
                 <LargeButton name="Offers" onClick={context.testContext} />
             </article>
