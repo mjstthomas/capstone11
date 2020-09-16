@@ -16,7 +16,7 @@ function getOptions() {
 }
 
 function AddSkill(props) {
-  const { setLevel, setSkill, removeSkill } = useContext(AppContext);
+  const context = useContext(AppContext);
   const options = getOptions();
 
   return (
@@ -25,7 +25,7 @@ function AddSkill(props) {
         <label htmlFor="skill-level">Experience</label>
         <select
           onChange={(e) =>
-            setLevel(e.target.value, props.index, props.typeOfSkill)
+            context.setLevel(e.target.value, props.index, props.typeOfSkill)
           }
           id="skill-level"
           name="skill-level"
@@ -45,7 +45,7 @@ function AddSkill(props) {
           name="skill-name"
           list="skill-list"
           onChange={(e) =>
-            setSkill(e.target.value, props.index, props.typeOfSkill)
+            context.setSkill(e.target.value, props.index, props.typeOfSkill)
           }
         />
         <datalist id="skill-list">{options}</datalist>
@@ -53,7 +53,7 @@ function AddSkill(props) {
       <Cancel
         onClick={(e) => {
           e.preventDefault();
-          removeSkill(props.index, props.typeOfSkill);
+          context.removeSkill(props.index, props.typeOfSkill);
         }}
       />
     </article>

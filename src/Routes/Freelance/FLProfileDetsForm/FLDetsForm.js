@@ -2,10 +2,14 @@ import React, { useState, useContext } from "react";
 import Header from "../../../Components/Header/Header";
 import AddSkill from "../../../Components/Utilities/AddSkill/AddSkill";
 import AddButton from "../../../Components/Utilities/AddButton/AddButton";
+import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
+import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
+const saveChanges = (e) => {};
+
 function FLDetsForm(props) {
-  const { addSkill, AddSkills } = useContext(AppContext);
+  const context = useContext(AppContext);
   const [work, setWork] = useState([]);
 
   const addWork = (e) => {
@@ -16,13 +20,8 @@ function FLDetsForm(props) {
     setWork(prevState);
   };
 
-  const addedSkills = AddSkills.map((skill, index) => (
-    <AddSkill
-      typeOfSkill="addedSkills"
-      skill={skill}
-      key={index}
-      index={index}
-    />
+  const addedSkills = context.AddSkills.map((skill, index) => (
+    <AddSkill typeOfSkill="AddSkills" skill={skill} key={index} index={index} />
   ));
 
   const addedWork = work.map((work, index) => (
@@ -41,7 +40,7 @@ function FLDetsForm(props) {
         <AddButton
           onClick={(e) => {
             e.preventDefault();
-            addSkill(e);
+            context.addSkill(e);
           }}
         />
       </section>
@@ -57,6 +56,13 @@ function FLDetsForm(props) {
           }}
         />
       </section>
+      <PictureUpload />
+      <SmallButton
+        buttonStyle="small-btn"
+        children="Save"
+        type="Submit"
+        onClick={(e) => saveChanges(e)}
+      />
     </form>
   );
 }

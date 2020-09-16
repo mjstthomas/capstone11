@@ -6,13 +6,7 @@ const STYLES = ["btn-primary", "btn-outline", "btn-test"];
 
 const SIZES = ["btn-medium", "btn-large"];
 
-export const SmallButton = ({
-  children,
-  type,
-  onClick,
-  buttonStyle,
-  buttonSize,
-}) => {
+const SmallButton = ({ children, type, onClick, buttonStyle, buttonSize }) => {
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
     : STYLES[0];
@@ -31,3 +25,5 @@ export const SmallButton = ({
     </Link>
   );
 };
+
+export default SmallButton;
