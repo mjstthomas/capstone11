@@ -6,10 +6,11 @@ import AddButton from "../../../Components/Utilities/AddButton/AddButton";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
-const search = (e) => {};
 
-function Search() {
+
+function Search(props) {
   const context = useContext(AppContext);
+  const search = (e) => {props.history.push('/Business/Results')};
 
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent

@@ -1,0 +1,8 @@
+.skills-container{
+    margin: 0;
+    width: 100%;
+}
+.skills-list{
+    display: inline-block;
+    list-style: none;
+}

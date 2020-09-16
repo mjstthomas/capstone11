@@ -6,7 +6,7 @@ import Login from "./Routes/login";
 import FLDetailForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
 import BizDash from "./Routes/Business/BizDash/BizDash";
 import Search from "./Routes/Business/Search/Search";
-// import Results from './Routes/Business/Results';
+import Results from './Routes/Business/Results/Results';
 // import FLProfile from './Routes/Business/FLProfile';
 // import MakeOffer from './Routes/Business/MakeOffer';
 // import BizOffersDash from './Routes/Business/BizOffersDash';
@@ -19,6 +19,7 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
+
     user: {},
     userArray: [...userArray],
     AddSkills: [{ level: "", skill: "" }],
@@ -49,6 +50,11 @@ class App extends React.Component {
     this.setState({userArray: newUserArray});
   }
   //Skill Search Functions
+  deleteSkill = (skill) =>{
+    const filteredSkillList = this.state.MustHaveSkills.filter(item => item.skill !== skill);
+    const newSkills = [...filteredSkillList];
+    this.setState({MustHaveSkills: newSkills});
+  }
   setLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].level = level;
@@ -89,6 +95,7 @@ class App extends React.Component {
       signInUser: this.signInUser,
       signUpUser: this.signUpUser,
       removeSkill: this.removeSkill,
+      deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
@@ -104,8 +111,8 @@ class App extends React.Component {
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
           <Route path='/Business' exact component={BizDash} />
           <Route path="/Business/Search" exact component={Search} />
-          {/* <Route path='/Business/Results' exact component={Results} />
-        <Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
+          <Route path='/Business/Results' exact component={Results} />
+        {/*<Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
         <Route path='/Business/Results/:freelanceID/MakeOffer' exact component={MakeOffer} />
             <Route path='/Business/BizOffersDash' exact component={BizOffersDash} />*/}
           <Route path="/Freelancer" exact component={FreelanceDash} />
