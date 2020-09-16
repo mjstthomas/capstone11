@@ -28,13 +28,25 @@ class App extends React.Component {
   
   //Sign in / Sign Up functions
   signInUser = (user)=>{
-    let newUser = userArray.find(item => user.userName == item.nickname && user.password == item.password);
+    let newUser = this.state.userArray.find(item => user.userName == item.nickname && user.password == item.password);
     if (newUser == null){
      return this.setState({error: 'User Not Found'})
     }
      this.setState({user: newUser});
      return newUser;
   };
+
+  signUpUser = (user) =>{
+    user.id = this.state.userArray.length;
+    if (user.profile === 'Freelancer'){
+      user.profile = true;
+    } else {
+      user.profile = false;
+    }
+    const newUserArray = [...this.state.userArray, user];
+    console.log(newUserArray)
+    this.setState({userArray: newUserArray});
+  }
   //Skill Search Functions
   setLevel = (level, index, typeOfSkill) => {
     const prevState = this.state;
@@ -73,6 +85,7 @@ class App extends React.Component {
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
       signInUser: this.signInUser,
+      signUpUser: this.signUpUser,
       removeSkill: this.removeSkill,
       addSkill: this.addSkill,
       setSkill: this.setSkill,
