@@ -15,3 +15,7 @@ article > .skills-container {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
+
+main > form > #search-form {
+  padding-left: var(--main-padding);
+}

@@ -1,7 +1,10 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import "./FLDetsForm.css";
 import Header from "../../../Components/Header/Header";
 import AddSkill from "../../../Components/Utilities/AddSkill/AddSkill";
 import AddButton from "../../../Components/Utilities/AddButton/AddButton";
+import Cancel from "../../../Components/Utilities/DenyButton/DenyButton";
 import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
@@ -11,6 +14,7 @@ const saveChanges = (e) => {};
 function FLDetsForm(props) {
   const context = useContext(AppContext);
   const [work, setWork] = useState([]);
+  const [workInput, setWorkInput] = useState("");
 
   const addWork = (e) => {
     const newURL =
@@ -20,16 +24,29 @@ function FLDetsForm(props) {
     setWork(prevState);
   };
 
+  const removeWork = (index) => {
+    const prevState = work;
+    prevState.splice(index, 1);
+    setWork(prevState);
+  };
+
+  const workChange = (e) => {
+    setWorkInput(e.target.value);
+  };
+
   const addedSkills = context.AddSkills.map((skill, index) => (
     <AddSkill typeOfSkill="AddSkills" skill={skill} key={index} index={index} />
   ));
 
   const addedWork = work.map((work, index) => (
-    <img src={work} alt="featured work" key={index} index={index} />
+    <article key={index} index={index}>
+      <Link to={work}>{work}</Link>
+      <Cancel onClick={() => removeWork(index)} />
+    </article>
   ));
 
   return (
-    <form>
+    <form id="fl-details-form">
       <Header />
       <h1>Your Details</h1>
       <section>
@@ -48,7 +65,13 @@ function FLDetsForm(props) {
         <h2>Featured Work</h2>
         {addedWork}
         <label htmlFor="featured-work">Featured Work URL</label>
-        <input type="url" id="featured-work" name="featured-word" />
+        <input
+          type="url"
+          id="featured-work"
+          name="featured-word"
+          value={workInput}
+          onChange={(e) => workChange(e)}
+        />
         <AddButton
           onClick={(e) => {
             e.preventDefault();
@@ -59,10 +82,11 @@ function FLDetsForm(props) {
       <PictureUpload />
       <SmallButton
         buttonStyle="small-btn"
-        children="Save"
         type="Submit"
         onClick={(e) => saveChanges(e)}
-      />
+      >
+        Save
+      </SmallButton>
     </form>
   );
 }
