@@ -1,0 +1,28 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+.bubble-container {
+  display: flex;
+  justify-content: space-around;
+  padding: var(--main-padding);
+}
+
+.bubble-container > .profile-pic {
+  align-self: center;
+}
+
+.inner-bubble {
+  background-color: rgb(184, 255, 97);
+  border-radius: 5px;
+  color: black;
+  padding: var(--main-padding);
+}

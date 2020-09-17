@@ -123,7 +123,7 @@ class App extends React.Component {
           {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
           <Route
-            path="/Messaging/:freelanceID/:businessID"
+            path="/Messaging/:senderID/:recepientID"
             exact
             component={Messaging}
           />
