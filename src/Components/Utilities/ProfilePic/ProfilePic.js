@@ -4,7 +4,7 @@ import "./ProfilePic.css";
 
 function ProfilePic(props) {
   return (
-    <article>
+    <article className="profile-pic">
       <img src={props.imgSrc} alt={props.imgAlt} />
     </article>
   );
