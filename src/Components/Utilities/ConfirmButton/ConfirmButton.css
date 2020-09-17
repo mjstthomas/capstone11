@@ -13,6 +13,7 @@
   background-color: #6fcf97;
   border-radius: 100%;
   box-shadow: var(--box-shadow);
+  color: black;
   height: 2.5rem;
   margin: var(--main-padding);
   width: 2.5rem;

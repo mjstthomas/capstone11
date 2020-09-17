@@ -4,6 +4,7 @@ import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
 import FLDetailForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
+import BizDetailForm from "./Routes/Business/BizProfileDetsForm/BizDetsForm";
 import BizDash from "./Routes/Business/BizDash/BizDash";
 import Search from "./Routes/Business/Search/Search";
 // import Results from './Routes/Business/Results';
@@ -14,7 +15,7 @@ import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
 // import OffersPage from './Routes/Freelance/OffersPage';
 // import Offer from './Routes/Freelance/Offer';
-import userArray from './userArray';
+import userArray from "./userArray";
 import AppContext from "./AppContext";
 import "./App.css";
 
@@ -25,30 +26,32 @@ class App extends React.Component {
     AddSkills: [{ level: "", skill: "" }],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
-    error: '',
-  };
-  
-  //Sign in / Sign Up functions
-  signInUser = (user)=>{
-    let newUser = this.state.userArray.find(item => user.userName == item.nickname && user.password == item.password);
-    if (newUser == null){
-     return this.setState({error: 'User Not Found'})
-    }
-     this.setState({user: newUser});
-     return newUser;
+    error: "",
   };
 
-  signUpUser = (user) =>{
+  //Sign in / Sign Up functions
+  signInUser = (user) => {
+    let newUser = this.state.userArray.find(
+      (item) => user.userName == item.nickname && user.password == item.password
+    );
+    if (newUser == null) {
+      return this.setState({ error: "User Not Found" });
+    }
+    this.setState({ user: newUser });
+    return newUser;
+  };
+
+  signUpUser = (user) => {
     user.id = this.state.userArray.length;
-    if (user.profile === 'Freelancer'){
+    if (user.profile === "Freelancer") {
       user.profile = true;
     } else {
       user.profile = false;
     }
     const newUserArray = [...this.state.userArray, user];
-    console.log(newUserArray)
-    this.setState({userArray: newUserArray});
-  }
+    console.log(newUserArray);
+    this.setState({ userArray: newUserArray });
+  };
   //Skill Search Functions
   setLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
@@ -93,7 +96,7 @@ class App extends React.Component {
       addSkill: this.addSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
-      error: this.state.error
+      error: this.state.error,
     };
 
     return (
@@ -103,6 +106,7 @@ class App extends React.Component {
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
+          <Route path="/SignUp/BizDetails" component={BizDetailForm} />
           <Route path="/Business" exact component={BizDash} />
           <Route path="/Business/Search" component={Search} />
           <Route path="/Business/Profile/:businessID" component={BizProfile} />

@@ -46,48 +46,50 @@ function FLDetsForm(props) {
   ));
 
   return (
-    <form id="fl-details-form">
+    <main>
       <Header />
-      <h1>Your Details</h1>
-      <section>
-        <article className="skills-container">
-          <h2>Add Skills</h2>
-          {addedSkills}
-        </article>
-        <AddButton
-          onClick={(e) => {
-            e.preventDefault();
-            context.addSkill(e);
-          }}
-        />
-      </section>
-      <section>
-        <h2>Featured Work</h2>
-        {addedWork}
-        <label htmlFor="featured-work">Featured Work URL</label>
-        <input
-          type="url"
-          id="featured-work"
-          name="featured-word"
-          value={workInput}
-          onChange={(e) => workChange(e)}
-        />
-        <AddButton
-          onClick={(e) => {
-            e.preventDefault();
-            addWork(e);
-          }}
-        />
-      </section>
-      <PictureUpload />
-      <SmallButton
-        buttonStyle="small-btn"
-        type="Submit"
-        onClick={(e) => saveChanges(e)}
-      >
-        Save
-      </SmallButton>
-    </form>
+      <form id="fl-details-form">
+        <h1>Your Details</h1>
+        <section>
+          <article className="skills-container">
+            <h2>Add Skills</h2>
+            {addedSkills}
+          </article>
+          <AddButton
+            onClick={(e) => {
+              e.preventDefault();
+              context.addSkill(e);
+            }}
+          />
+        </section>
+        <section>
+          <h2>Featured Work</h2>
+          {addedWork}
+          <label htmlFor="featured-work">Featured Work URL</label>
+          <input
+            type="url"
+            id="featured-work"
+            name="featured-word"
+            value={workInput}
+            onChange={(e) => workChange(e)}
+          />
+          <AddButton
+            onClick={(e) => {
+              e.preventDefault();
+              addWork(e);
+            }}
+          />
+        </section>
+        <PictureUpload />
+        <SmallButton
+          buttonStyle="small-btn"
+          type="Submit"
+          onClick={(e) => saveChanges(e)}
+        >
+          Save
+        </SmallButton>
+      </form>
+    </main>
   );
 }
 
