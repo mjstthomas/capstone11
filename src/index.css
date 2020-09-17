@@ -22,3 +22,7 @@ body {
   color: var(--primary-color);
   margin: 0;
 }
+
+main > form {
+  padding: var(--main-padding);
+}

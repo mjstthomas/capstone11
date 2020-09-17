@@ -13,6 +13,7 @@
 .btn {
   padding: 8px 20px;
   border-radius: 15px;
+  font-size: var(--normal-size);
   outline: none;
   border: none;
   cursor: pointer;
@@ -26,7 +27,7 @@
 }
 
 .btn-outline {
-  background-color: transparent;
+  background-color: #000c;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   transition: all 0.3s ease-out;

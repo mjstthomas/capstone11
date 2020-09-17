@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SmallButton } from "../Components/Utilities/SmallButton/SmallButton";
+import SmallButton from "../Utilities/SmallButton/SmallButton";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -28,14 +28,11 @@ function Navbar() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            Dev.It
-          </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
@@ -49,7 +46,6 @@ function Navbar() {
                 Log In
               </Link>
             </li>
-
             <li>
               <Link
                 to="/sign-up"
@@ -58,11 +54,8 @@ function Navbar() {
               >
                 Sign Up
               </Link>
-            </li>
+            </li> */}
           </ul>
-          {button && (
-            <SmallButton buttonStyle="btn-outline">SIGN UP</SmallButton>
-          )}
         </div>
       </nav>
     </>
