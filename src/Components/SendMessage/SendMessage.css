@@ -1,0 +1,28 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+.message-btn {
+  background-color: var(--primary-color);
+  color: var(--main-bg-color);
+  font-size: 3rem;
+}
+
+.message-textarea {
+  width: 90%;
+}
+
+#send-message {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

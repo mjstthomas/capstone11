@@ -15,6 +15,7 @@ import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
 // import OffersPage from './Routes/Freelance/OffersPage';
 // import Offer from './Routes/Freelance/Offer';
+import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import AppContext from "./AppContext";
 import "./App.css";
@@ -121,6 +122,11 @@ class App extends React.Component {
           <Route path="/Freelancer" exact component={FreelanceDash} />
           {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
+          <Route
+            path="/Messaging/:freelanceID/:businessID"
+            exact
+            component={Messaging}
+          />
         </div>
       </AppContext.Provider>
     );
