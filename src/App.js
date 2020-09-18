@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route , Switch } from "react-router-dom";
 import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
@@ -19,6 +19,7 @@ import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import AppContext from "./AppContext";
 import "./App.css";
+import NotFoundPage from './Routes/NotFoundPage'
 
 class App extends React.Component {
   state = {
@@ -103,7 +104,8 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          <Route path="/" exact component={LandingPage} />
+          <Switch>
+          <Route exact path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
@@ -115,6 +117,9 @@ class App extends React.Component {
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
           />
+
+          <Route path="/" component={NotFoundPage} />
+
           {/* <Route path='/Business/Results' exact component={Results} />
         <Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
         <Route path='/Business/Results/:freelanceID/MakeOffer' exact component={MakeOffer} />
@@ -127,6 +132,7 @@ class App extends React.Component {
             exact
             component={Messaging}
           />
+          </Switch>
         </div>
       </AppContext.Provider>
     );
