@@ -1,6 +1,6 @@
 import React from "react";
 
-function FLProfile() {
+function BizProfile() {
   return <main></main>;
 }
-export default FLProfile;
+export default BizProfile;

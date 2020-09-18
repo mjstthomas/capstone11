@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+header {
+  background-image: url("../../imgs/landingbg.png");
+  display: grid;
+  justify-items: end;
+  align-items: end;
+  grid-template-columns: 20% 35% 35% 10%;
+  grid-template-rows: 20% 80%;
+  padding: var(--main-padding);
+  width: 100vw;
+}
+
+header > a {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  color: var(--secondary-color);
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+header > a:hover {
+  color: cyan;
+  font-style: italic;
+}
+
+header > h1 {
+  align-self: end;
+  font-family: "Audiowide", cursive;
+  font-size: 3rem;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  justify-self: baseline;
+  margin: 0;
+  cursor: pointer;
+}
+
+header > h1 > a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+header > h1 > a:hover {
+  color: cyan;
+}
+
+header > article {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+header > nav {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.header-container{
+  min-height: 100px;
+}

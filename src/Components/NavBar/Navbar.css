@@ -1,3 +1,15 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
 .navbar {
   background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
   height: 80px;
@@ -15,11 +27,11 @@
   justify-content: center;
   align-items: center;
   height: 80px;
-  max-width: 1500px;
 }
 
 .navbar-logo {
-  color: #fff;
+  display: none;
+  color: var(--primary-color);
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
@@ -45,7 +57,7 @@
 }
 
 .nav-links {
-  color: #fff;
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -54,12 +66,12 @@
 }
 
 .nav-links:hover {
-  border-bottom: 4px solid #fff;
+  border-bottom: 4px solid var(--primary-color);
   transition: all 0.2s ease-out;
 }
 
 .fa-bars {
-  color: #fff;
+  color: var(--primary-color);
 }
 
 .nav-links-mobile {
@@ -70,7 +82,7 @@
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (min-width: 960px) {
   .NavbarItems {
     position: relative;
   }
@@ -87,7 +99,7 @@
     transition: all 0.5s ease;
   }
 
-  .nav-menu.active {
+  .nav-menu .active {
     background: #242222;
     left: 0;
     opacity: 1;
@@ -103,7 +115,7 @@
   }
 
   .nav-links:hover {
-    background-color: #fff;
+    background-color: var(--primary-color);
     color: #242424;
     border-radius: 0;
   }
@@ -125,8 +137,8 @@
     cursor: pointer;
   }
 
-  .fa-times {
-    color: #fff;
+  nav > .fa-times {
+    color: var(--primary-color);
     font-size: 2rem;
   }
 
@@ -139,14 +151,14 @@
     text-decoration: none;
     font-size: 1.5rem;
     background-color: transparent;
-    color: #fff;
+    color: var(--primary-color);
     padding: 14px 20px;
-    border: 1px solid #fff;
+    border: 1px solid var(--primary-color);
     transition: all 0.3s ease-out;
   }
 
   .nav-links-mobile:hover {
-    background: #fff;
+    background: var(--primary-color);
     color: #242424;
     transition: 250ms;
   }

@@ -1,26 +1,35 @@
 :root {
-  --primary: white;
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
 }
 
 .btn {
   padding: 8px 20px;
   border-radius: 15px;
+  font-size: var(--normal-size);
   outline: none;
   border: none;
   cursor: pointer;
 }
 
 .btn-primary {
-  background-color: var(--primary);
-  border: 1px solid var(--primary);
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   color: #242424;
   float: right;
 }
 
 .btn-outline {
-  background-color: transparent;
-  color: #fff;
-  border: 1px solid var(--primary);
+  background-color: #000c;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   transition: all 0.3s ease-out;
 }
 
@@ -31,7 +40,7 @@
 
 .btn-medium:hover {
   transition: all 0.3s ease-out;
-  background: #fff;
+  background: var(--primary-color);
   color: #242424;
   transition: 250ms;
 }

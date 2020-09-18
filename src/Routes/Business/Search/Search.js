@@ -10,7 +10,8 @@ import AppContext from "../../../AppContext";
 
 function Search(props) {
   const context = useContext(AppContext);
-  const search = (e) => {props.history.push('/Business/Results')};
+  const search = (e) =>{
+  };
 
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent
@@ -29,8 +30,16 @@ function Search(props) {
       index={index}
     />
   ));
+
+  const handleSubmit = event =>{
+    event.preventDefault();
+    context.handleResult();
+    setTimeout(()=>{
+      props.history.push('/Business/Results')
+    }, 2000)
+  }
   return (
-    <form id="search-form">
+    <form id="search-form" onSubmit={handleSubmit}>
       <Header />
       <h1>Looking for Help?</h1>
       <section>

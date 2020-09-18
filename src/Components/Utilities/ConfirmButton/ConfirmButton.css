@@ -1,6 +1,6 @@
 :root {
-  --primary-color: white;
-  --secondary-color: papayawhip;
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
   --main-bg-color: black;
   --error-color: red;
   --normal-size: 1.125rem;
@@ -9,10 +9,12 @@
   --main-padding: 0.625em;
   --box-shadow: -3px 5px 5px 0px black;
 }
+
 .confirm-btn {
   background-color: #6fcf97;
   border-radius: 100%;
   box-shadow: var(--box-shadow);
+  color: black;
   height: 2.5rem;
   margin: var(--main-padding);
   width: 2.5rem;

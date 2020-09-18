@@ -4,50 +4,73 @@ import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
 import FLDetailForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
+import BizDetailForm from "./Routes/Business/BizProfileDetsForm/BizDetsForm";
 import BizDash from "./Routes/Business/BizDash/BizDash";
 import Search from "./Routes/Business/Search/Search";
 import Results from './Routes/Business/Results/Results';
-// import FLProfile from './Routes/Business/FLProfile';
+import BizProfile from "./Routes/Business/BizProfile/BizProfile";
+import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 // import MakeOffer from './Routes/Business/MakeOffer';
 // import BizOffersDash from './Routes/Business/BizOffersDash';
 import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
 // import OffersPage from './Routes/Freelance/OffersPage';
 // import Offer from './Routes/Freelance/Offer';
-import userArray from './userArray';
+import Messaging from "./Routes/Messaging/Messaging";
+import userArray from "./userArray";
+import searchArray from './searchArray';
 import AppContext from "./AppContext";
 import "./App.css";
 
 class App extends React.Component {
   state = {
-
-    user: {},
+    user: { profile: true },
     userArray: [...userArray],
+    searchArray: [...searchArray],
+    resultArray: [],
     AddSkills: [{ level: "", skill: "" }],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
-    error: '',
-  };
-  
-  //Sign in / Sign Up functions
-  signInUser = (user)=>{
-    let newUser = this.state.userArray.find(item => user.userName == item.nickname && user.password == item.password);
-    if (newUser == null){
-     return this.setState({error: 'User Not Found'})
-    }
-     this.setState({user: newUser});
-     return newUser;
+    error: "",
   };
 
-  signUpUser = (user) =>{
+  //Sign in / Sign Up functions
+  signInUser = (user) => {
+    let newUser = this.state.userArray.find(
+      (item) => user.userName == item.nickname && user.password == item.password
+    );
+    if (newUser == null) {
+      return this.setState({ error: "User Not Found" });
+    }
+    this.setState({ user: newUser });
+    return newUser;
+  };
+
+  signUpUser = (user) => {
     user.id = this.state.userArray.length;
-    if (user.profile === 'Freelancer'){
+    if (user.profile === "Freelancer") {
       user.profile = true;
     } else {
       user.profile = false;
     }
     const newUserArray = [...this.state.userArray, user];
-    console.log(newUserArray)
-    this.setState({userArray: newUserArray});
+    console.log(newUserArray);
+    this.setState({ userArray: newUserArray });
+    return user;
+  };
+  //search result functions
+  handleResult = result =>{
+    const searchedSkillsArray = () =>{
+      const array = [];
+      for (let i = 0; i < this.state.MustHaveSkills.length; i++){
+        array.push(this.state.MustHaveSkills[i].skill)
+      }
+      return array;
+    }
+    
+    const newArray = searchedSkillsArray();
+    const newSearchArray = [...this.state.searchArray];
+    const searchResult = newSearchArray.filter(item => newArray.some(ai => item.skills.includes(ai)));
+    this.setState({resultArray: searchResult})
   }
   //Skill Search Functions
   deleteSkill = (skill) =>{
@@ -92,6 +115,7 @@ class App extends React.Component {
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
+      resultArray: this.state.resultArray,
       signInUser: this.signInUser,
       signUpUser: this.signUpUser,
       removeSkill: this.removeSkill,
@@ -99,18 +123,25 @@ class App extends React.Component {
       addSkill: this.addSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
-      error: this.state.error
+      handleResult: this.handleResult,
+      error: this.state.error,
     };
 
     return (
       <AppContext.Provider value={context}>
-        <main className="App">
+        <div className="App">
           <Route path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
-          <Route path='/Business' exact component={BizDash} />
-          <Route path="/Business/Search" exact component={Search} />
+          <Route path="/SignUp/BizDetails" component={BizDetailForm} />
+          <Route path="/Business" exact component={BizDash} />
+          <Route path="/Business/Search" component={Search} />
+          <Route path="/Business/Profile/:businessID" component={BizProfile} />
+          <Route
+            path="/Freelancer/Profile/:freelanceID"
+            component={FLProfile}
+          />
           <Route path='/Business/Results' exact component={Results} />
         {/*<Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
         <Route path='/Business/Results/:freelanceID/MakeOffer' exact component={MakeOffer} />
@@ -118,7 +149,12 @@ class App extends React.Component {
           <Route path="/Freelancer" exact component={FreelanceDash} />
           {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
         <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
-        </main>
+          <Route
+            path="/Messaging/:senderID/:recepientID"
+            exact
+            component={Messaging}
+          />
+        </div>
       </AppContext.Provider>
     );
   }

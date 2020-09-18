@@ -1,0 +1,40 @@
+.rating{
+    float: right;
+}
+.result-card{
+    background: chartreuse;
+    margin: auto;
+    border-radius: 10px;
+    width: 80%;
+    min-height: 50px;
+    text-align: center;
+    color: red;
+    padding: .5em 0;
+}
+
+.result-card-container{
+    padding: 1em;
+}
+
+.result-card-image-container{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: purple;
+    height: 10em;
+}
+.result-card-rating{
+    text-align: left;
+    padding: 0 .5em;
+}
+
+.skills{
+    text-align: left;
+    min-height: 50px;
+    padding: 1em;
+    background: gray;
+}
+.skill{
+    display: inline-block;
+    min-width: 20%;
+    margin: 0 .3em;
+}

@@ -10,13 +10,19 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 
-.large-btn {
-  width: 60%;
-  height: 100%;
-  margin: 0.625em 0;
-  font-size: 1rem;
-  font-weight: 900;
-  border-radius: 15px;
+.bubble-container {
+  display: flex;
+  justify-content: space-around;
   padding: var(--main-padding);
-  box-shadow: var(--box-shadow);
+}
+
+.bubble-container > .profile-pic {
+  align-self: center;
+}
+
+.inner-bubble {
+  background-color: rgb(184, 255, 97);
+  border-radius: 5px;
+  color: black;
+  padding: var(--main-padding);
 }
