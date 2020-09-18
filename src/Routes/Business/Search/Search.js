@@ -37,7 +37,8 @@ function Search(props) {
     setTimeout(()=>{
       props.history.push('/Business/Results')
     }, 2000)
-  }
+  };
+  
   return (
     <form id="search-form" onSubmit={handleSubmit}>
       <Header />

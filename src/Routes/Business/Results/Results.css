@@ -1,7 +1,30 @@
+:root {
+    --primary-color: lawngreen;
+    --secondary-color: yellow;
+    --main-bg-color: black;
+    --error-color: red;
+    --normal-size: 1.125rem;
+    --heading-size: 2.5rem;
+    --main-margin: 0;
+    --main-padding: 0.625em;
+    --box-shadow: -3px 5px 5px 0px black;
+  }
+.BTS-btn{
+    position: absolute;
+    right: 1%;
+    height: 40px;
+    margin: 0 1em;
+    width: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px 2px var(--primary-color);
+}
+.results{
+    padding-bottom: 1em;
+}
 .skills-container{
-    margin: 0;
+    margin: 0 0 1em 0;
     width: 100%;
-    min-height: 30px;
+    min-height: 40px;
 }
 .skills-list{
     display: inline-block;

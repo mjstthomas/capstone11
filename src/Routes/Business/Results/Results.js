@@ -12,18 +12,29 @@ export default function Results(props){
 
     const deleteSkill = event =>{
         let name = event.target.name;
-        console.log(name)
         context.deleteSkill(name);
-    }
+        setTimeout(()=>{
+            context.handleResult();
+        }, 1000);
+    };
 
-    console.log(context.resultArray)
+    
+
+    
     const skills = context.MustHaveSkills.map(item => <SkillButton skill={item.skill} name={item.skill} onClick={deleteSkill} />)
-    const results = context.resultArray.map(item => <ResultCard name={item.nickname} skills={item.skills} rating={item.rating} />)
+    const results = context.resultArray.map(item =>{
+        console.log(item);
+        return <ResultCard name={item.nickname} skills={item.skills} rating={item.rating} />
+    });
+
     return (
         <section className="result-container">
             <Header />
             <article className="skills-container">
                 {skills}
+                <button className="BTS-btn" onClick={()=> props.history.push('/Business/Search')}>
+                    <i class="fas fa-undo"></i>
+                </button>
             </article>
             <article className="results">
                 {results}

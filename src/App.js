@@ -106,9 +106,7 @@ class App extends React.Component {
     this.setState(prevState);
   };
 
-  testContext = () => {
-    console.log("well it worked");
-  };
+  
   render(props) {
     let context = {
       user: this.state.user,
