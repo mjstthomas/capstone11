@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MakeOffer.css";
 
-export default function App() {
-  const [payrate, setPayrate] = React.useState("");
-  const [projectInfo, setProjectInfo] = React.useState("");
-  const [jobDetails, setJobDetails] = React.useState("");
+export default function MakeOffer() {
+  const [payrate, setPayrate] = useState("");
+  const [projectInfo, setProjectInfo] = useState("");
+  const [jobDetails, setJobDetails] = useState("");
 
   const handleSubmit = (event) => {
     console.log(`
