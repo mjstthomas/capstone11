@@ -19,7 +19,6 @@ header {
   align-items: end;
   grid-template-columns: 20% 40% 40%;
   grid-template-rows: 20% 80%;
-  height: 30vh;
   padding: var(--main-padding);
   width: 100vw;
 }

@@ -9,13 +9,16 @@ import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
-const saveChanges = (e) => {};
+
 
 function FLDetsForm(props) {
   const context = useContext(AppContext);
   const [work, setWork] = useState([]);
   const [workInput, setWorkInput] = useState("");
-
+  
+  const saveChanges = (e) => {
+    props.history.push('/login')
+  };
   const addWork = (e) => {
     const newURL =
       e.target.parentNode.parentNode.parentNode.childNodes[2].value;
