@@ -33,6 +33,17 @@
   transition: all 0.3s ease-out;
 }
 
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 1.5rem;
+  color: #242424;
+}
+
+form > .btn-outline {
+  float: right;
+}
+
 .btn-medium {
   font-size: 1rem;
   margin: 1em;

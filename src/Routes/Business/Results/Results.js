@@ -4,6 +4,7 @@ import AppContext from "../../../AppContext";
 import SkillButton from "../../../Components/Utilities/SkillButton/SkillButton";
 import Header from "../../../Components/Header/Header";
 import ResultCard from "./components/ResultCard";
+import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import "./Results.css";
 
 export default function Results(props) {
@@ -17,8 +18,19 @@ export default function Results(props) {
     }, 1000);
   };
 
-  const skills = context.MustHaveSkills.map((item) => (
-    <SkillButton skill={item.skill} name={item.skill} onClick={deleteSkill} />
+  const mustHave = context.MustHaveSkills;
+  const niceToHave = context.NiceToHaveSkills;
+  let allSkills = mustHave;
+  if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
+    allSkills = mustHave.concat(niceToHave);
+  }
+  const skills = allSkills.map((item, index) => (
+    <SkillButton
+      key={index}
+      skill={item.skill}
+      name={item.skill}
+      onClick={deleteSkill}
+    />
   ));
   const results = context.resultArray.map((item) => {
     console.log(item);
@@ -36,12 +48,17 @@ export default function Results(props) {
       <Header />
       <article className="skills-container">
         {skills}
-        <button
+        <SmallButton
           className="BTS-btn"
-          onClick={() => props.history.push("/Business/Search")}
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
+          onClick={() => {
+            props.history.push("/Business/Search");
+            context.resetSkills();
+          }}
         >
           <i class="fas fa-undo"></i>
-        </button>
+        </SmallButton>
       </article>
       <article className="results">{results}</article>
     </section>

@@ -27,3 +27,10 @@ main > form {
   padding: var(--main-padding);
   margin: auto;
 }
+
+@media screen and (min-width: 600px) {
+  main > form {
+    padding: var(--main-padding);
+    margin: 0 25%;
+  }
+}

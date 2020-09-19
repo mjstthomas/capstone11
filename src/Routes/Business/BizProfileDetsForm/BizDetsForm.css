@@ -21,5 +21,6 @@
 }
 
 #biz-details-form > textarea {
+  width: 100%;
   padding-left: var(--main-padding);
 }

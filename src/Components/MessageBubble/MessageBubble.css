@@ -18,10 +18,12 @@
 
 .bubble-container > .profile-pic {
   align-self: center;
+  margin: 1em;
 }
 
 .inner-bubble {
   background-color: rgb(184, 255, 97);
+  width: 100%;
   border-radius: 5px;
   color: black;
   padding: var(--main-padding);

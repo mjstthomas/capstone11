@@ -9,15 +9,13 @@ import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
-
-
 function FLDetsForm(props) {
   const context = useContext(AppContext);
   const [work, setWork] = useState([]);
   const [workInput, setWorkInput] = useState("");
-  
+
   const saveChanges = (e) => {
-    props.history.push('/login')
+    props.history.push("/login");
   };
   const addWork = (e) => {
     const newURL =
@@ -85,7 +83,9 @@ function FLDetsForm(props) {
         </section>
         <PictureUpload />
         <SmallButton
-          buttonStyle="small-btn"
+          className="btns"
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
           type="Submit"
           onClick={(e) => saveChanges(e)}
         >

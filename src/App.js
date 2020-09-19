@@ -22,7 +22,11 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    user: { profile: true },
+    user: {
+      id: 1,
+      nickname: "",
+      profile: true,
+    },
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
@@ -75,11 +79,18 @@ class App extends React.Component {
   };
   //Skill Search Functions
   deleteSkill = (skill) => {
-    const filteredSkillList = this.state.MustHaveSkills.filter(
-      (item) => item.skill !== skill
-    );
+    const mustHave = this.state.MustHaveSkills;
+    const niceToHave = this.state.NiceToHaveSkills;
+    let allSkills = mustHave;
+    if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
+      allSkills = mustHave.concat(niceToHave);
+    }
+    const filteredSkillList = allSkills.filter((item) => item.skill !== skill);
     const newSkills = [...filteredSkillList];
-    this.setState({ MustHaveSkills: newSkills });
+    this.setState({
+      MustHaveSkills: newSkills,
+      NiceToHaveSkills: [{ level: "", skill: "" }],
+    });
   };
   setLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
@@ -105,6 +116,15 @@ class App extends React.Component {
     this.setState(prevState);
   };
 
+  resetSkills = () => {
+    const prevState = { ...this.state };
+    this.setState({
+      ...prevState,
+      MustHaveSkills: [{ level: "", skill: "" }],
+      NiceToHaveSkills: [{ level: "", skill: "" }],
+    });
+  };
+
   render(props) {
     let context = {
       user: this.state.user,
@@ -114,6 +134,7 @@ class App extends React.Component {
       resultArray: this.state.resultArray,
       signInUser: this.signInUser,
       signUpUser: this.signUpUser,
+      resetSkills: this.resetSkills,
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,

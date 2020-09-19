@@ -26,3 +26,7 @@
   bottom: 0;
   width: 100%;
 }
+
+main > #send-message {
+  margin: 0;
+}

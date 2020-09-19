@@ -19,4 +19,15 @@
   border-radius: 15px;
   padding: var(--main-padding);
   box-shadow: var(--box-shadow);
+  background-color: #000c;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease-out;
+}
+
+.large-btn:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 1.5rem;
+  color: #242424;
 }

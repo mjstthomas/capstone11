@@ -7,11 +7,7 @@ function BusinessCardItem(props) {
       <li className="cards-item">
         <Link className="cards-item-link" to={props.path}>
           <figure className="cards-item-pic-wrap">
-            <img
-              className="cards-item-img"
-              alt="Profile Image"
-              src={props.src}
-            />
+            <img className="cards-item-img" alt="Profile Pic" src={props.src} />
           </figure>
           <div className="cards-item-info">
             <h2 className="cards-item-text">{props.name}</h2>
