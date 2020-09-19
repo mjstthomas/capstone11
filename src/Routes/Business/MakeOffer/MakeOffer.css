@@ -1,84 +1,34 @@
-body {
-  font-family: Lato;
-  height: 97vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #4a4e69;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 400px;
-  min-width: 100px;
-  min-height: 400px;
-  padding: 20px 40px 40px 40px;
-  border-radius: 6px;
-  box-shadow: 0px 8px 36px #222;
-  background-color: #fefefe;
-}
-
-form > h1 {
-  display: flex;
-  justify-content: center;
-  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue",
-    sans-serif;
-  font-size: 2em;
-  font-weight: lighter;
-  margin-top: 0.25em;
-  color: #222;
-  letter-spacing: 2px;
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
 }
 
 label {
-  margin-bottom: 0.5em;
-  color: #444;
-  font-weight: lighter;
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 
-input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
+input,
+textarea {
+  margin: 1em 0;
   width: 100%;
-}
-
-input {
-  padding: 10px 10px;
-  border-radius: 5px;
-  border: 1px solid #d6d1d5;
-  margin-top: 5px;
-}
-
-button {
-  min-width: 100%;
-  cursor: pointer;
-  margin-right: 0.25em;
-  margin-top: 0.5em;
-  padding: 0.938em;
-  border: none;
-  border-radius: 4px;
-  background-color: black;
-  color: #fefefe;
-}
-
-button:hover {
-  background-color: #4a4e69;
-  color: #fefefe;
+  padding: var(--main-padding);
 }
 
 .error {
-  color: #db2269;
-  font-size: 0.5em;
+  color: var(--error-color);
+  font-size: 1.5rem;
   display: relative;
-}
-
-.submit {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
 }
