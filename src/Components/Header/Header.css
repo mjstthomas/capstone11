@@ -17,7 +17,7 @@ header {
   display: grid;
   justify-items: end;
   align-items: end;
-  grid-template-columns: 20% 35% 35% 10%;
+  grid-template-columns: 20% 40% 40%;
   grid-template-rows: 20% 80%;
   height: 30vh;
   padding: var(--main-padding);
@@ -64,13 +64,6 @@ header > h1 > a:hover {
 header > article {
   grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-header > nav {
-  grid-column-start: 4;
-  grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 3;
 }

@@ -7,14 +7,14 @@ import FLDetailForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
 import BizDetailForm from "./Routes/Business/BizProfileDetsForm/BizDetsForm";
 import BizDash from "./Routes/Business/BizDash/BizDash";
 import Search from "./Routes/Business/Search/Search";
-// import Results from './Routes/Business/Results';
+import Results from "./Routes/Business/Results/Results";
 import BizProfile from "./Routes/Business/BizProfile/BizProfile";
 import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
-// import MakeOffer from './Routes/Business/MakeOffer';
-// import BizOffersDash from './Routes/Business/BizOffersDash';
+import MakeOffer from "./Routes/Business/MakeOffer/MakeOffer";
+import BizOffersDash from "./Routes/Business/BizOffersDash/BizOffersDash";
 import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
-// import OffersPage from './Routes/Freelance/OffersPage';
-// import Offer from './Routes/Freelance/Offer';
+import OffersPage from "./Routes/Freelance/FreelanceOffersPage";
+import Offer from "./Routes/Freelance/Offer/Offer";
 import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import AppContext from "./AppContext";
@@ -66,13 +66,9 @@ class App extends React.Component {
     this.setState(prevState);
   };
 
-  addSkill = (e) => {
-    let typeOfSkill =
-      e.target.parentNode.parentNode.parentNode.childNodes[0].childNodes[0]
-        .innerHTML;
-    typeOfSkill = typeOfSkill.split(" ").join("");
+  addSkill = (skill) => {
     const prevState = { ...this.state };
-    prevState[typeOfSkill].push({ level: "", skill: "" });
+    prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
   };
 
@@ -115,13 +111,29 @@ class App extends React.Component {
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
           />
-          {/* <Route path='/Business/Results' exact component={Results} />
-        <Route path='/Business/Results/:freelanceID' exact component={FLProfile} />
-        <Route path='/Business/Results/:freelanceID/MakeOffer' exact component={MakeOffer} />
-            <Route path='/Business/BizOffersDash' exact component={BizOffersDash} />*/}
+          <Route path="/Business/Results" exact component={Results} />
+          <Route
+            path="/Business/Results/:freelanceID"
+            exact
+            component={FLProfile}
+          />
+          <Route
+            path="/Business/Results/:freelanceID/MakeOffer"
+            exact
+            component={MakeOffer}
+          />
+          <Route
+            path="/Business/BizOffersDash"
+            exact
+            component={BizOffersDash}
+          />
           <Route path="/Freelancer" exact component={FreelanceDash} />
-          {/*<Route path='/Freelancer/OffersPage' exact component={OffersPage} />
-        <Route path='/Freelancer/OffersPage/:offerId' exact component={Offer} /> */}
+          <Route path="/Freelancer/OffersPage" exact component={OffersPage} />
+          <Route
+            path="/Freelancer/OffersPage/:offerId"
+            exact
+            component={Offer}
+          />
           <Route
             path="/Messaging/:senderID/:recepientID"
             exact

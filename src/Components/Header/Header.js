@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import NavBar from "../NavBar/Navbar";
 import ProfilePic from "../Utilities/ProfilePic/ProfilePic";
 import AppContext from "../../AppContext";
 
@@ -20,7 +19,6 @@ function Header() {
         imgSrc="https://via.placeholder.com/85"
         imgAlt="profile picture"
       />
-      {/* <NavBar /> */}
     </header>
   );
 }

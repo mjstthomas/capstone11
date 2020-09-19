@@ -40,7 +40,7 @@ function Search() {
         <AddButton
           onClick={(e) => {
             e.preventDefault();
-            context.addSkill(e);
+            context.addSkill("MustHaveSkills");
           }}
         />
       </section>
@@ -53,7 +53,7 @@ function Search() {
         <AddButton
           onClick={(e) => {
             e.preventDefault();
-            context.addSkill(e);
+            context.addSkill("NiceToHaveSkills");
           }}
         />
       </section>

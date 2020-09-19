@@ -58,7 +58,7 @@ function FLDetsForm(props) {
           <AddButton
             onClick={(e) => {
               e.preventDefault();
-              context.addSkill(e);
+              context.addSkill("AddSkills");
             }}
           />
         </section>
