@@ -34,9 +34,9 @@ class App extends React.Component {
 
   //Sign in / Sign Up functions
   signInUser = (user) => {
-    let newUser = this.state.userArray.find(
-      (item) => user.userName == item.nickname && user.password == item.password
-    );
+    let newUser = this.state.userArray.find((item) => {
+      return user.userName === item.nickname && user.password === item.password;
+    });
     if (newUser == null) {
       return this.setState({ error: "User Not Found" });
     }
