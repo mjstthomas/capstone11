@@ -25,4 +25,5 @@ body {
 
 main > form {
   padding: var(--main-padding);
+  margin: auto;
 }
