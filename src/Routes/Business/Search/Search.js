@@ -6,10 +6,12 @@ import AddButton from "../../../Components/Utilities/AddButton/AddButton";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
-const search = (e) => {};
 
-function Search() {
+
+function Search(props) {
   const context = useContext(AppContext);
+  const search = (e) =>{
+  };
 
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent
@@ -28,8 +30,17 @@ function Search() {
       index={index}
     />
   ));
+
+  const handleSubmit = event =>{
+    event.preventDefault();
+    context.handleResult();
+    setTimeout(()=>{
+      props.history.push('/Business/Results')
+    }, 2000)
+  };
+  
   return (
-    <form id="search-form">
+    <form id="search-form" onSubmit={handleSubmit}>
       <Header />
       <h1>Looking for Help?</h1>
       <section>

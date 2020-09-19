@@ -47,8 +47,12 @@ export default function SignUp(props){
             clearError()
             return setError('You must choose a profile type')
         }
-        context.signUpUser(signUp);
-        props.history.push('/login')
+        const newUser = context.signUpUser(signUp);
+        if (newUser.profile === true){
+            props.history.push('/SignUp/FLDetails');
+        } else {
+            props.history.push('/SignUp/BizDetails');
+        }
     }
     return (
         <section className="signup-container">
@@ -83,7 +87,7 @@ export default function SignUp(props){
                     <label htmlFor="Business">Business</label>
                 </article>
                 <article className="signup-btn-container">
-                    <button className="signup-btn">Sign up</button>
+                    <button className="signup-btn">Add Details</button>
                 </article>
             </form>
         </section>

@@ -1,0 +1,67 @@
+:root {
+    --primary-color: lawngreen;
+    --secondary-color: yellow;
+    --main-bg-color: black;
+    --error-color: red;
+    --normal-size: 1.125rem;
+    --heading-size: 2.5rem;
+    --main-margin: 0;
+    --main-padding: 0.625em;
+    --box-shadow: -3px 5px 5px 0px black;
+  }
+.fa-user-ninja{
+    width: 100%;
+    height: 100%;
+}
+.result-card-header{
+    margin: 0;
+}
+.rating{
+    float: right;
+}
+.result-card{
+    background: gray;
+    margin: auto;
+    border-radius: 10px;
+    width: 80%;
+    min-height: 50px;
+    text-align: center;
+    color: black;
+    padding: .5em 0;
+    font-weight: 700;
+    box-shadow: 0px 5px 15px 5px var(--primary-color);
+}
+
+.result-card-container{
+    padding: 1em;
+    font-size: 1.5rem;
+}
+
+.result-card-image-container{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: purple;
+    height: 10em;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding-top: 1em;
+}
+.result-card-rating{
+    text-align: left;
+    padding: 0 .5em;
+    font-size: 1rem;
+    border-bottom: 2px solid black;
+}
+
+.skills{
+    text-align: left;
+    min-height: 50px;
+    padding: 1em;
+    background: gray;
+}
+.skill{
+    display: inline-block;
+    min-width: 20%;
+    margin: 0 .3em;
+    font-size: 1rem;
+}

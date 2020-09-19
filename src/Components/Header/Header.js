@@ -8,6 +8,7 @@ import AppContext from "../../AppContext";
 function Header() {
   const context = useContext(AppContext);
   return (
+    <section className="header-container">
     <header>
       <Link to={context.user.profile ? "/Business" : "/Freelancer"}>
         <i className="fas fa-angle-double-right"></i>
@@ -22,6 +23,7 @@ function Header() {
       />
       {/* <NavBar /> */}
     </header>
+    </section>
   );
 }
 export default Header;

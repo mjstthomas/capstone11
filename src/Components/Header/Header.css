@@ -19,7 +19,6 @@ header {
   align-items: end;
   grid-template-columns: 20% 35% 35% 10%;
   grid-template-rows: 20% 80%;
-  height: 30vh;
   padding: var(--main-padding);
   width: 100vw;
 }
@@ -73,4 +72,10 @@ header > nav {
   grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 3;
+}
+
+.header-container{
+  min-height: 100px;
+  position: sticky;
+  top: 0;
 }
