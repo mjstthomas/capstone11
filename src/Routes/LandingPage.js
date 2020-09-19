@@ -1,7 +1,6 @@
 import React from "react";
 import "../App.css";
 import "./LandingPage.css";
-import Login from "./login";
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
 function LandingPage(props) {
