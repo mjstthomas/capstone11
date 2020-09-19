@@ -20,6 +20,7 @@ import userArray from "./userArray";
 import AppContext from "./AppContext";
 import "./App.css";
 import NotFoundPage from './Routes/NotFoundPage'
+import PictureUpload from './Components/PictureUpload/PictureUpload'
 
 class App extends React.Component {
   state = {
@@ -111,6 +112,7 @@ class App extends React.Component {
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
           <Route path="/SignUp/BizDetails" component={BizDetailForm} />
           <Route path="/Business" exact component={BizDash} />
+          <Route path="/upload" exact component={PictureUpload} />
           <Route path="/Business/Search" component={Search} />
           <Route path="/Business/Profile/:businessID" component={BizProfile} />
           <Route
