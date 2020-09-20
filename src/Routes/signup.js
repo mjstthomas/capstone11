@@ -19,11 +19,13 @@ export default function SignUp(props) {
     const value = event.target.value;
     return setBusinessType(value);
   };
+
   const clearError = () => {
     setTimeout(() => {
       setError("");
     }, 3000);
   };
+
   const handleSignIn = (event) => {
     let name = event.target.name;
     let value = event.target.value;
@@ -121,7 +123,7 @@ export default function SignUp(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={() => props.history.push("/login")}
+            onClick={()=> handleSubmit}
           >
             Add Details
           </SmallButton>

@@ -71,7 +71,7 @@ class App extends React.Component {
     };
 
     const newArray = searchedSkillsArray();
-    const newSearchArray = [...this.state.searchArray];
+    const newSearchArray = [...searchArray];
     const searchResult = newSearchArray.filter((item) =>
       newArray.some((ai) => item.skills.includes(ai))
     );

@@ -1,0 +1,67 @@
+:root {
+    --primary-color: lawngreen;
+    --secondary-color: yellow;
+    --main-bg-color: black;
+    --error-color: red;
+    --normal-size: 1.125rem;
+    --heading-size: 2.5rem;
+    --main-margin: 0;
+    --main-padding: 0.625em;
+    --box-shadow: -3px 5px 5px 0px black;
+  }
+
+
+.FLP-container{
+    height: 100%;
+    width: 100%;
+
+}
+
+.FLP-image-offer-container{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+.FLP-image-container{
+    height: 10em;
+    padding: 1.5em;
+}
+
+.FLP-info-container{
+    width: 90%;
+    margin: 10% auto;
+    padding: 1em;
+    border-radius: 10px;
+    background: #242424;
+    box-shadow: -3px 5px 5px 0px var(--primary-color);
+}
+
+.info-container-label{
+    margin-top: 0;
+}
+.FLP-make-offer-btn{
+    height: 60%;
+    width: 60%;
+    margin: auto;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background: #242424;
+    color: var(--primary-color);
+    box-shadow: -3px 5px 5px 0px var(--primary-color);
+}
+.FLP-ninja{
+    height: 5em;
+    margin: auto 0;
+}
+
+.FLP-offer-container{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.FLP-rating{
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
