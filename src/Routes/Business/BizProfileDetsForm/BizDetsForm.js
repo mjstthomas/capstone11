@@ -32,7 +32,7 @@ function BizDetsForm(props) {
         ></textarea>
         <PictureUpload />
         <SmallButton
-          className="btns"
+          className="btn"
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="Submit"

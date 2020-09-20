@@ -83,7 +83,7 @@ function FLDetsForm(props) {
         </section>
         <PictureUpload />
         <SmallButton
-          className="btns"
+          className="btn"
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="Submit"

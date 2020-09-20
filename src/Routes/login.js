@@ -82,7 +82,7 @@ function Login(props) {
         </article>
         <article className="login-btn-container">
           <SmallButton
-            className="btns"
+            className="btn"
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"

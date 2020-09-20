@@ -67,7 +67,7 @@ function Search(props) {
           />
         </section>
         <SmallButton
-          className="btns"
+          className="btn"
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="Submit"

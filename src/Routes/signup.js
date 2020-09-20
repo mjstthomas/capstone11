@@ -119,7 +119,7 @@ export default function SignUp(props) {
         </article>
         <article className="signup-btn-container">
           <SmallButton
-            className="btns"
+            className="btn"
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
