@@ -14,7 +14,7 @@
 
 header {
   background-image: url("../../imgs/landingbg.png");
-  position: sticky;
+  position: fixed;
   top: 0;
   display: grid;
   justify-items: end;
