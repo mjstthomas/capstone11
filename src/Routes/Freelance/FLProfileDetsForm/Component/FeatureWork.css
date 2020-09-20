@@ -10,21 +10,17 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 
-article > .skills-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-}
-
-.work-input {
+.feature-link {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-main > form > #fl-details-form {
-  padding-left: var(--main-padding);
+.feature-link > a {
+  color: var(--secondary-color);
 }
 
-.small-btn {
-  float: right;
+.feature-link > a:hover {
+  color: cyan;
+  font-style: italic;
 }

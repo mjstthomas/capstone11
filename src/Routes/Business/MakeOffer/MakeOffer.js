@@ -15,7 +15,7 @@ export default function MakeOffer(props) {
       Project Info: ${projectInfo}
       Job Details: ${jobDetails}
     `);
-    props.history.goBack()
+    props.history.goBack();
     event.preventDefault();
   };
 
@@ -25,7 +25,9 @@ export default function MakeOffer(props) {
       <form id="make-offer-form" onSubmit={handleSubmit}>
         {error && <p className="error">{error}</p>}
         <h1>Make an offer!</h1>
-        <label htmlFor="payrate">Pay Rate per hour:</label>
+        <label className="offer-labels" htmlFor="payrate">
+          Pay Rate per hour:
+        </label>
         <input
           name="payrate"
           id="payrate"
@@ -34,7 +36,9 @@ export default function MakeOffer(props) {
           onChange={(e) => setPayrate(e.target.value)}
           required
         />
-        <label htmlFor="project-info">Project Info:</label>
+        <label className="offer-labels" htmlFor="project-info">
+          Project Info:
+        </label>
         <textarea
           name="project-info"
           id="project-info"
@@ -44,7 +48,9 @@ export default function MakeOffer(props) {
           onChange={(e) => setProjectInfo(e.target.value)}
           required
         />
-        <label htmlFor="job-details">Job Details:</label>
+        <label className="offer-labels" htmlFor="job-details">
+          Job Details:
+        </label>
         <textarea
           id="job-details"
           name="job-details"

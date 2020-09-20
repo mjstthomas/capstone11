@@ -10,7 +10,7 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 
-label {
+.offer-labels {
   display: block;
   font-size: 1.5em;
   margin-block-start: 0.83em;
@@ -20,7 +20,7 @@ label {
   font-weight: bold;
 }
 
-input,
+#make-offer-form > input,
 textarea {
   margin: 1em 0;
   width: 100%;

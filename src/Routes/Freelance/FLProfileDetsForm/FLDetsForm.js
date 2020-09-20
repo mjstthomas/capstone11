@@ -1,10 +1,9 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
 import "./FLDetsForm.css";
 import Header from "../../../Components/Header/Header";
 import AddSkill from "../../../Components/Utilities/AddSkill/AddSkill";
+import FeatureWork from "./Component/FeatureWork";
 import AddButton from "../../../Components/Utilities/AddButton/AddButton";
-import Cancel from "../../../Components/Utilities/DenyButton/DenyButton";
 import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
@@ -17,12 +16,15 @@ function FLDetsForm(props) {
   const saveChanges = (e) => {
     props.history.push("/login");
   };
-  const addWork = (e) => {
-    const newURL =
-      e.target.parentNode.parentNode.parentNode.childNodes[2].value;
+  const addWork = () => {
+    const newURL = workInput;
     const prevState = work;
-    prevState.push(newURL);
-    setWork(prevState);
+    if (newURL !== "") {
+      prevState.push(newURL);
+      console.log({ newURL, prevState });
+      setWork(prevState);
+      setWorkInput("");
+    }
   };
 
   const removeWork = (index) => {
@@ -39,11 +41,8 @@ function FLDetsForm(props) {
     <AddSkill typeOfSkill="AddSkills" skill={skill} key={index} index={index} />
   ));
 
-  const addedWork = work.map((work, index) => (
-    <article key={index} index={index}>
-      <Link to={work}>{work}</Link>
-      <Cancel onClick={() => removeWork(index)} />
-    </article>
+  const addedWork = work.map((url, index) => (
+    <FeatureWork key={index} index={index} url={url} removeWork={removeWork} />
   ));
 
   return (
@@ -66,18 +65,20 @@ function FLDetsForm(props) {
         <section>
           <h2>Featured Work</h2>
           {addedWork}
-          <label htmlFor="featured-work">Featured Work URL</label>
-          <input
-            type="url"
-            id="featured-work"
-            name="featured-word"
-            value={workInput}
-            onChange={(e) => workChange(e)}
-          />
+          <article className="work-input">
+            <label htmlFor="featured-work">Add URL</label>
+            <input
+              type="url"
+              id="featured-work"
+              name="featured-word"
+              value={workInput}
+              onChange={(e) => workChange(e)}
+            />
+          </article>
           <AddButton
             onClick={(e) => {
               e.preventDefault();
-              addWork(e);
+              addWork();
             }}
           />
         </section>
