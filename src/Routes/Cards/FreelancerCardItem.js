@@ -1,9 +1,11 @@
 import React from "react";
-import {useState} from "react";
+import {useState, useContext} from "react";
+import AppContext from '../../AppContext'
 import { Link } from "react-router-dom";
 import Modal from '../../Components/Utilities/Modal/Modal'
 
 function BusinessCardItem(props) {
+  const context = useContext(AppContext)
   const [modal, setModal] = useState(false);
 
   const minimize = () =>{
@@ -11,6 +13,10 @@ function BusinessCardItem(props) {
       return setModal(false)
     }
     return null
+  }
+
+  const pushToMessage = () =>{
+    props.history.push(`/Messaging/${context.user.id}/${props.businessID}`)
   }
   return (
     <>
@@ -26,7 +32,7 @@ function BusinessCardItem(props) {
           </div>
           <article className="offer-btn-container">
             <button className="accept-offer-btn" onClick={()=> setModal(!modal)}>Accept Offer</button>
-            <button className="message-business-btn">Message</button>
+            <Link to={`/Messaging/${context.user.id}/${props.businessID}`}><button className="message-business-btn">Message</button></Link>
           </article>
         {modal && <Modal id={props.id} minimize={()=> setModal(!modal)} />}
       </li>

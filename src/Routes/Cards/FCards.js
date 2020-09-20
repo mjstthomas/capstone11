@@ -5,7 +5,6 @@ import FreelancerCardItem from "./FreelancerCardItem";
 function FCards() {
   return (
     <div className="cards">
-      <h1>Check out these offers!</h1>
       <div className="cards-container">
         <div className="cards-wrapper">
           <ul className="cards-items">
@@ -17,6 +16,7 @@ function FCards() {
               text="I code well."
               path="/services"
               imgSrc="https://via.placeholder.com/60"
+              businessID = '2'
             />
             <FreelancerCardItem
               src="https://via.placeholder.com/85"
@@ -26,6 +26,7 @@ function FCards() {
               text="I code well."
               path="/services"
               imgSrc="https://via.placeholder.com/60"
+              businessID = '1'
             />
             <FreelancerCardItem
               src="https://via.placeholder.com/85"
@@ -35,6 +36,7 @@ function FCards() {
               text="I code well."
               path="/services"
               imgSrc="https://via.placeholder.com/60"
+              businessID = '4'
             />
             <FreelancerCardItem
               src="https://via.placeholder.com/85"
@@ -44,6 +46,7 @@ function FCards() {
               text="I code well."
               path="/services"
               imgSrc="https://via.placeholder.com/60"
+              businessID = '2'
             />
           </ul>
         </div>
