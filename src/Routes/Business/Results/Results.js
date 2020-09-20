@@ -36,6 +36,8 @@ export default function Results(props) {
     console.log(item);
     return (
       <ResultCard
+        key={item.id}
+        id={item.id}
         name={item.nickname}
         skills={item.skills}
         rating={item.rating}

@@ -3,7 +3,7 @@ import Header from "../../../Components/Header/Header";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import "./MakeOffer.css";
 
-export default function MakeOffer() {
+export default function MakeOffer(props) {
   const [payrate, setPayrate] = useState("");
   const [projectInfo, setProjectInfo] = useState("");
   const [jobDetails, setJobDetails] = useState("");
@@ -15,7 +15,7 @@ export default function MakeOffer() {
       Project Info: ${projectInfo}
       Job Details: ${jobDetails}
     `);
-
+    props.history.goBack()
     event.preventDefault();
   };
 
