@@ -5,7 +5,10 @@ const searchArray = [
         profile: true,
         password: "password",
         rating: 10,
-        skills: ['React.js', 'HTML', 'CSS']
+        skills: ['React.js', 'HTML', 'CSS'],
+        blurb: "check me out 1", 
+        projects:"marketing stuff, key finding app",
+        userImage: '',
       },
       {
         id: 2,
@@ -13,7 +16,10 @@ const searchArray = [
         profile: true,
         password: "password",
         rating: 9,
-        skills: ['React.js', 'CSS']
+        skills: ['React.js', 'CSS'],
+        blurb: "check me out 2", 
+        projects:"marketing stuff, key finding app",
+        userImage:  ''
       },
       {
         id: 3,
@@ -21,7 +27,10 @@ const searchArray = [
         profile: true,
         password: "password",
         rating: 9,
-        skills: ['Node.js', 'HTML', 'CSS']
+        skills: ['Node.js', 'HTML', 'CSS'],
+        blurb: "check me out 3", 
+        projects:"marketing stuff, key finding app",
+        userImage:  ''
       },
       {
         id: 4,
@@ -29,7 +38,10 @@ const searchArray = [
         profile: true,
         password: "password",
         rating: 8,
-        skills: ['HTML', 'CSS']
+        skills: ['HTML', 'CSS'],
+        blurb: "check me out 4", 
+        projects:"marketing stuff, key finding app",
+        userImage:  ''
       },
       {
         id: 5,
@@ -37,7 +49,10 @@ const searchArray = [
         profile: false,
         password: "password",
         rating: 4,
-        skills: ['Javascript', 'HTML', 'CSS']
+        skills: ['Javascript', 'HTML', 'CSS'],
+        blurb: "check me out 5", 
+        projects:"marketing stuff, key finding app",
+        userImage:  ''
       }
 ]
 
