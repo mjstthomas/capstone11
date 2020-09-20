@@ -10,7 +10,11 @@
     --box-shadow: -3px 5px 5px 0px black;
   }
 
-
+.edit-btn-container{
+   width: 100%;
+   display: flex;
+   flex-direction: row-reverse;
+}
 .FLP-container{
     height: 100%;
     width: 100%;

@@ -49,6 +49,9 @@ return (
           <p className="profile-text"></p>
         </article>
       </section>
+      <section className='edit-btn-container'>
+      {context.user.id == freelanceID && <i onClick={() => props.history.push(`/Freelancer/FLdetails/${freelanceID}`)} className="edit fas fa-edit"></i>}
+      </section>
     </main>
   );
 }

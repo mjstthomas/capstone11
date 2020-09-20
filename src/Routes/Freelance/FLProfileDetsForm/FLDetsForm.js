@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import {useParams} from 'react-router-dom';
 import { Link } from "react-router-dom";
 import "./FLDetsForm.css";
 import Header from "../../../Components/Header/Header";
@@ -13,8 +14,11 @@ function FLDetsForm(props) {
   const context = useContext(AppContext);
   const [work, setWork] = useState([]);
   const [workInput, setWorkInput] = useState("");
-
+  const {freelanceID} = useParams();
   const saveChanges = (e) => {
+    if (freelanceID){
+      return props.history.push(`/Freelancer/Profile/${freelanceID}`)
+    }
     props.history.push("/login");
   };
   const addWork = (e) => {
