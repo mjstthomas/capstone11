@@ -13,7 +13,7 @@ export default function FreelanceDash(props){
             <Header />
             <h1>{context.user.nickname}'s Dashboard</h1>
             <article className="FL-btn-container">
-                <LargeButton name="Offers" onClick={context.testContext} />
+                <LargeButton name="Offers" onClick={()=> props.history.push('/Freelancer/OffersPage')} />
             </article>
             <article className="FL-btn-container">
                 <LargeButton name="Messages" onClick={()=> console.log('push to messages')} />

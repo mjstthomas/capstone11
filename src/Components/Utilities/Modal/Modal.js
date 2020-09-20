@@ -5,7 +5,7 @@ import './Modal.css'
 
 export default function Modal(props){
     return (
-        <section className="modal-container">
+        <section className="modal-container" onClick={props.minimize}>
             <article className="modal">
                 <h3>Accept Offer?</h3>
                 <ConfirmButton onClick={()=>console.log('confirm')}/>

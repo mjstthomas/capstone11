@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
+import TokenService from '../services/TokenService'
 import AppContext from "../AppContext";
 import "./login.css";
 import { Link } from "react-router-dom";
@@ -37,12 +38,17 @@ function Login(props) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (user.userName.length < 1 || user.password.password < 1) {
+    if (user.userName.length < 1 || user.password.length < 1) {
       setTimeout(() => {
         setError(context.error);
       }, 2000);
       return setError("UserName and Password must be filled out");
     }
+
+    TokenService.saveAuthToken(
+      TokenService.makeBasicAuthToken(user.nickname, user.password)
+    )
+
     const newUser = context.signInUser(user);
     if (newUser.profile === true) {
       console.log(context.user);

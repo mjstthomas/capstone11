@@ -1,6 +1,30 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+.accept-offer-btn{
+    margin: 1em;
+    width: 80%;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background: #242424;
+    color: var(--primary-color);
+    box-shadow: -3px 5px 5px 0px var(--primary-color);
+}
+.offer-btn-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 .cards {
-  padding: 4rem;
-  background: #fff;
+  padding: 1em;
 }
 
 h1 {
@@ -8,28 +32,36 @@ h1 {
 }
 
 .cards-container {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  max-width: 1120px;
-  width: 90%;
-  margin: 0 auto;
 }
 
 .cards-wrapper {
   position: relative;
   margin: 50px 0 45px;
 }
-
+.cards-header{
+  text-align: center;
+}
 .cards-items {
+  padding-left: 0;
   margin-bottom: 24px;
 }
-
+.cards-items li{
+  display: flex;
+  flex-flow: column;
+  width: 90%;
+  box-shadow: -3px 5px 5px 0px var(--primary-color);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+}
 .cards-item {
   display: flex;
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
+  background: #242424;
+  color: var(--primary-color);
+  box-shadow: -3px 5px 5px 0px var(--primary-color);
 }
 
 .cards-item-link {
@@ -76,15 +108,27 @@ h1 {
 }
 
 .cards-item-info {
-  padding: 20px 30px 30px;
+  height: 40%;
+  padding: 0 1.5em;
 }
 
 .cards-item-text {
-  color: #252e48;
+  color: var(--primary-color);
   font-size: 18px;
-  line-height: 24px;
+  margin-top: 0;
+  
 }
 
+.message-business-btn{
+  margin: 1em;
+    width: 80%;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background: #242424;
+    color: var(--primary-color);
+    box-shadow: -3px 5px 5px 0px var(--primary-color);
+}
 @media only screen and (min-width: 1200px) {
   .content-blog-container {
     width: 84%;
