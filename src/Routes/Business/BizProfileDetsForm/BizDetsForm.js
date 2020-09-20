@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useParams} from 'react-router-dom';
 import Header from "../../../Components/Header/Header";
 import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
@@ -6,8 +7,12 @@ import "./BizDetsForm.css";
 
 function BizDetsForm(props) {
   const [textarea, setTextarea] = useState("");
+  const {businessID} = useParams();
 
   const saveChanges = (e) => {
+    if(businessID){
+      return props.history.push(`/Business/Profile/${businessID}`)
+    }
     props.history.push("/login");
   };
   const onChange = (e) => {

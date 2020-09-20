@@ -153,6 +153,7 @@ class App extends React.Component {
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
           <Route path="/Freelancer/FLdetails/:freelanceID" exact component={FLDetailForm}/>
           <Route path="/SignUp/BizDetails" component={BizDetailForm} />
+          <Route path="/Business/BizDetails/:businessID" component={BizDetailForm} />
           <Route path="/Business" exact component={BizDash} />
           <Route path="/Business/Search" component={Search} />
           <Route path="/Business/Profile/:businessID" component={BizProfile} />
