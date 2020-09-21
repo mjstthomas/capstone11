@@ -16,7 +16,9 @@ function BusinessCardItem(props) {
     }
     return null;
   };
-
+  const pushToMessaging = () =>{
+    return props.history.push(`/Messaging/${context.user.id}/${props.id}`)
+  }
   return (
     <article className="cards-item" onClick={minimize}>
       <h2 className="cards-header">{props.name}</h2>
@@ -30,11 +32,7 @@ function BusinessCardItem(props) {
         buttonStyle="btn-outline"
         buttonSize="btn-large"
         type="button"
-        onClick={() =>
-          props.history.push(
-            `/Messaging/${context.user.id}/${props.businessID}`
-          )
-        }
+        onClick={pushToMessaging}
       >
         <i className="fas fa-comments"></i>
       </SmallButton>

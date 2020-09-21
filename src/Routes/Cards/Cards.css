@@ -15,10 +15,12 @@
   grid-template-columns: max-content max-content max-content;
   grid-template-rows: 25% 25% 25% 25%;
   grid-gap: 0.5em;
-  margin: 1em;
+  margin: 1.5em auto;
   padding: var(--main-padding);
   width: max-content;
   height: 100%;
+  background-color: #242424;
+  border-radius: 10px;
   box-shadow: -3px 5px 5px 2px var(--primary-color);
   justify-content: center;
   align-items: center;

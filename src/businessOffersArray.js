@@ -5,7 +5,8 @@ const businessOffers = [
         rating: "9",
         pay: "$19/hr",
         text: "We need a website to showcase our donuts.",
-        businessID:'2'
+        businessID:'2',
+        userID: '1'
     },
     {
         userImage: "https://via.placeholder.com/85",
@@ -13,7 +14,8 @@ const businessOffers = [
         rating: "7",
         pay: "$24/hr",
         text: "Looking to create a social site for cars",
-        businessID: '3'
+        businessID: '3',
+        userID: '1'
     },
     {
         userImage: "https://via.placeholder.com/85",
@@ -21,7 +23,8 @@ const businessOffers = [
         rating: "9",
         pay: "$18/hr",
         text: "Need help with UX design",
-        businessID: '4'
+        businessID: '4',
+        userID: '1'
     },
     {
         userImage: "https://via.placeholder.com/85",
@@ -29,7 +32,8 @@ const businessOffers = [
         rating: "8",
         pay: "$21/hr",
         text: "You like Robots, I like Robots, lets make something GREAT",
-        businessID:'5'
+        businessID:'5',
+        userID: '1'
     }
 ]
 
