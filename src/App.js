@@ -12,7 +12,7 @@ import BizProfile from "./Routes/Business/BizProfile/BizProfile";
 import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 import MakeOffer from "./Routes/Business/MakeOffer/MakeOffer";
 import BizOffersDash from "./Routes/Business/BizOffersDash/BizOffersDash";
-import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
+// import FreelanceDash from "./Routes/Freelance/FreelanceDash/FreelanceDash";
 import FreelanceOffersPage from "./Routes/Freelance/FreelanceOffersPage";
 import Offer from "./Routes/Freelance/Offer/Offer";
 import Messaging from "./Routes/Messaging/Messaging";
@@ -25,7 +25,7 @@ class App extends React.Component {
   state = {
     user: {
       id: 1,
-      nickname: "",
+      nickname: "Test",
       profile: true,
     },
     userArray: [...userArray],
@@ -176,12 +176,12 @@ class App extends React.Component {
             exact
             component={BizOffersDash}
           />
-          <Route path="/Freelancer" exact component={FreelanceDash} />
-          <Route
+          <Route path="/Freelancer" exact component={FreelanceOffersPage} />
+          {/* <Route
             path="/Freelancer/OffersPage"
             exact
             component={FreelanceOffersPage}
-          />
+          /> */}
           <Route
             path="/Freelancer/OffersPage/:offerId"
             exact
