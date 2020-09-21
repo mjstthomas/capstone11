@@ -1,53 +1,16 @@
 import React from "react";
 import "./Cards.css";
 import FreelancerCardItem from "./FreelancerCardItem";
+import businessOffers from '../../businessOffersArray';
 
 function FCards() {
+  const offers = businessOffers.map(item=><FreelancerCardItem name={item.businessName} src={item.userImage} imgSrc="https://via.placeholder.com/60" rating={item.rating} pay={item.pay} text={item.text} key={item.businessID} id={item.businessID}/>)
   return (
     <div className="cards">
       <div className="cards-container">
         <div className="cards-wrapper">
           <ul className="cards-items">
-            <FreelancerCardItem
-              src="https://via.placeholder.com/85"
-              name="Amy"
-              rating="9"
-              pay="$19/hr"
-              text="I code well."
-              path="/services"
-              imgSrc="https://via.placeholder.com/60"
-              businessID = '2'
-            />
-            <FreelancerCardItem
-              src="https://via.placeholder.com/85"
-              name="Amy"
-              rating="9"
-              pay="$19/hr"
-              text="I code well."
-              path="/services"
-              imgSrc="https://via.placeholder.com/60"
-              businessID = '1'
-            />
-            <FreelancerCardItem
-              src="https://via.placeholder.com/85"
-              name="Amy"
-              rating="9"
-              pay="$19/hr"
-              text="I code well."
-              path="/services"
-              imgSrc="https://via.placeholder.com/60"
-              businessID = '4'
-            />
-            <FreelancerCardItem
-              src="https://via.placeholder.com/85"
-              name="Amy"
-              rating="9"
-              pay="$19/hr"
-              text="I code well."
-              path="/services"
-              imgSrc="https://via.placeholder.com/60"
-              businessID = '2'
-            />
+            {offers}
           </ul>
         </div>
       </div>
