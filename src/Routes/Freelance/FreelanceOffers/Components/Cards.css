@@ -11,6 +11,7 @@
 }
 
 .cards-item {
+  border-radius: 15px;
   background-color: #242424;
   display: grid;
   grid-template-columns: max-content max-content max-content;
