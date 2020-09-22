@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route , Switch } from "react-router-dom";
 import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
@@ -18,6 +18,8 @@ import userArray from "./userArray";
 import searchArray from "./searchArray";
 import AppContext from "./AppContext";
 import "./App.css";
+import NotFoundPage from './Routes/NotFoundPage'
+import PictureUpload from './Components/PictureUpload/PictureUpload'
 
 class App extends React.Component {
   state = {
@@ -165,18 +167,21 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          <Route path="/" exact component={LandingPage} />
+          <Switch>
+          <Route exact path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
           <Route path="/SignUp/FLDetails" component={FLDetailForm} />
           <Route path="/SignUp/BizDetails" component={BizDetailForm} />
           <Route path="/Business" exact component={BizDash} />
+          <Route path="/upload" exact component={PictureUpload} />
           <Route path="/Business/Search" component={Search} />
           <Route path="/Business/Profile/:businessID" component={BizProfile} />
           <Route
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
           />
+          <Route path="/" component={NotFoundPage} />
           <Route path="/Business/Results" exact component={Results} />
           <Route
             path="/Business/Results/:freelanceID"
@@ -200,6 +205,7 @@ class App extends React.Component {
             exact
             component={Messaging}
           />
+          </Switch>
         </div>
       </AppContext.Provider>
     );
