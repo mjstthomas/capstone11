@@ -42,3 +42,9 @@
 .red{
     color:   red;
 }
+
+@media only screen and (min-width: 700px){
+  .login-form{
+    width: 50%;
+  }
+}
