@@ -20,6 +20,7 @@ import AppContext from "./AppContext";
 import "./App.css";
 import NotFoundPage from "./Routes/NotFoundPage";
 import PictureUpload from "./Components/PictureUpload/PictureUpload";
+import businessOffers from "./businessOffersArray";
 
 class App extends React.Component {
   state = {
@@ -36,9 +37,11 @@ class App extends React.Component {
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
     error: "",
+    businessOffers: businessOffers,
   };
 
   //Sign in / Sign Up functions
+
   signInUser = (user) => {
     let newUser = this.state.userArray.find((item) => {
       return user.userName === item.nickname && user.password === item.password;
@@ -62,7 +65,9 @@ class App extends React.Component {
     this.setState({ userArray: newUserArray });
     return user;
   };
+
   //search result functions
+
   handleResult = (result) => {
     const searchedSkillsArray = () => {
       const array = [];
@@ -79,7 +84,9 @@ class App extends React.Component {
     );
     this.setState({ resultArray: searchResult });
   };
+
   //Skill Search Functions
+
   deleteSkill = (skill) => {
     const mustHave = this.state.MustHaveSkills;
     const niceToHave = this.state.NiceToHaveSkills;
@@ -126,6 +133,7 @@ class App extends React.Component {
       NiceToHaveSkills: [{ level: "", skill: "" }],
     });
   };
+  // make offer functions
 
   addWork = (newURL) => {
     const prevState = this.state;
@@ -142,6 +150,12 @@ class App extends React.Component {
     this.setState(prevState);
   };
 
+  handleMakeOffer = (offer) => {
+    const newArray = [...this.state.businessOffers, offer];
+    this.setState({ businessOffers: newArray });
+    console.log(offer);
+    console.log(newArray);
+  };
   render(props) {
     let context = {
       user: this.state.user,
@@ -152,6 +166,7 @@ class App extends React.Component {
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
       resultArray: this.state.resultArray,
+      businessOffers: this.state.businessOffers,
       signInUser: this.signInUser,
       signUpUser: this.signUpUser,
       resetSkills: this.resetSkills,
@@ -161,6 +176,7 @@ class App extends React.Component {
       setSkill: this.setSkill,
       setLevel: this.setLevel,
       handleResult: this.handleResult,
+      handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
     };
 

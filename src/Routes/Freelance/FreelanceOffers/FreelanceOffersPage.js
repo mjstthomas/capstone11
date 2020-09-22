@@ -3,11 +3,13 @@ import Header from "../../../Components/Header/Header";
 import AppContext from "../../../AppContext";
 import "./FreelanceOffersPage.css";
 import FreelancerCardItem from "./Components/FreelancerCardItem";
-import businessOffers from "../../../businessOffersArray";
 
 function FreelanceOffersPage(props) {
   const context = useContext(AppContext);
-  const offers = businessOffers.map((item) => (
+  const myOffers = context.businessOffers.filter(
+    (item) => item.userID === context.user.id
+  );
+  const offers = myOffers.map((item) => (
     <FreelancerCardItem
       name={item.businessName}
       src={item.userImage}
@@ -16,9 +18,10 @@ function FreelanceOffersPage(props) {
       text={item.text}
       key={item.businessID}
       id={item.businessID}
+      history={props.history}
     />
   ));
-
+  console.log(myOffers);
   return (
     <main>
       <Header />

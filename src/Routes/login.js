@@ -22,16 +22,16 @@ function Login(props) {
     let newUser = { userName, password };
     newUser[name] = value;
     setUser(newUser);
-    console.log(newUser);
+    
   };
   const handlePush = () => {
     setTimeout(() => {
       if (context.user.profile === true) {
-        console.log(context.user);
+        
         props.history.push("/Freelancer");
       }
       if (context.user.profile === false) {
-        console.log(context.user);
+        
         props.history.push("/Business");
       }
     }, 2000);
@@ -50,14 +50,16 @@ function Login(props) {
     )
 
     const newUser = context.signInUser(user);
-    if (newUser.profile === true) {
-      console.log(context.user);
-      props.history.push("/Freelancer");
-    }
-    if (newUser.profile === false) {
-      console.log(context.user);
-      props.history.push("/Business");
-    }
+    setTimeout(()=>{
+        if (newUser.profile === true) {
+        
+          props.history.push("/Freelancer");
+        }
+        if (newUser.profile === false) {
+        
+          props.history.push("/Business");
+        }
+    }, 1000)
   };
   return (
     <section className="login-container">

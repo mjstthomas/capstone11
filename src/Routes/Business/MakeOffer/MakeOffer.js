@@ -1,22 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import {useParams} from 'react-router-dom';
+import AppContext from "../../../AppContext";
 import Header from "../../../Components/Header/Header";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import "./MakeOffer.css";
 
 export default function MakeOffer(props) {
+  const context = useContext(AppContext);
   const [payrate, setPayrate] = useState("");
   const [projectInfo, setProjectInfo] = useState("");
   const [jobDetails, setJobDetails] = useState("");
+  const {freelanceID} = useParams()
   const [error, setError] = useState("");
 
+  /* {
+    userImage: "https://via.placeholder.com/85",
+    businessName: "Timothy's",
+    rating: "9",
+    pay: "$18/hr",
+    text: "Need help with UX design",
+    businessID: '4',
+    userID: '1'
+} */
   const handleSubmit = (event) => {
-    console.log(`
-      Payrate: ${payrate}
-      Project Info: ${projectInfo}
-      Job Details: ${jobDetails}
-    `);
-    props.history.goBack();
     event.preventDefault();
+    const newOffer = {
+      userImage: context.user.userImage,
+      businessName: context.user.nickname,
+      rating: context.user.nickname,
+      pay: payrate,
+      text: projectInfo,
+      businessID: context.user.id,
+      userID: freelanceID
+    }
+    context.handleMakeOffer(newOffer);
+    props.history.goBack();
   };
 
   return (
