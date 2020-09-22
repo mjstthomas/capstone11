@@ -16,10 +16,7 @@ export default function BizDash(props){
                 <LargeButton name="Look For a Freelancer" onClick={()=> props.history.push('/Business/Search')} />
             </article>
             <article className="BD-btn-container">
-                <LargeButton name="Your Offers" onClick={()=> console.log('push to list of offers')} />
-            </article>
-            <article className="BD-btn-container">
-                <LargeButton name="Messages" onClick={()=> console.log('push to messages')} />
+                <LargeButton name="Your Offers" onClick={()=> props.history.push('/Business/BusinessOffersPage')} />
             </article>
         </section>
     )

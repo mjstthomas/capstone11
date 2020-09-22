@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
@@ -11,15 +11,13 @@ import Results from "./Routes/Business/Results/Results";
 import BizProfile from "./Routes/Business/BizProfile/BizProfile";
 import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 import MakeOffer from "./Routes/Business/MakeOffer/MakeOffer";
-import BusinessOfferPage from "./Routes/Business/BusinessOffers/BusinessOffersPage";
+import BusinessOffersPage from "./Routes/Business/BusinessOffers/BusinessOffersPage";
 import FreelanceOffersPage from "./Routes/Freelance/FreelanceOffers/FreelanceOffersPage";
 import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import searchArray from "./searchArray";
 import AppContext from "./AppContext";
 import "./App.css";
-import NotFoundPage from "./Routes/NotFoundPage";
-import PictureUpload from "./Components/PictureUpload/PictureUpload";
 import businessOffers from "./businessOffersArray";
 
 class App extends React.Component {
@@ -29,7 +27,6 @@ class App extends React.Component {
       nickname: "Test",
       profile: true,
     },
-    work: [],
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
@@ -37,10 +34,11 @@ class App extends React.Component {
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
     error: "",
-    businessOffers: businessOffers,
+    businessOffers: businessOffers
   };
 
   //Sign in / Sign Up functions
+
 
   signInUser = (user) => {
     let newUser = this.state.userArray.find((item) => {
@@ -48,7 +46,7 @@ class App extends React.Component {
     });
     if (newUser == null) {
       return this.setState({ error: "User Not Found" });
-    }
+    };
     this.setState({ user: newUser });
     return newUser;
   };
@@ -61,12 +59,12 @@ class App extends React.Component {
       user.profile = false;
     }
     const newUserArray = [...this.state.userArray, user];
-    console.log(newUserArray);
     this.setState({ userArray: newUserArray });
     return user;
   };
 
   //search result functions
+
 
   handleResult = (result) => {
     const searchedSkillsArray = () => {
@@ -86,6 +84,7 @@ class App extends React.Component {
   };
 
   //Skill Search Functions
+
 
   deleteSkill = (skill) => {
     const mustHave = this.state.MustHaveSkills;
@@ -135,33 +134,15 @@ class App extends React.Component {
   };
   // make offer functions
 
-  addWork = (newURL) => {
-    const prevState = this.state;
-    if (newURL !== "") {
-      prevState.work.push(newURL);
-      this.setState(prevState);
-    }
-  };
-
-  removeWork = (index) => {
-    let prevState = this.state;
-    prevState.work.splice(index, 1);
-    console.log({ prevState });
-    this.setState(prevState);
-  };
-
-  handleMakeOffer = (offer) => {
+  handleMakeOffer = (offer) =>{
     const newArray = [...this.state.businessOffers, offer];
-    this.setState({ businessOffers: newArray });
-    console.log(offer);
-    console.log(newArray);
-  };
+    this.setState({businessOffers: newArray});
+    console.log(offer)
+    console.log(newArray)
+  }
   render(props) {
     let context = {
       user: this.state.user,
-      work: this.state.work,
-      addWork: this.addWork,
-      removeWork: this.removeWork,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
@@ -183,52 +164,69 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          <Switch>
-            <Route path="/" exact component={LandingPage} />
-            <Route path="/SignUp" exact component={SignUp} />
-            <Route path="/Login" exact component={Login} />
-            <Route path="/SignUp/FLDetails" component={FLDetailForm} />
-            <Route path="/SignUp/BizDetails" component={BizDetailForm} />
-            <Route path="/Business" exact component={BizDash} />
-            <Route path="/upload" exact component={PictureUpload} />
-            <Route path="/Business/Search" component={Search} />
-            <Route
-              path="/Business/Profile/:businessID"
-              component={BizProfile}
-            />
-            <Route
-              path="/Freelancer/Profile/:freelanceID"
-              component={FLProfile}
-            />
-            <Route path="/" component={NotFoundPage} />
-            <Route path="/Business/Results" exact component={Results} />
-            <Route
-              path="/Business/Results/:freelanceID"
-              exact
-              component={FLProfile}
-            />
-            <Route
-              path="/Business/Results/:freelanceID/MakeOffer"
-              exact
-              component={MakeOffer}
-            />
-            <Route
-              path="/Business/Offers"
-              exact
-              component={BusinessOfferPage}
-            />
-            <Route path="/Freelancer" exact component={FreelanceOffersPage} />
-            <Route
-              path="/Freelancer/OffersPage/:offerId"
-              exact
-              component={FreelanceOffersPage}
-            />
-            <Route
-              path="/Messaging/:senderID/:recepientID"
-              exact
-              component={Messaging}
-            />
-          </Switch>
+          <Route 
+            path="/" 
+            exact 
+            component={LandingPage} 
+          />
+          <Route 
+            path="/SignUp" 
+            exact 
+            component={SignUp} 
+          />
+          <Route 
+            path="/Login" 
+            exact 
+            component={Login} 
+          />
+          <Route 
+            path="/SignUp/FLDetails" 
+            component={FLDetailForm} 
+          />
+          <Route 
+            path="/SignUp/BizDetails" 
+            component={BizDetailForm} 
+          />
+          <Route 
+            path="/Business" 
+            exact 
+            component={BizDash} 
+          />
+          <Route 
+            path="/Business/Search" 
+            component={Search} 
+          />
+          <Route 
+            path="/Business/Profile/:businessID" 
+            component={BizProfile} 
+          />
+          <Route
+            path="/Freelancer/Profile/:freelanceID"
+            component={FLProfile}
+          />
+          <Route path="/Business/Results" exact component={Results} />
+          <Route
+            path="/Business/Results/:freelanceID"
+            exact
+            component={FLProfile}
+          />
+          <Route
+            path="/Business/Results/:freelanceID/MakeOffer"
+            exact
+            component={MakeOffer}
+          />
+          <Route
+            path="/Business/BusinessOffersPage"
+            exact
+            component={BusinessOffersPage}
+          />
+          <Route path="/Freelancer" exact component={FreelanceOffersPage} />
+          
+          <Route
+            path="/Messaging/:senderID/:recepientID"
+            exact
+            component={Messaging}
+          />
         </div>
       </AppContext.Provider>
     );
