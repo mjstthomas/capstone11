@@ -41,3 +41,23 @@ span {
   align-self: center;
   padding: 0.25em 0.25em 0 0.25em;
 }
+
+@media screen and (min-width: 600px) {
+  .container input {
+    width: 10rem;
+  }
+
+  .container select {
+    width: 8rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container input {
+    width: 14rem;
+  }
+
+  .container select {
+    width: 10rem;
+  }
+}

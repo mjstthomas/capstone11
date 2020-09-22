@@ -1,7 +1,6 @@
 import React from "react";
 import "../App.css";
 import "./LandingPage.css";
-import Login from './login'
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
 function LandingPage(props) {
@@ -10,11 +9,11 @@ function LandingPage(props) {
       <h1>DEV.IT</h1>
       <div className="landing-btns">
         <SmallButton
-          className="btns"
+          className="btn"
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="submit"
-          onClick={()=>props.history.push('/login')}
+          onClick={() => props.history.push("/login")}
         >
           Join
         </SmallButton>

@@ -11,12 +11,13 @@
 }
 
 .btn {
-  padding: 8px 20px;
+  padding: var(--main-padding);
   border-radius: 15px;
   font-size: var(--normal-size);
   outline: none;
   border: none;
   cursor: pointer;
+  align-self: baseline;
 }
 
 .btn-primary {
@@ -31,6 +32,17 @@
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
   transition: all 0.3s ease-out;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 1.25rem;
+  color: #242424;
+}
+
+form > .btn-outline {
+  float: right;
 }
 
 .btn-medium {

@@ -16,6 +16,11 @@ article > .skills-container {
   grid-template-rows: 1fr;
 }
 
+.work-input {
+  display: flex;
+  flex-direction: column;
+}
+
 main > form > #fl-details-form {
   padding-left: var(--main-padding);
 }

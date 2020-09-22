@@ -6,10 +6,9 @@ import AddButton from "../../../Components/Utilities/AddButton/AddButton";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 
-const search = (e) => {};
-
-function Search() {
+function Search(props) {
   const context = useContext(AppContext);
+  const search = (e) => {};
 
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent
@@ -28,43 +27,56 @@ function Search() {
       index={index}
     />
   ));
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    context.handleResult();
+    setTimeout(() => {
+      props.history.push("/Business/Results");
+    }, 2000);
+  };
+
   return (
-    <form id="search-form">
+    <main>
       <Header />
-      <h1>Looking for Help?</h1>
-      <section>
-        <article className="skills-container">
-          <h2>Must Have Skills</h2>
-          {mustHaveSkills}
-        </article>
-        <AddButton
-          onClick={(e) => {
-            e.preventDefault();
-            context.addSkill(e);
-          }}
-        />
-      </section>
-      <br />
-      <section>
-        <article className="skills-container">
-          <h2>Nice To Have Skills</h2>
-          {niceToHaveSkills}
-        </article>
-        <AddButton
-          onClick={(e) => {
-            e.preventDefault();
-            context.addSkill(e);
-          }}
-        />
-      </section>
-      <SmallButton
-        buttonStyle="small-btn"
-        type="Submit"
-        onClick={(e) => search(e)}
-      >
-        Search
-      </SmallButton>
-    </form>
+      <form id="search-form" onSubmit={handleSubmit}>
+        <h1>Looking for Help?</h1>
+        <section>
+          <article className="skills-container">
+            <h2>Must Have Skills</h2>
+            {mustHaveSkills}
+          </article>
+          <AddButton
+            onClick={(e) => {
+              e.preventDefault();
+              context.addSkill("MustHaveSkills");
+            }}
+          />
+        </section>
+        <br />
+        <section>
+          <article className="skills-container">
+            <h2>Nice To Have Skills</h2>
+            {niceToHaveSkills}
+          </article>
+          <AddButton
+            onClick={(e) => {
+              e.preventDefault();
+              context.addSkill("NiceToHaveSkills");
+            }}
+          />
+        </section>
+        <SmallButton
+          className="btn"
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
+          type="Submit"
+          onClick={(e) => search(e)}
+        >
+          Search
+        </SmallButton>
+      </form>
+    </main>
   );
 }
 export default Search;

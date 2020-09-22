@@ -1,6 +1,6 @@
 import React from "react";
-import BCards from "../Cards/BCards";
-import Header from "../Components/Header/Header";
+import BCards from "./Components/BCards";
+import Header from "../../../Components/Header/Header";
 
 function BusinessOffersPage() {
   return (

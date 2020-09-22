@@ -17,9 +17,9 @@
 }
 
 .modal {
-  background-color: var(--secondary-color);
+  background-color: #242424;
   border-radius: 10px;
   padding: 1em;
-  box-shadow: var(--box-shadow);
+  box-shadow: -3px 5px 5px 0px var(--primary-color);
   font-size: var(--normal-size);
 }

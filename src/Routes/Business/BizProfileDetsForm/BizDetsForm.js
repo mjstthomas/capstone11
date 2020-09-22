@@ -4,11 +4,12 @@ import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import "./BizDetsForm.css";
 
-const saveChanges = (e) => {};
-
-function BizDetsForm() {
+function BizDetsForm(props) {
   const [textarea, setTextarea] = useState("");
 
+  const saveChanges = (e) => {
+    props.history.push("/login");
+  };
   const onChange = (e) => {
     setTextarea(e.target.value);
   };
@@ -31,7 +32,9 @@ function BizDetsForm() {
         ></textarea>
         <PictureUpload />
         <SmallButton
-          buttonStyle="small-btn"
+          className="btn"
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
           type="Submit"
           onClick={(e) => saveChanges(e)}
         >

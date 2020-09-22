@@ -10,23 +10,17 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 
-.message-btn {
-  background-color: var(--primary-color);
-  color: var(--main-bg-color);
-  font-size: 3rem;
-}
-
-.message-textarea {
-  width: 100%;
-}
-
-#send-message {
+.feature-link {
   display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-main > #send-message {
-  margin: 0;
+.feature-link > a {
+  color: var(--secondary-color);
+}
+
+.feature-link > a:hover {
+  color: cyan;
+  font-style: italic;
 }

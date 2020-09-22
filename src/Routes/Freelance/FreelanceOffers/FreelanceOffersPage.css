@@ -1,0 +1,48 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: black;
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+main > .offer-header {
+  text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  .offers-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1em;
+    margin: auto;
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .offers-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+    margin: auto;
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .offers-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    margin: auto;
+    justify-items: center;
+    align-items: center;
+  }
+}
