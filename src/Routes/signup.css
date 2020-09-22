@@ -30,3 +30,8 @@
     display: flex;
     flex-direction: row-reverse;
   }
+  @media only screen and (min-width: 700px){
+    .signup-form{
+      width: 50%;
+    }
+  }
