@@ -7,7 +7,7 @@ import FreelancerCardItem from "./Components/FreelancerCardItem";
 function FreelanceOffersPage(props) {
   const context = useContext(AppContext);
   const myOffers = context.businessOffers.filter(
-    (item) => item.userID === context.user.id
+    (item) => item.userID == context.user.id
   );
   const offers = myOffers.map((item) => (
     <FreelancerCardItem
