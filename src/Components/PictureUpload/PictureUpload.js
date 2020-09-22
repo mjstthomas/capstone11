@@ -1,46 +1,43 @@
-import React, { Component } from "react";
-import Spinner from "./Spinner";
-import Image from "./Image";
-import ImageButton from "./ImageButton";
+import React from "react";
+// import Spinner from "./Spinner";
+// import Image from "./Image";
+// import ImageButton from "./ImageButton";
 // import { API_URL } from "./config";
 import "./PictureUpload.css";
-import {storage} from '../../Firebase'
-
+import { storage } from "../../Firebase";
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {file: '',imagePreviewUrl: ''};
+    this.state = { file: "", imagePreviewUrl: "" };
   }
-
-
 
   _handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('handle uploading-', this.state.file);
-    
-    const uploadImg = storage.ref(`file/${this.state.file.name}`).put(this.state.file);
-    uploadImg.on(
-    "state_changed", 
-    snapshot => {},
-    error => {
-      console.log(error)
-    },
+    console.log("handle uploading-", this.state.file);
 
-    ()=> {
-       storage
-      .ref("file")
-      .child(this.state.file.name)
-      .getDownloadURL()
-      .then(url=>{
-      console.log(url)
-    })}
-    
-    )
-  
-  
-  }
+    const uploadImg = storage
+      .ref(`file/${this.state.file.name}`)
+      .put(this.state.file);
+    uploadImg.on(
+      "state_changed",
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      },
+
+      () => {
+        storage
+          .ref("file")
+          .child(this.state.file.name)
+          .getDownloadURL()
+          .then((url) => {
+            console.log(url);
+          });
+      }
+    );
+  };
 
   _handleImageChange(e) {
     e.preventDefault();
@@ -51,37 +48,43 @@ export default class ImageUpload extends React.Component {
     reader.onloadend = () => {
       this.setState({
         file: file,
-        imagePreviewUrl: reader.result
+        imagePreviewUrl: reader.result,
       });
-    }
+    };
 
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file);
   }
 
   render() {
-    let {imagePreviewUrl} = this.state;
+    let { imagePreviewUrl } = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
-      $imagePreview = (<img src={imagePreviewUrl} />);
+      $imagePreview = <img src={imagePreviewUrl} alt="preview" />;
     } else {
-      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+      $imagePreview = (
+        <div className="previewText">Please select an Image for Preview</div>
+      );
     }
 
     return (
       <div className="previewComponent">
-        <form onSubmit={(e)=>this._handleSubmit(e)}>
-          <input className="fileInput" 
-            type="file" 
-            onChange={(e)=>this._handleImageChange(e)} />
-          <button className="submitButton" 
-            type="submit" 
-            onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+        <form onSubmit={(e) => this._handleSubmit(e)}>
+          <input
+            className="fileInput"
+            type="file"
+            onChange={(e) => this._handleImageChange(e)}
+          />
+          <button
+            className="submitButton"
+            type="submit"
+            onClick={(e) => this._handleSubmit(e)}
+          >
+            Upload Image
+          </button>
         </form>
-        <div className="imgPreview">
-          {$imagePreview}
-        </div>
+        <div className="imgPreview">{$imagePreview}</div>
       </div>
-    )
+    );
   }
 }
 
