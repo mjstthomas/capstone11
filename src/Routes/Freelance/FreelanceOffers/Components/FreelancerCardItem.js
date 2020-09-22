@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useContext } from "react";
-import AppContext from "../../AppContext";
+import AppContext from "../../../../AppContext";
 import "./Cards.css";
-import Modal from "../../Components/Utilities/Modal/Modal";
-import ProfilePic from "../../Components/Utilities/ProfilePic/ProfilePic";
-import SmallButton from "../../Components/Utilities/SmallButton/SmallButton";
+import Modal from "../../../../Components/Utilities/Modal/Modal";
+import ProfilePic from "../../../../Components/Utilities/ProfilePic/ProfilePic";
+import SmallButton from "../../../../Components/Utilities/SmallButton/SmallButton";
 
 function BusinessCardItem(props) {
   const context = useContext(AppContext);
@@ -20,7 +20,7 @@ function BusinessCardItem(props) {
   return (
     <article className="cards-item" onClick={minimize}>
       <h2 className="cards-header">{props.name}</h2>
-      <ProfilePic className="cards-pic" imgSrc={props.src} alt="props.name" />
+      <ProfilePic className="cards-pic" imgSrc={props.src} alt={props.name} />
       <p className="cards-rating">Rating: {props.rating}</p>
       <p className="cards-pay">Pay rate: {props.pay}</p>
       <p className="cards-job-desc">"{props.text}"</p>

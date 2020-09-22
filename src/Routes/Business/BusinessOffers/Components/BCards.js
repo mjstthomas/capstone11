@@ -1,11 +1,10 @@
 import React from "react";
-import "./Cards.css";
 import BusinessCardItem from "./BusinessCardItem";
 
 function BCards() {
   return (
     <div className="cards">
-      <h1>Check out these offers!</h1>
+      <h1>Business's offers!</h1>
       <div className="cards-container">
         <div className="cards-wrapper">
           <ul className="cards-items">

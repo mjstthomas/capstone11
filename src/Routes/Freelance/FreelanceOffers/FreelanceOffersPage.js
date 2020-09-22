@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import Header from "../../Components/Header/Header";
-import AppContext from "../../AppContext";
+import Header from "../../../Components/Header/Header";
+import AppContext from "../../../AppContext";
 import "./FreelanceOffersPage.css";
-import FreelancerCardItem from "../Cards/FreelancerCardItem";
-import businessOffers from "../../businessOffersArray";
+import FreelancerCardItem from "./Components/FreelancerCardItem";
+import businessOffers from "../../../businessOffersArray";
+
 function FreelanceOffersPage(props) {
   const context = useContext(AppContext);
   const offers = businessOffers.map((item) => (

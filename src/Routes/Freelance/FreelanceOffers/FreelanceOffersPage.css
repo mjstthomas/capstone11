@@ -17,16 +17,32 @@ main > .offer-header {
 @media screen and (min-width: 600px) {
   .offers-container {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: 1em;
-    margin: 0 5%;
+    margin: auto;
+    justify-items: center;
+    align-items: center;
   }
 }
 
 @media screen and (min-width: 1000px) {
   .offers-container {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
+    margin: auto;
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .offers-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em;
+    margin: auto;
+    justify-items: center;
+    align-items: center;
   }
 }

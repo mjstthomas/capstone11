@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./FLDetsForm.css";
 import Header from "../../../Components/Header/Header";
 import AddSkill from "../../../Components/Utilities/AddSkill/AddSkill";
@@ -10,27 +10,11 @@ import AppContext from "../../../AppContext";
 
 function FLDetsForm(props) {
   const context = useContext(AppContext);
-  const [work, setWork] = useState([]);
+  // const [work, setWork] = useState([]);
   const [workInput, setWorkInput] = useState("");
 
   const saveChanges = (e) => {
     props.history.push("/login");
-  };
-  const addWork = () => {
-    const newURL = workInput;
-    const prevState = work;
-    if (newURL !== "") {
-      prevState.push(newURL);
-      console.log({ newURL, prevState });
-      setWork(prevState);
-      setWorkInput("");
-    }
-  };
-
-  const removeWork = (index) => {
-    const prevState = work;
-    prevState.splice(index, 1);
-    setWork(prevState);
   };
 
   const workChange = (e) => {
@@ -41,8 +25,13 @@ function FLDetsForm(props) {
     <AddSkill typeOfSkill="AddSkills" skill={skill} key={index} index={index} />
   ));
 
-  const addedWork = work.map((url, index) => (
-    <FeatureWork key={index} index={index} url={url} removeWork={removeWork} />
+  const addedWork = context.work.map((url, index) => (
+    <FeatureWork
+      key={index}
+      index={index}
+      url={url}
+      removeWork={context.removeWork}
+    />
   ));
 
   return (
@@ -78,7 +67,8 @@ function FLDetsForm(props) {
           <AddButton
             onClick={(e) => {
               e.preventDefault();
-              addWork();
+              context.addWork(workInput);
+              setWorkInput("");
             }}
           />
         </section>

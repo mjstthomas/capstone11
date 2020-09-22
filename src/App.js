@@ -11,9 +11,8 @@ import Results from "./Routes/Business/Results/Results";
 import BizProfile from "./Routes/Business/BizProfile/BizProfile";
 import FLProfile from "./Routes/Freelance/FLProfile/FLProfile";
 import MakeOffer from "./Routes/Business/MakeOffer/MakeOffer";
-import BizOffersDash from "./Routes/Business/BizOffersDash/BizOffersDash";
-import FreelanceOffersPage from "./Routes/Freelance/FreelanceOffersPage";
-import Offer from "./Routes/Freelance/Offer/Offer";
+import BusinessOfferPage from "./Routes/Business/BusinessOffers/BusinessOffersPage";
+import FreelanceOffersPage from "./Routes/Freelance/FreelanceOffers/FreelanceOffersPage";
 import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import searchArray from "./searchArray";
@@ -27,6 +26,7 @@ class App extends React.Component {
       nickname: "Test",
       profile: true,
     },
+    work: [],
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
@@ -125,9 +125,27 @@ class App extends React.Component {
     });
   };
 
+  addWork = (newURL) => {
+    const prevState = this.state;
+    if (newURL !== "") {
+      prevState.work.push(newURL);
+      this.setState(prevState);
+    }
+  };
+
+  removeWork = (index) => {
+    let prevState = this.state;
+    prevState.work.splice(index, 1);
+    console.log({ prevState });
+    this.setState(prevState);
+  };
+
   render(props) {
     let context = {
       user: this.state.user,
+      work: this.state.work,
+      addWork: this.addWork,
+      removeWork: this.removeWork,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
@@ -170,16 +188,12 @@ class App extends React.Component {
             exact
             component={MakeOffer}
           />
-          <Route
-            path="/Business/BizOffersDash"
-            exact
-            component={BizOffersDash}
-          />
+          <Route path="/Business/Offers" exact component={BusinessOfferPage} />
           <Route path="/Freelancer" exact component={FreelanceOffersPage} />
           <Route
             path="/Freelancer/OffersPage/:offerId"
             exact
-            component={Offer}
+            component={FreelanceOffersPage}
           />
           <Route
             path="/Messaging/:senderID/:recepientID"
