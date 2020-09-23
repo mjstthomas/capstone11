@@ -179,7 +179,6 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-<<<<<<< HEAD
           <Route 
             path="/" 
             exact 
@@ -217,16 +216,6 @@ class App extends React.Component {
             path="/Business/Profile/:businessID" 
             component={BizProfile} 
           />
-=======
-          <Route path="/" exact component={LandingPage} />
-          <Route path="/SignUp" exact component={SignUp} />
-          <Route path="/Login" exact component={Login} />
-          <Route path="/SignUp/FLDetails" component={FLDetailForm} />
-          <Route path="/SignUp/BizDetails" component={BizDetailForm} />
-          <Route path="/Business" exact component={BizDash} />
-          <Route path="/Business/Search" component={Search} />
-          <Route path="/Business/Profile/:businessID" component={BizProfile} />
->>>>>>> dc6ec2185009fbdda45ffffde3c49df84b81c818
           <Route
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
