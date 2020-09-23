@@ -21,11 +21,11 @@ function FLDetsForm(props) {
     setWorkInput(e.target.value);
   };
 
-  const addedSkills = context.AddSkills.map((skill, index) => (
-    <AddSkill typeOfSkill="AddSkills" skill={skill} key={index} index={index} />
+  const addedSkills = context.user.skills.map((skill, index) => (
+    <AddSkill typeOfSkill="skills" skill={skill} key={index} index={index} />
   ));
 
-  const addedWork = context.work.map((url, index) => (
+  const addedWork = context.user.work.map((url, index) => (
     <FeatureWork
       key={index}
       index={index}

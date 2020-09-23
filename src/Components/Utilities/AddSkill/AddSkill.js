@@ -24,9 +24,14 @@ function AddSkill(props) {
       <section className="container">
         <label htmlFor="skill-level">Experience</label>
         <select
-          onChange={(e) =>
-            context.setLevel(e.target.value, props.index, props.typeOfSkill)
-          }
+          onChange={(e) =>{
+            if (props.search !== 'true'){
+              context.setLevel(e.target.value, props.index, props.typeOfSkill)
+              }
+            else {
+              context.searchLevel(e.target.value, props.index, props.typeOfSkill)
+            }
+          }}
           id="skill-level"
           name="skill-level"
         >
@@ -44,8 +49,14 @@ function AddSkill(props) {
           id="skill-name"
           name="skill-name"
           list="skill-list"
-          onChange={(e) =>
-            context.setSkill(e.target.value, props.index, props.typeOfSkill)
+          onChange={(e) =>{
+            if (props.search !== 'true'){
+              return context.setSkill(e.target.value, props.index, props.typeOfSkill)
+            }
+            else{
+              return context.searchSkill(e.target.value, props.index, props.typeOfSkill)
+            }
+          } 
           }
         />
         <datalist id="skill-list">{options}</datalist>

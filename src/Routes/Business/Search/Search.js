@@ -13,6 +13,7 @@ function Search(props) {
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent
       typeOfSkill="MustHaveSkills"
+      search='true'
       skill={skill}
       key={index}
       index={index}
@@ -22,6 +23,7 @@ function Search(props) {
   const niceToHaveSkills = context.NiceToHaveSkills.map((skill, index) => (
     <AddSkillComponent
       typeOfSkill="NiceToHaveSkills"
+      search='true'
       skill={skill}
       key={index}
       index={index}
