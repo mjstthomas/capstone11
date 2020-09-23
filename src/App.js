@@ -27,6 +27,7 @@ class App extends React.Component {
       nickname: "Test",
       profile: true,
     },
+    work: [],
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
@@ -34,11 +35,10 @@ class App extends React.Component {
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
     error: "",
-    businessOffers: businessOffers
+    businessOffers: businessOffers,
   };
 
   //Sign in / Sign Up functions
-
 
   signInUser = (user) => {
     let newUser = this.state.userArray.find((item) => {
@@ -46,7 +46,7 @@ class App extends React.Component {
     });
     if (newUser == null) {
       return this.setState({ error: "User Not Found" });
-    };
+    }
     this.setState({ user: newUser });
     return newUser;
   };
@@ -64,7 +64,6 @@ class App extends React.Component {
   };
 
   //search result functions
-
 
   handleResult = (result) => {
     const searchedSkillsArray = () => {
@@ -84,7 +83,6 @@ class App extends React.Component {
   };
 
   //Skill Search Functions
-
 
   deleteSkill = (skill) => {
     const mustHave = this.state.MustHaveSkills;
@@ -132,17 +130,32 @@ class App extends React.Component {
       NiceToHaveSkills: [{ level: "", skill: "" }],
     });
   };
+
+  // handle featured work
+  addWork = (newURL) => {
+    const prevState = { ...this.state };
+    prevState.work.push(newURL);
+    this.setState(prevState);
+  };
+
+  removeWork = (index) => {
+    const prevState = { ...this.state };
+    prevState.work.splice(index, 1);
+    this.setState(prevState);
+  };
+
   // make offer functions
 
-  handleMakeOffer = (offer) =>{
+  handleMakeOffer = (offer) => {
     const newArray = [...this.state.businessOffers, offer];
-    this.setState({businessOffers: newArray});
-    console.log(offer)
-    console.log(newArray)
-  }
+    this.setState({ businessOffers: newArray });
+    console.log(offer);
+    console.log(newArray);
+  };
   render(props) {
     let context = {
       user: this.state.user,
+      work: this.state.work,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
@@ -156,6 +169,8 @@ class App extends React.Component {
       addSkill: this.addSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
+      addWork: this.addWork,
+      removeWork: this.removeWork,
       handleResult: this.handleResult,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
@@ -164,42 +179,14 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          <Route 
-            path="/" 
-            exact 
-            component={LandingPage} 
-          />
-          <Route 
-            path="/SignUp" 
-            exact 
-            component={SignUp} 
-          />
-          <Route 
-            path="/Login" 
-            exact 
-            component={Login} 
-          />
-          <Route 
-            path="/SignUp/FLDetails" 
-            component={FLDetailForm} 
-          />
-          <Route 
-            path="/SignUp/BizDetails" 
-            component={BizDetailForm} 
-          />
-          <Route 
-            path="/Business" 
-            exact 
-            component={BizDash} 
-          />
-          <Route 
-            path="/Business/Search" 
-            component={Search} 
-          />
-          <Route 
-            path="/Business/Profile/:businessID" 
-            component={BizProfile} 
-          />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/SignUp" exact component={SignUp} />
+          <Route path="/Login" exact component={Login} />
+          <Route path="/SignUp/FLDetails" component={FLDetailForm} />
+          <Route path="/SignUp/BizDetails" component={BizDetailForm} />
+          <Route path="/Business" exact component={BizDash} />
+          <Route path="/Business/Search" component={Search} />
+          <Route path="/Business/Profile/:businessID" component={BizProfile} />
           <Route
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
@@ -220,12 +207,8 @@ class App extends React.Component {
             exact
             component={BusinessOffersPage}
           />
-          <Route 
-            path="/Freelancer" 
-            exact 
-            component={FreelanceOffersPage} 
-          />
-          
+          <Route path="/Freelancer" exact component={FreelanceOffersPage} />
+
           <Route
             path="/Messaging/:senderID/:recepientID"
             exact
