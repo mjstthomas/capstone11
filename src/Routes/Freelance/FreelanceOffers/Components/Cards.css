@@ -12,7 +12,7 @@
 
 .cards-item {
   border-radius: 15px;
-  background-color: #242424;
+  background-image: linear-gradient(#242424, #111);
   display: grid;
   grid-template-columns: max-content max-content max-content;
   grid-template-rows: 25% 25% max-content max-content;
