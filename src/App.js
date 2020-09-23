@@ -180,7 +180,8 @@ class App extends React.Component {
             component={Login} 
           />
           <Route 
-            path="/SignUp/FLDetails" 
+            path="/SignUp/FLDetails"
+            exact 
             component={FLDetailForm} 
           />
           <Route 

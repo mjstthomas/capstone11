@@ -6,7 +6,6 @@ import AppContext from '../../../AppContext';
 import image from "../../../imgs/ninja.png";
 import searchArray from '../../../searchArray';
 import './FLProfile.css';
-{/* <i class="fas fa-edit"></i> */}
 
 function FLProfile(props) {
   const context = useContext(AppContext);
@@ -29,6 +28,9 @@ return (
                                                 onClick={()=> props.history.push(`/Business/Results/${freelanceID}/MakeOffer`)}>
                                                   Make Offer
                                               </button>}
+          {/* {context.user.id == freelanceID && <section className="edit-btn-container">
+                                                  <i class="fas fa-edit"></i>
+                                                </section>} */}
         </article>
       </section>
       <section className="FLP-info-container">

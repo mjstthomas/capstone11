@@ -23,13 +23,15 @@
 }
 
 .FLP-image-container{
+    text-align: center;
     height: 10em;
     padding: 1.5em;
 }
 
 .FLP-info-container{
+    background-image: linear-gradient(#242424, #111);
     width: 90%;
-    margin: 10% auto;
+    margin: 1em auto;
     padding: 1em;
     border-radius: 10px;
     background: #242424;
@@ -62,6 +64,18 @@
 
 .FLP-rating{
     text-align: center;
+    margin: 1em;
     font-weight: 800;
     font-size: 1.5rem;
+}
+.fas{
+    margin: auto;
+    height: 50px;
+    width: 50px;
+}
+.edit-btn-container{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    float: right;
 }
