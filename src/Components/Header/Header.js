@@ -29,12 +29,12 @@ function Header() {
       <h1 className="header-heading">
         <Link to="/">DEV.IT</Link>
       </h1>
-      <Link class="header-profile-pic" onClick={() => context.setNav()}>
+      <article className="header-profile-pic" onClick={() => context.setNav()}>
         <ProfilePic
           imgSrc="https://via.placeholder.com/85"
           imgAlt="profile picture"
         />
-      </Link>
+      </article>
       {context.isNav && <Nav />}
     </header>
   );

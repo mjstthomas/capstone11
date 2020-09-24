@@ -8,7 +8,7 @@ function Nav() {
   const context = useContext(AppContext);
   return (
     <nav>
-      <i class="fas fa-times" onClick={() => context.setNav()}></i>
+      <i className="fas fa-times" onClick={() => context.setNav()}></i>
       <Link
         to={
           context.user.profile
