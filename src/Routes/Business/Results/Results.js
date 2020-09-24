@@ -33,7 +33,6 @@ export default function Results(props) {
     />
   ));
   const results = context.resultArray.map((item) => {
-    console.log(item);
     return (
       <ResultCard
         key={item.id}

@@ -21,7 +21,6 @@ function FreelanceOffersPage(props) {
       history={props.history}
     />
   ));
-  console.log(myOffers);
   return (
     <main>
       <Header />

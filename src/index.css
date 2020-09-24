@@ -3,7 +3,7 @@
 :root {
   --primary-color: lawngreen;
   --secondary-color: yellow;
-  --main-bg-color: black;
+  --main-bg-color: linear-gradient(#222, #000);
   --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
@@ -17,7 +17,8 @@
 }
 
 body {
-  background-color: var(--main-bg-color);
+  background: var(--main-bg-color) no-repeat center center fixed;
+  background-size: cover;
   font-family: "Roboto", sans-serif;
   color: var(--primary-color);
   margin: 0;
