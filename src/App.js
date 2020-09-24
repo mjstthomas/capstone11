@@ -26,12 +26,12 @@ class App extends React.Component {
       id: 1,
       nickname: "Test",
       profile: true,
+      work: [],
+      skills: [{ level: "", skill: "" }],
     },
-    work: [],
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
-    AddSkills: [{ level: "", skill: "" }],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
     error: "",
@@ -99,20 +99,32 @@ class App extends React.Component {
     });
   };
   setLevel = (level, index, typeOfSkill) => {
+    const prevState = { ...this.state.user };
+    prevState[typeOfSkill][index].level = level;
+    this.setState({user: prevState});
+  };
+
+  searchLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].level = level;
-    this.setState(prevState);
+    this.setState({user: prevState});
   };
 
   setSkill = (skill, index, typeOfSkill) => {
+    const prevState = { ...this.state.user };
+    prevState[typeOfSkill][index].skill = skill;
+    this.setState({user: prevState});
+  };
+
+  searchSkill = (skill, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState(prevState);
+    this.setState({prevState});
   };
 
   addSkill = (skill) => {
     const prevState = { ...this.state };
-    prevState[skill].push({ level: "", skill: "" });
+    prevState.user[skill].push({ level: "", skill: "" });
     this.setState(prevState);
   };
 
@@ -123,9 +135,7 @@ class App extends React.Component {
   };
 
   resetSkills = () => {
-    const prevState = { ...this.state };
     this.setState({
-      ...prevState,
       MustHaveSkills: [{ level: "", skill: "" }],
       NiceToHaveSkills: [{ level: "", skill: "" }],
     });
@@ -134,13 +144,14 @@ class App extends React.Component {
   // handle featured work
   addWork = (newURL) => {
     const prevState = { ...this.state };
-    prevState.work.push(newURL);
+    prevState.user.work.push(newURL);
     this.setState(prevState);
+    setTimeout(()=> console.log(this.state.user), 2000)
   };
 
   removeWork = (index) => {
     const prevState = { ...this.state };
-    prevState.work.splice(index, 1);
+    prevState.user.work.splice(index, 1);
     this.setState(prevState);
   };
 
@@ -167,8 +178,10 @@ class App extends React.Component {
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
+      searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
+      searchLevel: this.searchLevel,
       addWork: this.addWork,
       removeWork: this.removeWork,
       handleResult: this.handleResult,
