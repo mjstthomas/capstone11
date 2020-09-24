@@ -9,17 +9,16 @@ import "./Messaging.css";
 function Messaging() {
   const [filteredMessages, setMessages] = useState([]);
   const { recipientID } = useParams();
-  ApiService.getMessages().then((messages) => {
-    console.log({ messages });
-    messages.filter(
-      (message) =>
-        message.sender_id === recipientID || message.receiver_id === recipientID
-    );
-    setMessages(messages);
-  });
 
   useEffect(() => {
-    // fetch and setMessages
+    ApiService.getMessages().then((messages) => {
+      console.log({ messages });
+      // messages.filter(
+      //   (message) =>
+      //     message.sender_id === recipientID || message.receiver_id === recipientID
+      // );
+      // setMessages(messages);
+    });
   }, []);
 
   const messageBubbles = filteredMessages.map((message) => (

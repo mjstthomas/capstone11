@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useContext } from "react";
-import TokenService from '../services/TokenService'
+import TokenService from "../services/TokenService";
 import AppContext from "../AppContext";
 import "./login.css";
 import { Link } from "react-router-dom";
+import Header from "../Components/Header/Header";
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
 function Login(props) {
@@ -22,16 +23,13 @@ function Login(props) {
     let newUser = { userName, password };
     newUser[name] = value;
     setUser(newUser);
-    
   };
   const handlePush = () => {
     setTimeout(() => {
       if (context.user.profile === true) {
-        
         props.history.push("/Freelancer");
       }
       if (context.user.profile === false) {
-        
         props.history.push("/Business");
       }
     }, 2000);
@@ -47,22 +45,21 @@ function Login(props) {
 
     TokenService.saveAuthToken(
       TokenService.makeBasicAuthToken(user.nickname, user.password)
-    )
+    );
 
     const newUser = context.signInUser(user);
-    setTimeout(()=>{
-        if (newUser.profile === true) {
-        
-          props.history.push("/Freelancer");
-        }
-        if (newUser.profile === false) {
-        
-          props.history.push("/Business");
-        }
-    }, 1000)
+    setTimeout(() => {
+      if (newUser.profile === true) {
+        props.history.push("/Freelancer");
+      }
+      if (newUser.profile === false) {
+        props.history.push("/Business");
+      }
+    }, 1000);
   };
   return (
-    <section className="login-container">
+    <main className="login-container">
+      <Header />
       <h1>Log In</h1>
       <p>
         Need an account? <Link to="/SignUp">Sign up!</Link>
@@ -100,7 +97,7 @@ function Login(props) {
           </SmallButton>
         </article>
       </form>
-    </section>
+    </main>
   );
 }
 

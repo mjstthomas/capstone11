@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useContext } from "react";
 import AppContext from "../AppContext";
 import "./signup.css";
+import Header from "../Components/Header/Header";
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
 export default function SignUp(props) {
@@ -58,7 +59,8 @@ export default function SignUp(props) {
     }
   };
   return (
-    <section className="signup-container">
+    <main className="signup-container">
+      <Header />
       <h1>Sign Up</h1>
       <p className="red">{error}</p>
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -123,12 +125,12 @@ export default function SignUp(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={()=> handleSubmit}
+            onClick={() => handleSubmit}
           >
             Add Details
           </SmallButton>
         </article>
       </form>
-    </section>
+    </main>
   );
 }

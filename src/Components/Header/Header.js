@@ -4,6 +4,7 @@ import "./Header.css";
 import ProfilePic from "../Utilities/ProfilePic/ProfilePic";
 import Nav from "./Nav";
 import AppContext from "../../AppContext";
+import TokenService from "../../services/TokenService";
 
 function Header() {
   const context = useContext(AppContext);
@@ -22,19 +23,26 @@ function Header() {
   };
   return (
     <header>
-      <Link to={`/${userType()}`} onClick={() => context.setHeaderToggle()}>
-        <i className="fas fa-angle-double-right"></i>
-        Switch to {userType()}
-      </Link>
+      {TokenService.hasAuthToken() && (
+        <Link to={`/${userType()}`} onClick={() => context.setHeaderToggle()}>
+          <i className="fas fa-angle-double-right"></i>
+          Switch to {userType()}
+        </Link>
+      )}
       <h1 className="header-heading">
         <Link to="/">DEV.IT</Link>
       </h1>
-      <article className="header-profile-pic" onClick={() => context.setNav()}>
-        <ProfilePic
-          imgSrc="https://via.placeholder.com/85"
-          imgAlt="profile picture"
-        />
-      </article>
+      {TokenService.hasAuthToken() && (
+        <article
+          className="header-profile-pic"
+          onClick={() => context.setNav()}
+        >
+          <ProfilePic
+            imgSrc="https://via.placeholder.com/85"
+            imgAlt="profile picture"
+          />
+        </article>
+      )}
       {context.isNav && <Nav />}
     </header>
   );
