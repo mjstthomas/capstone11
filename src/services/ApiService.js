@@ -6,6 +6,7 @@ const ApiService = {
       `${process.env.REACT_APP_API_ENDPOINT}/api/messages/myMessages`,
       {
         headers: {
+          "content-type": "application/json",
           Authorization: `bearer ${TokenService.getAuthToken()}`,
         },
       }

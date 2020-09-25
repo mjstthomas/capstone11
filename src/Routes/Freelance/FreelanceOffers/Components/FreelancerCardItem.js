@@ -16,9 +16,9 @@ function BusinessCardItem(props) {
     }
     return null;
   };
-  const pushToMessaging = () =>{
-    return props.history.push(`/Messaging/${context.user.id}/${props.id}`)
-  }
+  const pushToMessaging = () => {
+    return props.history.push(`/Messaging/${context.user.id}/2`);
+  };
   return (
     <article className="cards-item" onClick={minimize}>
       <h2 className="cards-header">{props.name}</h2>

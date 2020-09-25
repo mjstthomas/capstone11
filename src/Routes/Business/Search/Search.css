@@ -16,6 +16,19 @@ article > .skills-container {
   grid-template-rows: 1fr;
 }
 
+.skills-container > h2 {
+  margin: 0.5em 0 0;
+}
+
+.skills-container > p {
+  font-style: italic;
+  margin-bottom: 0.5em;
+}
+
+.skills-container > article {
+  margin: 0.5em;
+}
+
 main > form > #search-form {
   padding-left: var(--main-padding);
 }

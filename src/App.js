@@ -126,7 +126,7 @@ class App extends React.Component {
 
   addSkill = (skill) => {
     const prevState = { ...this.state };
-    prevState.user[skill].push({ level: "", skill: "" });
+    prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
   };
 
