@@ -32,6 +32,7 @@ class App extends React.Component {
       work: [],
       skills: [{ level: "", skill: "" }],
     },
+    userProfile: "",
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
@@ -52,12 +53,12 @@ class App extends React.Component {
     AuthApiService.postLogin(signedUser)
     .then(res => {
       TokenService.saveAuthToken(res.authToken)
-      console.log(res)
+      this.setState({userProfile: res.profile})
       ApiService.importUser(res.id)
-        .then(result =>{
+        .then(result => result.json())
+        .then(result => {
           console.log(result)
           this.setState({user: result})
-          return result
         })
     })
   }
@@ -177,6 +178,7 @@ class App extends React.Component {
   render(props) {
     let context = {
       user: this.state.user,
+      userProfile: this.state.userProfile,
       work: this.state.work,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,

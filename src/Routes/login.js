@@ -46,16 +46,16 @@ function Login(props) {
     }
 
     context.signInUser(user);
-    // setTimeout(()=>{
-    //     if (newUser.profile === true) {
+    setTimeout(()=>{
+         if (context.userProfile === true) {
         
-    //       props.history.push("/Freelancer");
-    //     }
-    //     if (newUser.profile === false) {
+           props.history.push("/Freelancer");
+         }
+         if (context.userProfile === false) {
         
-    //       props.history.push("/Business");
-    //     }
-    // }, 1000)
+           props.history.push("/Business");
+         }
+     }, 2000)
   };
   return (
     <section className="login-container">

@@ -3,10 +3,12 @@ import config from '../config';
 
 const ApiService = {
     importUser(userId){
-        console.log(TokenService.getAuthToken())
+
        return fetch(`${config.API_ENDPOINT}api/profiles/user/${userId}`,{
            method: 'GET',
-           Authorization: `bearer ${TokenService.getAuthToken()}`,
+           headers: {
+               Authorization: `bearer ${TokenService.getAuthToken()}`,
+           }
        })
     }
 };
