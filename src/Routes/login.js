@@ -10,7 +10,7 @@ function Login(props) {
   const context = useContext(AppContext);
 
   const [user, setUser] = useState({
-    userName: "",
+    nickname: "",
     password: "",
   });
   const [error, setError] = useState(context.error);
@@ -18,8 +18,8 @@ function Login(props) {
   const handleSignIn = (event) => {
     let name = event.target.name;
     let value = event.target.value;
-    let { userName, password } = user;
-    let newUser = { userName, password };
+    let { nickname, password } = user;
+    let newUser = { nickname, password };
     newUser[name] = value;
     setUser(newUser);
     
@@ -38,28 +38,24 @@ function Login(props) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (user.userName.length < 1 || user.password.length < 1) {
+    if (user.nickname.length < 1 || user.password.length < 1) {
       setTimeout(() => {
         setError(context.error);
       }, 2000);
       return setError("UserName and Password must be filled out");
     }
 
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user.nickname, user.password)
-    )
-
-    const newUser = context.signInUser(user);
-    setTimeout(()=>{
-        if (newUser.profile === true) {
+    context.signInUser(user);
+    // setTimeout(()=>{
+    //     if (newUser.profile === true) {
         
-          props.history.push("/Freelancer");
-        }
-        if (newUser.profile === false) {
+    //       props.history.push("/Freelancer");
+    //     }
+    //     if (newUser.profile === false) {
         
-          props.history.push("/Business");
-        }
-    }, 1000)
+    //       props.history.push("/Business");
+    //     }
+    // }, 1000)
   };
   return (
     <section className="login-container">
@@ -74,7 +70,7 @@ function Login(props) {
           <br />
           <input
             className="login-input"
-            name="userName"
+            name="nickname"
             onChange={handleSignIn}
           />
           <br />
