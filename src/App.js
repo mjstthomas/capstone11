@@ -17,6 +17,9 @@ import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import searchArray from "./searchArray";
 import AppContext from "./AppContext";
+import AuthApiService from './services/AuthApiService';
+import ApiService from './services/ApiService';
+import TokenService from './services/TokenService';
 import "./App.css";
 import businessOffers from "./businessOffersArray";
 
@@ -29,6 +32,7 @@ class App extends React.Component {
       work: [],
       skills: [{ level: "", skill: "" }],
     },
+    userProfile: ""
     headerToggle: false,
     isNav: false,
     userArray: [...userArray],
@@ -43,15 +47,23 @@ class App extends React.Component {
   //Sign in / Sign Up functions
 
   signInUser = (user) => {
-    let newUser = this.state.userArray.find((item) => {
-      return user.userName === item.nickname && user.password === item.password;
-    });
-    if (newUser == null) {
-      return this.setState({ error: "User Not Found" });
+
+    const signedUser = {
+      nickname: user.nickname,
+      password: user.password
     }
-    this.setState({ user: newUser });
-    return newUser;
-  };
+    AuthApiService.postLogin(signedUser)
+    .then(res => {
+      TokenService.saveAuthToken(res.authToken)
+      this.setState({userProfile: res.profile})
+      ApiService.importUser(res.id)
+        .then(result => result.json())
+        .then(result => {
+          console.log(result)
+          this.setState({user: result})
+        })
+    })
+  }
 
   signUpUser = (user) => {
     user.id = this.state.userArray.length;
@@ -182,6 +194,7 @@ class App extends React.Component {
   render(props) {
     let context = {
       user: this.state.user,
+      userProfile: this.state.userProfile,
       work: this.state.work,
       headerToggle: this.state.headerToggle,
       isNav: this.state.isNav,

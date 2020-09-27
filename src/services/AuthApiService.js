@@ -1,8 +1,9 @@
 import TokenService from "./TokenService";
+import config from '../config'
 
 const AuthApiService = {
   postLogin(credentials) {
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}api/auth/login`, {
+    return fetch(`${config.API_ENDPOINT}api/auth/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
