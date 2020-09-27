@@ -1,6 +1,17 @@
 import TokenService from "./TokenService";
+import config from '../config';
 
 const ApiService = {
+    importUser(userId){
+
+       return fetch(`${config.API_ENDPOINT}api/profiles/user/${userId}`,{
+           method: 'GET',
+           headers: {
+               Authorization: `bearer ${TokenService.getAuthToken()}`,
+           }
+       })
+    }
+=======
   getMessages() {
     return fetch(
       `${process.env.REACT_APP_API_ENDPOINT}/api/messages/myMessages`,
