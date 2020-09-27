@@ -44,29 +44,16 @@ function Login(props) {
     }
 
     context.signInUser(user);
-    setTimeout(() => {
-      if (context.userProfile === true) {
-        props.history.push("/Freelancer");
-      }
-      if (context.userProfile === false) {
-        props.history.push("/Business");
-      }
-    }, 2000);
-
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user.nickname, user.password)
-    );
-
-    const newUser = context.signInUser(user);
-    setTimeout(() => {
-      if (newUser.profile === true) {
-        props.history.push("/Freelancer");
-      }
-      if (newUser.profile === false) {
-        props.history.push("/Business");
-      }
-    }, 1000);
+    // setTimeout(() => {
+    //   if (context.userProfile === true) {
+    //     props.history.push("/Freelancer");
+    //   }
+    //   if (context.userProfile === false) {
+    //     props.history.push("/Business");
+    //   }
+    // }, 2000);
   };
+
   return (
     <main className="login-container">
       <Header />
