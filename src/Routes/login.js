@@ -25,16 +25,18 @@ function Login(props) {
     
   };
   const handlePush = () => {
+    console.log('clicked')
     setTimeout(() => {
-      if (context.user.profile === true) {
+      console.log('timed')
+      if (context.userProfile == true) {
         
         props.history.push("/Freelancer");
       }
-      if (context.user.profile === false) {
+      if (context.userProfile == false) {
         
         props.history.push("/Business");
       }
-    }, 2000);
+    }, 500);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,17 +47,9 @@ function Login(props) {
       return setError("UserName and Password must be filled out");
     }
 
+    
     context.signInUser(user);
-    setTimeout(()=>{
-         if (context.userProfile === true) {
-        
-           props.history.push("/Freelancer");
-         }
-         if (context.userProfile === false) {
-        
-           props.history.push("/Business");
-         }
-     }, 2000)
+    
   };
   return (
     <section className="login-container">
@@ -90,7 +84,7 @@ function Login(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={() => props.history.push("/login")}
+            onClick={() => handlePush()}
           >
             Log In
           </SmallButton>

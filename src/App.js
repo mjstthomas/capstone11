@@ -50,15 +50,17 @@ class App extends React.Component {
       nickname: user.nickname,
       password: user.password
     }
-    AuthApiService.postLogin(signedUser)
+
+   return AuthApiService.postLogin(signedUser)
     .then(res => {
       TokenService.saveAuthToken(res.authToken)
       this.setState({userProfile: res.profile})
-      ApiService.importUser(res.id)
+      return ApiService.importUser(res.id)
         .then(result => result.json())
         .then(result => {
-          console.log(result)
+          console.log(this.state.userProfile)
           this.setState({user: result})
+          return this.state.userProfile;
         })
     })
   }
