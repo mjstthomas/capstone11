@@ -2,7 +2,7 @@ import TokenService from "./TokenService";
 
 const AuthApiService = {
   postLogin(credentials) {
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/auth/login`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}api/auth/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -13,7 +13,7 @@ const AuthApiService = {
     );
   },
   postRefresh() {
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/auth/refresh`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}api/auth/refresh`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -24,7 +24,7 @@ const AuthApiService = {
     );
   },
   postUser(user) {
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/users/`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}api/users/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
