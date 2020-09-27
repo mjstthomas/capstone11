@@ -31,6 +31,7 @@
 }
 
 #send-message {
+  background-color: #111;
   display: flex;
   position: fixed;
   bottom: 0;

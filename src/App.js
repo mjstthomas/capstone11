@@ -26,7 +26,7 @@ import businessOffers from "./businessOffersArray";
 class App extends React.Component {
   state = {
     user: {
-      id: 1,
+      id: 2,
       nickname: "Test",
       profile: true,
       work: [],

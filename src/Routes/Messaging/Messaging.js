@@ -13,17 +13,23 @@ function Messaging() {
   useEffect(() => {
     ApiService.getMessages().then((messages) => {
       console.log({ messages });
-      // messages.filter(
-      //   (message) =>
-      //     message.sender_id === recipientID || message.receiver_id === recipientID
-      // );
-      // setMessages(messages);
+      const filteredBySender = messages.filter(
+        (message) => message.sender_id === recipientID
+      );
+      const filteredByReceiver = messages.filter(
+        (message) => message.receiver_id === recipientID
+      );
+      console.log({ filteredBySender, filteredByReceiver });
+      filteredBySender.push(...filteredByReceiver);
+      setMessages(filteredBySender);
     });
   }, []);
 
-  const messageBubbles = filteredMessages.map((message) => (
+  const messageBubbles = filteredMessages.map((message, index) => (
     <MessageBubble
+      key={index}
       sender={message.sender_id}
+      image={message.image}
       content={message.message}
       time={message.date_created}
     />
@@ -33,7 +39,7 @@ function Messaging() {
     <main>
       <Header />
       <section className="message-container">{messageBubbles}</section>
-      <SendMessage />
+      <SendMessage receiver_id={recipientID} />
     </main>
   );
 }
