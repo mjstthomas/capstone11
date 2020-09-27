@@ -44,16 +44,14 @@ function Login(props) {
     }
 
     context.signInUser(user);
-    setTimeout(()=>{
-         if (context.userProfile === true) {
-        
-           props.history.push("/Freelancer");
-         }
-         if (context.userProfile === false) {
-        
-           props.history.push("/Business");
-         }
-     }, 2000)
+    setTimeout(() => {
+      if (context.userProfile === true) {
+        props.history.push("/Freelancer");
+      }
+      if (context.userProfile === false) {
+        props.history.push("/Business");
+      }
+    }, 2000);
 
     TokenService.saveAuthToken(
       TokenService.makeBasicAuthToken(user.nickname, user.password)
@@ -84,6 +82,7 @@ function Login(props) {
           <input
             className="login-input"
             name="nickname"
+            type="text"
             onChange={handleSignIn}
           />
           <br />
@@ -94,6 +93,7 @@ function Login(props) {
           <input
             className="login-input"
             name="password"
+            type="password"
             onChange={handleSignIn}
           />
         </article>

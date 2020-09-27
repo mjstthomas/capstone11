@@ -69,6 +69,7 @@ export default function SignUp(props) {
           <br />
           <input
             name="nickname"
+            type="text"
             className="signup-input"
             onChange={handleSignIn}
           />
@@ -79,6 +80,7 @@ export default function SignUp(props) {
           <br />
           <input
             name="fullName"
+            type="text"
             className="signup-input"
             onChange={handleSignIn}
           />
@@ -89,6 +91,7 @@ export default function SignUp(props) {
           <br />
           <input
             name="password"
+            type="password"
             className="signup-input"
             onChange={handleSignIn}
           />
