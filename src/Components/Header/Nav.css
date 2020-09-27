@@ -1,0 +1,50 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: linear-gradient(#222, #000);
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+nav {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 2.5vw;
+  bottom: -11vh;
+  border-radius: 15px;
+  border: 1px solid var(--primary-color);
+  background: var(--main-bg-color) no-repeat center center fixed;
+  padding-top: 0.5em;
+  width: max-content;
+  height: max-content;
+}
+
+nav > i {
+  color: var(--secondary-color);
+  margin-right: 0px;
+  margin-left: 4em;
+  margin-top: 0.25em;
+}
+
+nav > .fas {
+  margin-right: 0px;
+  margin-left: 4em;
+  margin-top: 0.25em;
+}
+
+nav > a {
+  color: var(--secondary-color);
+  padding: 0.25em 1.5em 0.5em 1em;
+  text-decoration: none;
+}
+
+nav > a:hover {
+  color: cyan;
+  font-style: italic;
+}

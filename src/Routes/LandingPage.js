@@ -15,7 +15,7 @@ function LandingPage(props) {
           type="submit"
           onClick={() => props.history.push("/login")}
         >
-          Join
+          Enter
         </SmallButton>
       </div>
       <p>

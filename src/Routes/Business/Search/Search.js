@@ -13,22 +13,22 @@ function Search(props) {
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent
       typeOfSkill="MustHaveSkills"
-      search='true'
+      search="true"
       skill={skill}
       key={index}
       index={index}
     />
   ));
 
-  const niceToHaveSkills = context.NiceToHaveSkills.map((skill, index) => (
-    <AddSkillComponent
-      typeOfSkill="NiceToHaveSkills"
-      search='true'
-      skill={skill}
-      key={index}
-      index={index}
-    />
-  ));
+  // const niceToHaveSkills = context.NiceToHaveSkills.map((skill, index) => (
+  //   <AddSkillComponent
+  //     typeOfSkill="NiceToHaveSkills"
+  //     search='true'
+  //     skill={skill}
+  //     key={index}
+  //     index={index}
+  //   />
+  // ));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,17 +46,20 @@ function Search(props) {
         <section>
           <article className="skills-container">
             <h2>Must Have Skills</h2>
+            <p>You can add up to three</p>
             {mustHaveSkills}
           </article>
-          <AddButton
-            onClick={(e) => {
-              e.preventDefault();
-              context.addSkill("MustHaveSkills");
-            }}
-          />
+          {context.MustHaveSkills.length < 3 && (
+            <AddButton
+              onClick={(e) => {
+                e.preventDefault();
+                context.addSkill("MustHaveSkills");
+              }}
+            />
+          )}
         </section>
         <br />
-        <section>
+        {/* <section>
           <article className="skills-container">
             <h2>Nice To Have Skills</h2>
             {niceToHaveSkills}
@@ -67,7 +70,7 @@ function Search(props) {
               context.addSkill("NiceToHaveSkills");
             }}
           />
-        </section>
+        </section> */}
         <SmallButton
           className="btn"
           buttonStyle="btn-outline"

@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import MessageBubble from "../../Components/MessageBubble/MessageBubble";
 import SendMessage from "../../Components/SendMessage/SendMessage";
+import ApiService from "../../services/ApiService";
 import "./Messaging.css";
 
 function Messaging() {
-  const [messages, setMessages] = useState([
-    {
-      time: "12:00",
-      sender: 1,
-      recepient: 2,
-      content: "A message about stuff",
-    },
-  ]);
+  const [filteredMessages, setMessages] = useState([]);
+  const { recipientID } = useParams();
 
   useEffect(() => {
-    // fetch and setMessages
+    ApiService.getMessages().then((messages) => {
+      console.log({ messages });
+      // messages.filter(
+      //   (message) =>
+      //     message.sender_id === recipientID || message.receiver_id === recipientID
+      // );
+      // setMessages(messages);
+    });
   }, []);
 
-  const messageBubbles = messages.map((message) => (
+  const messageBubbles = filteredMessages.map((message) => (
     <MessageBubble
-      sender={message.sender}
-      content={message.content}
-      time={message.time}
+      sender={message.sender_id}
+      content={message.message}
+      time={message.date_created}
     />
   ));
 

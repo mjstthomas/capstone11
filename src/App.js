@@ -32,7 +32,9 @@ class App extends React.Component {
       work: [],
       skills: [{ level: "", skill: "" }],
     },
-    userProfile: "",
+    userProfile: ""
+    headerToggle: false,
+    isNav: false,
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
@@ -113,30 +115,30 @@ class App extends React.Component {
   setLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state.user };
     prevState[typeOfSkill][index].level = level;
-    this.setState({user: prevState});
+    this.setState({ user: prevState });
   };
 
   searchLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].level = level;
-    this.setState({user: prevState});
+    this.setState({ user: prevState });
   };
 
   setSkill = (skill, index, typeOfSkill) => {
     const prevState = { ...this.state.user };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState({user: prevState});
+    this.setState({ user: prevState });
   };
 
   searchSkill = (skill, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState({prevState});
+    this.setState({ prevState });
   };
 
   addSkill = (skill) => {
     const prevState = { ...this.state };
-    prevState.user[skill].push({ level: "", skill: "" });
+    prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
   };
 
@@ -158,12 +160,26 @@ class App extends React.Component {
     const prevState = { ...this.state };
     prevState.user.work.push(newURL);
     this.setState(prevState);
-    setTimeout(()=> console.log(this.state.user), 2000)
+    setTimeout(() => console.log(this.state.user), 2000);
   };
 
   removeWork = (index) => {
     const prevState = { ...this.state };
     prevState.user.work.splice(index, 1);
+    this.setState(prevState);
+  };
+
+  // handle Header
+
+  setHeaderToggle = () => {
+    const prevState = { ...this.state };
+    prevState.headerToggle = !prevState.headerToggle;
+    this.setState(prevState);
+  };
+
+  setNav = () => {
+    const prevState = { ...this.state };
+    prevState.isNav = !prevState.isNav;
     this.setState(prevState);
   };
 
@@ -180,6 +196,8 @@ class App extends React.Component {
       user: this.state.user,
       userProfile: this.state.userProfile,
       work: this.state.work,
+      headerToggle: this.state.headerToggle,
+      isNav: this.state.isNav,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
@@ -197,6 +215,8 @@ class App extends React.Component {
       searchLevel: this.searchLevel,
       addWork: this.addWork,
       removeWork: this.removeWork,
+      setHeaderToggle: this.setHeaderToggle,
+      setNav: this.setNav,
       handleResult: this.handleResult,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
@@ -205,43 +225,14 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          <Route 
-            path="/" 
-            exact 
-            component={LandingPage} 
-          />
-          <Route 
-            path="/SignUp" 
-            exact 
-            component={SignUp} 
-          />
-          <Route 
-            path="/Login" 
-            exact 
-            component={Login} 
-          />
-          <Route 
-            path="/SignUp/FLDetails"
-            exact 
-            component={FLDetailForm} 
-          />
-          <Route 
-            path="/SignUp/BizDetails" 
-            component={BizDetailForm} 
-          />
-          <Route 
-            path="/Business" 
-            exact 
-            component={BizDash} 
-          />
-          <Route 
-            path="/Business/Search" 
-            component={Search} 
-          />
-          <Route 
-            path="/Business/Profile/:businessID" 
-            component={BizProfile} 
-          />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/SignUp" exact component={SignUp} />
+          <Route path="/Login" exact component={Login} />
+          <Route path="/SignUp/FLDetails" exact component={FLDetailForm} />
+          <Route path="/SignUp/BizDetails" component={BizDetailForm} />
+          <Route path="/Business" exact component={BizDash} />
+          <Route path="/Business/Search" component={Search} />
+          <Route path="/Business/Profile/:businessID" component={BizProfile} />
           <Route
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
@@ -265,7 +256,7 @@ class App extends React.Component {
           <Route path="/Freelancer" exact component={FreelanceOffersPage} />
 
           <Route
-            path="/Messaging/:senderID/:recepientID"
+            path="/Messaging/:senderID/:recipientID"
             exact
             component={Messaging}
           />
