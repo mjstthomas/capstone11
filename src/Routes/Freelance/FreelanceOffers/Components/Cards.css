@@ -1,7 +1,7 @@
 :root {
   --primary-color: lawngreen;
   --secondary-color: yellow;
-  --main-bg-color: black;
+  --main-bg-color: linear-gradient(#222, #000);
   --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
@@ -11,7 +11,6 @@
 }
 
 .cards-item {
-  border-radius: 15px;
   background-image: linear-gradient(#242424, #111);
   display: grid;
   grid-template-columns: max-content max-content max-content;
@@ -92,5 +91,6 @@ p {
 @media screen and (min-width: 600px) {
   .cards-item {
     width: max-content;
+    border-radius: 15px;
   }
 }

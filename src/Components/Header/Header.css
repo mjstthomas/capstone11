@@ -3,7 +3,7 @@
 :root {
   --primary-color: lawngreen;
   --secondary-color: yellow;
-  --main-bg-color: black;
+  --main-bg-color: linear-gradient(#222, #000);
   --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
@@ -31,6 +31,7 @@ header > a {
   grid-row-start: 1;
   grid-row-end: 2;
   color: var(--secondary-color);
+  text-decoration: none;
   font-weight: 800;
   font-size: 1.25rem;
   margin: 0.5em;
@@ -63,7 +64,7 @@ header > h1 > a:hover {
   color: cyan;
 }
 
-header > article {
+header > .header-profile-pic {
   grid-column-start: 3;
   grid-column-end: 4;
   grid-row-start: 2;

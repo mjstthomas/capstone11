@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import MessageBubble from "../../Components/MessageBubble/MessageBubble";
 import SendMessage from "../../Components/SendMessage/SendMessage";
+import ApiService from "../../services/ApiService";
 import "./Messaging.css";
 
 function Messaging() {
-  const [messages, setMessages] = useState([
-    {
-      time: "12:00",
-      sender: 1,
-      recepient: 2,
-      content: "A message about stuff",
-    },
-  ]);
+  const [filteredMessages, setMessages] = useState([]);
+  const { recipientID } = useParams();
 
   useEffect(() => {
-    // fetch and setMessages
+    ApiService.getMessages().then((messages) => {
+      console.log({ messages });
+      const filteredBySender = messages.filter(
+        (message) => message.sender_id === recipientID
+      );
+      const filteredByReceiver = messages.filter(
+        (message) => message.receiver_id === recipientID
+      );
+      console.log({ filteredBySender, filteredByReceiver });
+      filteredBySender.push(...filteredByReceiver);
+      setMessages(filteredBySender);
+    });
   }, []);
 
-  const messageBubbles = messages.map((message) => (
+  const messageBubbles = filteredMessages.map((message, index) => (
     <MessageBubble
-      sender={message.sender}
-      content={message.content}
-      time={message.time}
+      key={index}
+      sender={message.sender_id}
+      image={message.image}
+      content={message.message}
+      time={message.date_created}
     />
   ));
 
@@ -30,7 +39,7 @@ function Messaging() {
     <main>
       <Header />
       <section className="message-container">{messageBubbles}</section>
-      <SendMessage />
+      <SendMessage receiver_id={recipientID} />
     </main>
   );
 }

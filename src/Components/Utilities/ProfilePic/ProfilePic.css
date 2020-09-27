@@ -1,7 +1,7 @@
 :root {
   --primary-color: lawngreen;
   --secondary-color: yellow;
-  --main-bg-color: black;
+  --main-bg-color: linear-gradient(#222, #000);
   --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
@@ -11,5 +11,7 @@
 }
 img {
   border-radius: 100%;
+  height: 85px;
+  width: 85px;
   box-shadow: var(--box-shadow);
 }

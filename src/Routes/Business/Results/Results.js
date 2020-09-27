@@ -24,16 +24,21 @@ export default function Results(props) {
   if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
     allSkills = mustHave.concat(niceToHave);
   }
-  const skills = allSkills.map((item, index) => (
-    <SkillButton
-      key={index}
-      skill={item.skill}
-      name={item.skill}
-      onClick={deleteSkill}
-    />
-  ));
+  const skills = allSkills.map((item, index) => {
+    if (item.skill !== "") {
+      return (
+        <SkillButton
+          key={index}
+          skill={item.skill}
+          name={item.skill}
+          onClick={deleteSkill}
+        />
+      );
+    } else {
+      return null;
+    }
+  });
   const results = context.resultArray.map((item) => {
-    console.log(item);
     return (
       <ResultCard
         key={item.id}
@@ -59,7 +64,7 @@ export default function Results(props) {
             context.resetSkills();
           }}
         >
-          <i class="fas fa-undo"></i>
+          <i className="fas fa-undo"></i>
         </SmallButton>
       </article>
       <article className="results">{results}</article>

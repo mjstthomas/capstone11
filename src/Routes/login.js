@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useContext } from "react";
-import TokenService from '../services/TokenService'
+import TokenService from "../services/TokenService";
 import AppContext from "../AppContext";
 import "./login.css";
 import { Link } from "react-router-dom";
+import Header from "../Components/Header/Header";
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 
 function Login(props) {
@@ -22,7 +23,6 @@ function Login(props) {
     let newUser = { nickname, password };
     newUser[name] = value;
     setUser(newUser);
-    
   };
   const handlePush = () => {
     console.log('clicked')
@@ -51,8 +51,10 @@ function Login(props) {
     context.signInUser(user);
     
   };
+
   return (
-    <section className="login-container">
+    <main className="login-container">
+      <Header />
       <h1>Log In</h1>
       <p>
         Need an account? <Link to="/SignUp">Sign up!</Link>
@@ -65,6 +67,7 @@ function Login(props) {
           <input
             className="login-input"
             name="nickname"
+            type="text"
             onChange={handleSignIn}
           />
           <br />
@@ -75,6 +78,7 @@ function Login(props) {
           <input
             className="login-input"
             name="password"
+            type="password"
             onChange={handleSignIn}
           />
         </article>
@@ -90,7 +94,7 @@ function Login(props) {
           </SmallButton>
         </article>
       </form>
-    </section>
+    </main>
   );
 }
 

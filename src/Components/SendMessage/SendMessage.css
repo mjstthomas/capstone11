@@ -1,7 +1,7 @@
 :root {
   --primary-color: lawngreen;
   --secondary-color: yellow;
-  --main-bg-color: black;
+  --main-bg-color: linear-gradient(#222, #000);
   --error-color: red;
   --normal-size: 1.125rem;
   --heading-size: 2.5rem;
@@ -11,20 +11,32 @@
 }
 
 .message-btn {
-  background-color: var(--primary-color);
-  color: var(--main-bg-color);
   font-size: 3rem;
+  background-color: #000c;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  transition: all 0.3s ease-out;
+}
+
+.message-btn:hover {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  font-size: 3.25rem;
+  color: #242424;
 }
 
 .message-textarea {
   width: 100%;
+  margin: 0;
 }
 
 #send-message {
+  background-color: #111;
   display: flex;
   position: fixed;
   bottom: 0;
   width: 100%;
+  color: black;
 }
 
 main > #send-message {
