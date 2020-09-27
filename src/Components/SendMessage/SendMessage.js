@@ -11,6 +11,7 @@ function SendMessage({ receiver_id }) {
       message,
     };
     ApiService.postMessage(preppedMessage);
+    setMessage("");
   };
   return (
     <form id="send-message">
