@@ -17,9 +17,9 @@ import Messaging from "./Routes/Messaging/Messaging";
 import userArray from "./userArray";
 import searchArray from "./searchArray";
 import AppContext from "./AppContext";
-import AuthApiService from './services/AuthApiService';
-import ApiService from './services/ApiService';
-import TokenService from './services/TokenService';
+import AuthApiService from "./services/AuthApiService";
+import ApiService from "./services/ApiService";
+import TokenService from "./services/TokenService";
 import "./App.css";
 import businessOffers from "./businessOffersArray";
 
@@ -32,7 +32,7 @@ class App extends React.Component {
       work: [],
       skills: [{ level: "", skill: "" }],
     },
-    userProfile: ""
+    userProfile: "",
     headerToggle: false,
     isNav: false,
     userArray: [...userArray],
@@ -47,23 +47,21 @@ class App extends React.Component {
   //Sign in / Sign Up functions
 
   signInUser = (user) => {
-
     const signedUser = {
       nickname: user.nickname,
-      password: user.password
-    }
-    AuthApiService.postLogin(signedUser)
-    .then(res => {
-      TokenService.saveAuthToken(res.authToken)
-      this.setState({userProfile: res.profile})
+      password: user.password,
+    };
+    AuthApiService.postLogin(signedUser).then((res) => {
+      TokenService.saveAuthToken(res.authToken);
+      this.setState({ userProfile: res.profile });
       ApiService.importUser(res.id)
-        .then(result => result.json())
-        .then(result => {
-          console.log(result)
-          this.setState({user: result})
-        })
-    })
-  }
+        .then((result) => result.json())
+        .then((result) => {
+          console.log(result);
+          this.setState({ user: result });
+        });
+    });
+  };
 
   signUpUser = (user) => {
     user.id = this.state.userArray.length;
