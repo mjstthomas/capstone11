@@ -10,7 +10,6 @@ import AppContext from "../../../AppContext";
 
 function FLDetsForm(props) {
   const context = useContext(AppContext);
-  // const [work, setWork] = useState([]);
   const [workInput, setWorkInput] = useState("");
 
   const saveChanges = (e) => {

@@ -63,18 +63,6 @@ class App extends React.Component {
     });
   };
 
-  signUpUser = (user) => {
-    user.id = this.state.userArray.length;
-    if (user.profile === "Freelancer") {
-      user.profile = true;
-    } else {
-      user.profile = false;
-    }
-    const newUserArray = [...this.state.userArray, user];
-    this.setState({ userArray: newUserArray });
-    return user;
-  };
-
   //search result functions
 
   handleResult = (result) => {
@@ -158,7 +146,6 @@ class App extends React.Component {
     const prevState = { ...this.state };
     prevState.user.work.push(newURL);
     this.setState(prevState);
-    setTimeout(() => console.log(this.state.user), 2000);
   };
 
   removeWork = (index) => {
