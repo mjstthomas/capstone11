@@ -24,16 +24,7 @@ function Login(props) {
     newUser[name] = value;
     setUser(newUser);
   };
-  const handlePush = () => {
-    setTimeout(() => {
-      if (context.user.profile === true) {
-        props.history.push("/Freelancer");
-      }
-      if (context.user.profile === false) {
-        props.history.push("/Business");
-      }
-    }, 2000);
-  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user.nickname.length < 1 || user.password.length < 1) {
@@ -52,10 +43,6 @@ function Login(props) {
         props.history.push("/Business");
       }
     }, 2000);
-
-    TokenService.saveAuthToken(
-      TokenService.makeBasicAuthToken(user.nickname, user.password)
-    );
 
     const newUser = context.signInUser(user);
     setTimeout(() => {
@@ -103,7 +90,7 @@ function Login(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={() => props.history.push("/login")}
+            onSubmit={() => props.history.push("/login")}
           >
             Log In
           </SmallButton>

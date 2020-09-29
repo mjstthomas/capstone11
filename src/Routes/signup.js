@@ -128,7 +128,7 @@ export default function SignUp(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={() => handleSubmit}
+            onSubmit={() => handleSubmit}
           >
             Add Details
           </SmallButton>

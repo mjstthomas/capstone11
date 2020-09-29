@@ -30,7 +30,9 @@ function BusinessCardItem(props) {
         buttonStyle="btn-outline"
         buttonSize="btn-large"
         type="button"
-        onClick={() => props.history.push(`/Messaging/${context.user.id}/2`)}
+        onClick={() =>
+          props.history.push(`/Messaging/${context.user.id}/${props.id}`)
+        }
       >
         <i className="fas fa-comments"></i>
       </SmallButton>
