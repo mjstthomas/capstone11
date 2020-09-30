@@ -20,6 +20,7 @@ const newOffers = myOffers.map((item) => (
                             src={item.userImage}
                             
                             pay={item.pay_rate}
+                            info = {item.offer_info}
                             text={item.offer_detail}
                             key={item.businessID}
                             id={item.businessID}
