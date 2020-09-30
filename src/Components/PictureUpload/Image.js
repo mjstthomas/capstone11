@@ -1,4 +1,5 @@
 import React from "react";
+import "./Image.css";
 
 function Image(props) {
   const uploadedImage = props.image.map((image, i) => (
