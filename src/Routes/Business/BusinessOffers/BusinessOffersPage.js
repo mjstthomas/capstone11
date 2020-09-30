@@ -25,6 +25,7 @@ function BusinessOffersPage(props) {
         date={item.date_created}
         rating={item.rating}
         pay={item.payrate}
+        info={item.offer_info}
         text={item.offer_detail}
         freelancerID={item.dev_id}
         businessID={item.employer_id}
