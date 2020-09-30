@@ -50,6 +50,15 @@ p {
   grid-row-start: 2;
   grid-row-end: 3;
 }
+.offer-green {
+  color: var(--primary-color);
+  font-weight: 900;
+}
+
+.offer-red{
+  color: red;
+  font-weight: 900;
+}
 
 .right-card {
   display: flex;

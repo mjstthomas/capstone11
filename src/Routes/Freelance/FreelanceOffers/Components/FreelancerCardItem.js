@@ -46,7 +46,13 @@ function BusinessCardItem(props) {
       >
         Accept Offer
       </SmallButton>
-      {modal && <Modal id={props.id} minimize={() => setModal(!modal)} />}
+      {modal && <Modal 
+                    id={props.offer_id}
+                    payrate={props.pay}
+                    dev_id = {props.dev_id}
+                    offer_detail={props.text}
+                    offer_info={props.info}
+                    minimize={() => setModal(!modal)} />}
     </article>
   );
 }

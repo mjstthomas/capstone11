@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Header from "../../../Components/Header/Header";
 import AppContext from "../../../AppContext";
 import "./FreelanceOffersPage.css";
@@ -8,18 +8,21 @@ import ApiService from '../../../services/ApiService';
 function FreelanceOffersPage(props) {
   const [ myOffers, setOffers] = useState([])
   const context = useContext(AppContext);
-  const offers = ApiService.getFreelanceOffers()
+  useEffect(()=>{
+    ApiService.getFreelanceOffers()
                       .then(result => result.json())
                       .then(result =>{
                         return setOffers(result)
                       })
+  }, []) ;
 
 const newOffers = myOffers.map((item) => (
                           <FreelancerCardItem
                             name={item.businessName}
+                            dev_id={item.dev_id}
                             src={item.userImage}
-                            
-                            pay={item.pay_rate}
+                            offer_id={item.id}
+                            pay={item.payrate}
                             info = {item.offer_info}
                             text={item.offer_detail}
                             key={item.businessID}

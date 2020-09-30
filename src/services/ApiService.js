@@ -55,6 +55,16 @@ const ApiService = {
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
       }
     })
+},
+acceptOffer(obj, offer_id){
+  return fetch(`${process.env.REACT_APP_API_URL}api/offers/${offer_id}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      body: JSON.stringify(obj)
+    }
+  })
 }
 };
 

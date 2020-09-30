@@ -21,14 +21,16 @@ function BusinessCardItem(props) {
       </section>
       <section className="right-card">
         <p className="offer-date">{newDate}</p>
-        <p className="offer-pay">Pay rate:{props.pay}/hr</p>
+        <p className="offer-pay">Pay rate: ${props.pay}/hr</p>
       </section>
       <section>
       <p className="offer-job-desc">{props.info}</p>
       <p className="offer-job-desc">{props.text}</p>
       </section>
       <section className="bottom-card">
-      <p className="offer-rating">{props.rating}</p>
+      {props.response.length > 1 
+                      ? (props.response === 'Accepted' ? <p className="offer-green">{props.response}</p> :  <p className="offer-red">{props.response}</p>) 
+                      : <p className="offer-green">         </p>}
         <SmallButton
           className="btn"
           id="cards-message"
