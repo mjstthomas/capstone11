@@ -13,6 +13,8 @@ export default function SignUp(props) {
     fullName: "",
     password: "",
     profile: businessType,
+    work: [],
+    skills: []
   });
   const context = useContext(AppContext);
 
@@ -30,10 +32,9 @@ export default function SignUp(props) {
   const handleSignIn = (event) => {
     let name = event.target.name;
     let value = event.target.value;
-    let { nickname, password, profile, fullName } = signUp;
-    let newUser = { nickname, password, fullName, profile };
+    let { nickname, password, profile, fullName, work, skills} = signUp;
+    let newUser = { nickname, password, fullName, profile, work, skills };
     newUser[name] = value;
-    console.log(signUp);
     setSignUp(newUser);
   };
 

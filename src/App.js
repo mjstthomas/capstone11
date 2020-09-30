@@ -32,7 +32,7 @@ class App extends React.Component {
       work: [],
       skills: [{ level: "", skill: "" }],
     },
-    userProfile: "",
+    userProfile: false,
     headerToggle: false,
     isNav: false,
     userArray: [...userArray],
@@ -55,26 +55,24 @@ class App extends React.Component {
    return AuthApiService.postLogin(signedUser)
     .then(res => {
       TokenService.saveAuthToken(res.authToken)
+      console.log(res.profile)
       this.setState({userProfile: res.profile})
       return ApiService.importUser(res.id)
         .then(result => result.json())
         .then(result => {
-          console.log(this.state.userProfile)
+          console.log(result)
           this.setState({user: result})
-          return this.state.userProfile;
         })
     })
   }
 
   signUpUser = (user) => {
-    user.id = this.state.userArray.length;
     if (user.profile === "Freelancer") {
       user.profile = true;
     } else {
       user.profile = false;
     }
-    const newUserArray = [...this.state.userArray, user];
-    this.setState({ userArray: newUserArray });
+    this.setState({ user: user });
     return user;
   };
 

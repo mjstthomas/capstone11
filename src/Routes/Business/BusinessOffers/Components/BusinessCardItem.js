@@ -6,6 +6,9 @@ import "./BusinessCard.css";
 
 function BusinessCardItem(props) {
   const context = useContext(AppContext);
+  const date = new Date(props.date);
+
+  const newDate = `${date}`;
   return (
     <article className="offer-item">
       <h2 className="offer-name">{props.freelancerName}</h2>
@@ -17,12 +20,12 @@ function BusinessCardItem(props) {
         />
       </section>
       <section className="right-card">
-        <p className="offer-date">{props.date}</p>
+        <p className="offer-date">{newDate}</p>
         <p className="offer-pay">Pay rate:{props.pay}</p>
       </section>
       <p className="offer-job-desc">{props.text}</p>
       <section className="bottom-card">
-        <p className="offer-rating">Rating {props.rating}</p>
+        <p className="offer-rating">{props.rating}</p>
         <SmallButton
           className="btn"
           id="cards-message"

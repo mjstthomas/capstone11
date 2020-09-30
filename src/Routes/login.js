@@ -24,20 +24,7 @@ function Login(props) {
     newUser[name] = value;
     setUser(newUser);
   };
-  const handlePush = () => {
-    console.log('clicked')
-    setTimeout(() => {
-      console.log('timed')
-      if (context.userProfile == true) {
-        
-        props.history.push("/Freelancer");
-      }
-      if (context.userProfile == false) {
-        
-        props.history.push("/Business");
-      }
-    }, 500);
-  };
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (user.nickname.length < 1 || user.password.length < 1) {
@@ -49,7 +36,17 @@ function Login(props) {
 
     
     context.signInUser(user);
-    
+    setTimeout(() => {
+      console.log(context.userProfile)
+      if (context.userProfile === true) {
+
+        props.history.push("/Freelancer");
+      }
+      if (context.userProfile === false) {
+
+        props.history.push("/Business");
+      }
+    }, 1000);
   };
 
   return (
@@ -88,7 +85,6 @@ function Login(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={() => handlePush()}
           >
             Log In
           </SmallButton>

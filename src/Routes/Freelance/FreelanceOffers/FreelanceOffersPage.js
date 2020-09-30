@@ -1,31 +1,36 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import Header from "../../../Components/Header/Header";
 import AppContext from "../../../AppContext";
 import "./FreelanceOffersPage.css";
 import FreelancerCardItem from "./Components/FreelancerCardItem";
+import ApiService from '../../../services/ApiService';
 
 function FreelanceOffersPage(props) {
+  const [ myOffers, setOffers] = useState([])
   const context = useContext(AppContext);
-  const myOffers = context.businessOffers.filter(
-    (item) => item.userID == context.user.id
-  );
-  const offers = myOffers.map((item) => (
-    <FreelancerCardItem
-      name={item.businessName}
-      src={item.userImage}
-      rating={item.rating}
-      pay={item.pay}
-      text={item.text}
-      key={item.businessID}
-      id={item.businessID}
-      history={props.history}
-    />
-  ));
+  const offers = ApiService.getFreelanceOffers()
+                      .then(result => result.json())
+                      .then(result =>{
+                        return setOffers(result)
+                      })
+
+const newOffers = myOffers.map((item) => (
+                          <FreelancerCardItem
+                            name={item.businessName}
+                            src={item.userImage}
+                            
+                            pay={item.pay_rate}
+                            text={item.offer_detail}
+                            key={item.businessID}
+                            id={item.businessID}
+                            history={props.history}
+                          />
+                          ))
   return (
     <main>
       <Header />
       <h1 className="offer-header">{context.user.nickname}'s Offers</h1>
-      <section className="offers-container">{offers}</section>
+      <section className="offers-container">{newOffers}</section>
     </main>
   );
 }
