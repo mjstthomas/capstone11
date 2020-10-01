@@ -9,16 +9,14 @@ function BizDetsForm(props) {
   const [textarea, setTextarea] = useState("");
   const [error, setError] = useState("");
 
-  const saveChanges = (e) => {
+  const saveChanges = () => {
     ApiService.addProfile({ emp_blurb: textarea }).then((res) =>
       !res.ok
         ? setError("Something went wrong")
         : props.history.push("/Business")
     );
   };
-  const onChange = (e) => {
-    setTextarea(e.target.value);
-  };
+
   return (
     <main>
       <Header />
@@ -43,7 +41,10 @@ function BizDetsForm(props) {
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="Submit"
-          onSubmit={() => saveChanges()}
+          onSubmit={(e) => {
+            e.preventDefault();
+            saveChanges();
+          }}
         >
           Save
         </SmallButton>

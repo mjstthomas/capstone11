@@ -6,6 +6,8 @@ import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
 import AuthApiService from "../services/AuthApiService";
 import AppContext from "../AppContext";
 
+const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
+
 export default function SignUp(props) {
   const context = useContext(AppContext);
 
@@ -22,13 +24,24 @@ export default function SignUp(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (nickname.length < 7) {
+    if (nickname.length < 6) {
       clearError();
-      return setError("Name must be at least 7 characters long");
+      return setError("Name must be at least 6 characters long");
     }
-    if (password.length < 7) {
+    if (password.length < 8) {
       clearError();
-      return setError("Password must be at least 7 characters long");
+      return setError("Password must be at least 8 characters long");
+    }
+    if (password.length > 56) {
+      return setError("Password must be less than 56 characters");
+    }
+    if (password.startsWith(" ") || password.endsWith(" ")) {
+      return setError("Password must not start or end with empty spaces");
+    }
+    if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
+      return setError(
+        "Password must contain 1 upper case, lower case, number and special character"
+      );
     }
     if (profile === null) {
       clearError();
@@ -41,14 +54,10 @@ export default function SignUp(props) {
     };
     AuthApiService.postUser(newUser).then((res) =>
       !res.ok
-        ? setError("Something went wrong")
-        : context
-            .signInUser({ nickname: nickname, password: password })
-            .then(
-              profile
-                ? props.history.push("/SignUp/FLDetails")
-                : props.history.push("/SignUp/BizDetails")
-            )
+        ? res.json().then((e) => setError(e))
+        : profile
+        ? props.history.push("/SignUp/FLDetails")
+        : props.history.push("/SignUp/BizDetails")
     );
   };
   return (

@@ -14,10 +14,10 @@ function FLDetsForm(props) {
   const [textarea, setTextarea] = useState("");
   const [workInput, setWorkInput] = useState("");
 
-  const saveChanges = (e) => {
+  const saveChanges = () => {
     ApiService.addProfile({ dev_blurb: textarea })
       .then(context.addFreelanceSkills())
-      .then(console.log("add featured work"))
+      .then(context.addFreelanceWork())
       .then(props.history.push("/Freelancer"));
   };
 
@@ -25,8 +25,8 @@ function FLDetsForm(props) {
     setWorkInput(e.target.value);
   };
 
-  const addedSkills = context.user.skills.map((skill, index) => (
-    <AddSkill typeOfSkill="skills" skill={skill} key={index} index={index} />
+  const addedSkills = context.AddSkills.map((skill, index) => (
+    <AddSkill typeOfSkill="AddSkills" skill={skill} key={index} index={index} />
   ));
 
   const addedWork = context.user.work.map((url, index) => (
@@ -50,7 +50,7 @@ function FLDetsForm(props) {
           id="about"
           name="about"
           cols="40"
-          rows="15"
+          rows="8"
           placeholder="Enter a little something about your business."
           value={textarea}
           onChange={(e) => setTextarea(e.target.value)}
@@ -94,7 +94,10 @@ function FLDetsForm(props) {
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="Submit"
-          onClick={(e) => saveChanges(e)}
+          onClick={(e) => {
+            e.preventDefault();
+            saveChanges();
+          }}
         >
           Save
         </SmallButton>

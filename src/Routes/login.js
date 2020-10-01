@@ -44,15 +44,15 @@ function Login(props) {
       }
     }, 2000);
 
-    const newUser = context.signInUser(user);
-    setTimeout(() => {
-      if (newUser.profile === true) {
-        props.history.push("/Freelancer");
-      }
-      if (newUser.profile === false) {
-        props.history.push("/Business");
-      }
-    }, 1000);
+    // const newUser = context.signInUser(user);
+    // setTimeout(() => {
+    //   if (newUser.profile === true) {
+    //     props.history.push("/Freelancer");
+    //   }
+    //   if (newUser.profile === false) {
+    //     props.history.push("/Business");
+    //   }
+    // }, 1000);
   };
   return (
     <main className="login-container">

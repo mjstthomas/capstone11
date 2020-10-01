@@ -9,3 +9,11 @@
   --main-padding: 0.625em;
   --box-shadow: -3px 5px 5px 0px black;
 }
+
+.imgPreview {
+  font-size: 5rem;
+}
+
+.imageError {
+  color: var(--error-color);
+}

@@ -26,9 +26,9 @@ import businessOffers from "./businessOffersArray";
 class App extends React.Component {
   state = {
     user: {
-      id: 2,
-      nickname: "Test",
-      profile: true,
+      id: null,
+      nickname: "",
+      profile: null,
       work: [],
       skills: [{ level: "", skill: "" }],
     },
@@ -53,16 +53,20 @@ class App extends React.Component {
       nickname: user.nickname,
       password: user.password,
     };
-    AuthApiService.postLogin(signedUser).then((res) => {
-      TokenService.saveAuthToken(res.authToken);
-      this.setState({ userProfile: res.profile });
-      ApiService.importUser(res.id)
-        .then((result) => result.json())
-        .then((result) => {
-          console.log(result);
-          this.setState({ user: result });
-        });
-    });
+    AuthApiService.postLogin(signedUser)
+      .then((res) => {
+        TokenService.saveAuthToken(res.authToken);
+        this.setState({ userProfile: res.profile });
+        return res.id;
+      })
+      .then((id) => ApiService.importUser(id))
+      .then((res) =>
+        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+      )
+      .then((profile) => {
+        this.setState({ user: profile });
+      })
+      .catch((e) => console.log(e));
   };
 
   //search result functions
@@ -125,6 +129,7 @@ class App extends React.Component {
   };
 
   addSkill = (skill) => {
+    console.log(skill);
     const prevState = { ...this.state };
     prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
@@ -210,12 +215,12 @@ class App extends React.Component {
       resultArray: this.state.resultArray,
       businessOffers: this.state.businessOffers,
       signInUser: this.signInUser,
-      signUpUser: this.signUpUser,
       resetSkills: this.resetSkills,
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
       addFreelanceSkills: this.addFreelanceSkills,
+      addFreelanceWork: this.addFreelanceWork,
       searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,

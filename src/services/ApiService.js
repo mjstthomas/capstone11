@@ -11,7 +11,7 @@ const ApiService = {
     });
   },
   getMessages() {
-    return fetch(`${process.env.REACT_APP_API_URL}api/messages/myMessages`, {
+    return fetch(`${config.API_ENDPOINT}api/messages/myMessages`, {
       headers: {
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
@@ -20,7 +20,7 @@ const ApiService = {
     );
   },
   postMessage(message) {
-    return fetch(`${process.env.REACT_APP_API_URL}api/messages/`, {
+    return fetch(`${config.API_ENDPOINT}api/messages/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -30,25 +30,17 @@ const ApiService = {
     });
   },
   postImage(imageUrl) {
-    return fetch(`${process.env.REACT_APP_API_URL}api/images/`, {
+    return fetch(`${config.API_ENDPOINT}api/images/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(imageUrl),
-    })
-      .then((res) => res.json())
-      .then((image) => {
-        this.setState({
-          uploading: false,
-          image: image,
-          error: "",
-        });
-      });
+      body: JSON.stringify({ imageLink: imageUrl }),
+    }).then((res) => res.json());
   },
   addProfile(blurb) {
-    return fetch(`${process.env.REACT_APP_API_URL}api/profiles/add`, {
+    return fetch(`${config.API_ENDPOINT}api/profiles/add`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +50,7 @@ const ApiService = {
     });
   },
   addFreelanceSkill(userID, name, level) {
-    return fetch(`${process.env.REACT_APP_API_URL}api/skills/add/${userID}`, {
+    return fetch(`${config.API_ENDPOINT}api/skills/add/${userID}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -72,22 +64,19 @@ const ApiService = {
     });
   },
   addFreelanceWork(userID, work) {
-    return fetch(
-      `${process.env.REACT_APP_API_URL}api/profiles/${userID}/projects`,
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `bearer ${TokenService.getAuthToken()}`,
-        },
-        body: JSON.stringify({
-          details: work,
-        }),
-      }
-    );
+    return fetch(`${config.API_ENDPOINT}api/profiles/${userID}/projects`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify({
+        details: work,
+      }),
+    });
   },
   deleteOffer(offerID) {
-    return fetch(`${process.env.REACT_APP_API_URL}api/offers/${offerID}`, {
+    return fetch(`${config.API_ENDPOINT}api/offers/${offerID}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
