@@ -38,8 +38,10 @@ class App extends React.Component {
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
+    work: [],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
+    AddSkills: [{ level: "", skill: "" }],
     error: "",
     businessOffers: businessOffers,
   };
@@ -176,6 +178,25 @@ class App extends React.Component {
     console.log(offer);
     console.log(newArray);
   };
+
+  // handle adding details to freelance profile
+
+  addFreelanceSkills = () => {
+    for (let skill of this.state.AddSkill) {
+      ApiService.addFreelanceSkill(
+        this.state.user.id,
+        skill.skill,
+        skill.level
+      );
+    }
+  };
+
+  addFreelanceWork = () => {
+    for (let project of this.state.work) {
+      ApiService.addFreelanceWork(this.state.user.id, project);
+    }
+  };
+
   render(props) {
     let context = {
       user: this.state.user,
@@ -194,6 +215,7 @@ class App extends React.Component {
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
+      addFreelanceSkills: this.addFreelanceSkills,
       searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,

@@ -4,6 +4,7 @@ import Image from "./Image";
 import ImageButton from "./ImageButton";
 import "./PictureUpload.css";
 import { storage } from "../../Firebase";
+import ApiService from "../../services/ApiService";
 
 // export default class ImageUpload extends React.Component {
 //   constructor(props) {
@@ -132,18 +133,7 @@ export default class PictureUpload extends Component {
           .child(file.name)
           .getDownloadURL()
           .then((url) => {
-            fetch(`${process.env.REACT_APP_API_URL}api/images/`, {
-              method: "POST",
-              body: url,
-            })
-              .then((res) => res.json())
-              .then((image) => {
-                this.setState({
-                  uploading: false,
-                  image: image,
-                  error: "",
-                });
-              });
+            ApiService.postImage(url);
           });
       }
     );

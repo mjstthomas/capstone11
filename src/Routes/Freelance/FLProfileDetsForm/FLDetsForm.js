@@ -7,13 +7,18 @@ import AddButton from "../../../Components/Utilities/AddButton/AddButton";
 import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
+import ApiService from "../../../services/ApiService";
 
 function FLDetsForm(props) {
   const context = useContext(AppContext);
+  const [textarea, setTextarea] = useState("");
   const [workInput, setWorkInput] = useState("");
 
   const saveChanges = (e) => {
-    props.history.push("/login");
+    ApiService.addProfile({ dev_blurb: textarea })
+      .then(context.addFreelanceSkills())
+      .then(console.log("add featured work"))
+      .then(props.history.push("/Freelancer"));
   };
 
   const workChange = (e) => {
@@ -38,6 +43,18 @@ function FLDetsForm(props) {
       <Header />
       <form id="fl-details-form">
         <h1>Your Details</h1>
+        <label className="about-label" htmlFor="about">
+          About
+        </label>
+        <textarea
+          id="about"
+          name="about"
+          cols="40"
+          rows="15"
+          placeholder="Enter a little something about your business."
+          value={textarea}
+          onChange={(e) => setTextarea(e.target.value)}
+        ></textarea>
         <section>
           <article className="skills-container">
             <h2>Add Skills</h2>
