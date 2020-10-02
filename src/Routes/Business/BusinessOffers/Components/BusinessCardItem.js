@@ -7,6 +7,9 @@ import ApiService from "../../../../services/ApiService";
 
 function BusinessCardItem(props) {
   const context = useContext(AppContext);
+  const date = new Date(props.date);
+
+  const newDate = `${date}`.substr(0, 15);
   return (
     <article className="offer-item">
       <h2 className="offer-name">{props.freelancerName}</h2>
@@ -18,12 +21,17 @@ function BusinessCardItem(props) {
         />
       </section>
       <section className="right-card">
-        <p className="offer-date">{props.date}</p>
-        <p className="offer-pay">Pay rate:{props.pay}</p>
+        <p className="offer-date">{newDate}</p>
+        <p className="offer-pay">Pay rate: ${props.pay}/hr</p>
       </section>
+      <section>
+      <p className="offer-job-desc">{props.info}</p>
       <p className="offer-job-desc">{props.text}</p>
+      </section>
       <section className="bottom-card">
-        <p className="offer-rating">Rating {props.rating}</p>
+      {props.response.length > 1 
+                      ? (props.response === 'Accepted' ? <p className="offer-green">{props.response}</p> :  <p className="offer-red">{props.response}</p>) 
+                      : <p className="offer-green">         </p>}
         <SmallButton
           className="btn"
           id="cards-message"

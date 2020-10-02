@@ -6,7 +6,7 @@ import Nav from "./Nav";
 import AppContext from "../../AppContext";
 import TokenService from "../../services/TokenService";
 
-function Header() {
+function Header(props) {
   const context = useContext(AppContext);
   const location = useLocation();
   const userType = () => {
@@ -23,6 +23,9 @@ function Header() {
       return "Business";
     }
   };
+  const handleLogout = () =>{
+    TokenService.clearAuthToken()
+  }
   return (
     <header>
       {location.pathname === "/SignUp/FLDetails" ||
@@ -55,6 +58,7 @@ function Header() {
             </article>
           )}
       {context.isNav && <Nav />}
+      <button onClick={handleLogout}>Log out</button>
     </header>
   );
 }

@@ -32,8 +32,10 @@ function Login(props) {
       return setError("UserName and Password must be filled out");
     }
 
+    
     context.signInUser(user);
   };
+
   return (
     <main className="login-container">
       <Header />

@@ -33,6 +33,7 @@ class App extends React.Component {
     headerToggle: false,
     isNav: false,
     resultArray: [],
+
     work: [],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
