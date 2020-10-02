@@ -62,8 +62,8 @@ acceptOffer(obj, offer_id){
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${TokenService.getAuthToken()}`,
-      body: JSON.stringify(obj)
-    }
+    },
+    body: JSON.stringify(obj),
   })
 },
 postOffer(obj){
@@ -72,8 +72,8 @@ postOffer(obj){
     headers: {
       "content-type": "application/json",
       Authorization: `Bearer ${TokenService.getAuthToken()}`,
-      body: JSON.stringify(obj)
-    }
+    },
+    body: JSON.stringify(obj),
   })
 }
 };

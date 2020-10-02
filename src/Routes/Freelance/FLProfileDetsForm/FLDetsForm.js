@@ -37,8 +37,7 @@ function FLDetsForm(props) {
 
   return (
     <main>
-      <Header />
-      <form id="fl-details-form">
+      <form className="fl-details-form">
         <h1>Your Details</h1>
         <section>
           <article className="skills-container">

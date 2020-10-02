@@ -16,6 +16,7 @@ export default function SignUp(props) {
     work: [],
     skills: []
   });
+  
   const context = useContext(AppContext);
 
   const handleBusinessType = (event) => {

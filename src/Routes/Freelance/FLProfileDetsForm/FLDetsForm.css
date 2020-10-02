@@ -28,3 +28,7 @@ main > form > #fl-details-form {
 .small-btn {
   float: right;
 }
+
+.fl-details-form{
+  margin-bottom: 5em;
+}

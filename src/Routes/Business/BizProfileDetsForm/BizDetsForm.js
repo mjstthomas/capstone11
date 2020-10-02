@@ -15,7 +15,6 @@ function BizDetsForm(props) {
   };
   return (
     <main>
-      <Header />
       <form id="biz-details-form">
         <h1>Business Details</h1>
         <label className="about-label" htmlFor="about">
