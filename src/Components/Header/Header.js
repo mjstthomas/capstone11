@@ -23,9 +23,6 @@ function Header(props) {
       return "Business";
     }
   };
-  const handleLogout = () =>{
-    TokenService.clearAuthToken()
-  }
   return (
     <header>
       {location.pathname === "/SignUp/FLDetails" ||
@@ -58,7 +55,6 @@ function Header(props) {
             </article>
           )}
       {context.isNav && <Nav />}
-      <button onClick={handleLogout}>Log out</button>
     </header>
   );
 }
