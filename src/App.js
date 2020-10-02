@@ -33,6 +33,7 @@ class App extends React.Component {
     headerToggle: false,
     isNav: false,
     resultArray: [],
+    searchArray: [],
     work: [],
     MustHaveSkills: [
       { level: "", skill: "" },
@@ -153,7 +154,7 @@ class App extends React.Component {
     };
 
     const newArray = searchedSkillsArray();
-    const newSearchArray = [...searchArray];
+    const newSearchArray = [...this.state.searchArray];
     const searchResult = newSearchArray.filter((item) =>
       newArray.some((ai) => item.skills.includes(ai))
     );
