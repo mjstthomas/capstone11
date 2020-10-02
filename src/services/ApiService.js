@@ -38,6 +38,34 @@ const ApiService = {
       body: JSON.stringify(message),
     });
   },
+  getProfilesSearch(skill, skill2, skill3) {
+    return fetch(
+      `${process.env.REACT_APP_API_URL}api/profiles/${skill}/${skill2}/${skill3}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }
+    ).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
+  getUserProfiles(userId) {
+    return fetch(
+      `${process.env.REACT_APP_API_URL}api/profiles/user/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }
+    ).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
+  },
   getFreelanceOffers(){
       return fetch(`${process.env.REACT_APP_API_URL}api/offers/dev`, {
         method: "GET",
