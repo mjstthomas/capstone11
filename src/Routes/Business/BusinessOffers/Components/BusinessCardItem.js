@@ -3,6 +3,7 @@ import ProfilePic from "../../../../Components/Utilities/ProfilePic/ProfilePic";
 import SmallButton from "../../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../../AppContext";
 import "./BusinessCard.css";
+import ApiService from "../../../../services/ApiService";
 
 function BusinessCardItem(props) {
   const context = useContext(AppContext);
@@ -44,6 +45,18 @@ function BusinessCardItem(props) {
           }
         >
           <i className="fas fa-comments"></i>
+        </SmallButton>
+        <SmallButton
+          className="btn"
+          id="cards-message"
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
+          type="button"
+          onClick={() => {
+            ApiService.deleteOffer(props.offerID);
+          }}
+        >
+          <i className="fas fa-trash-alt"></i>
         </SmallButton>
       </section>
     </article>

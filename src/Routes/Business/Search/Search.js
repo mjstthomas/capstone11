@@ -91,7 +91,10 @@ function Search(props) {
           buttonStyle="btn-outline"
           buttonSize="btn-large"
           type="Submit"
-          onClick={(e) => search(e)}
+          onSubmit={(e) => {
+            e.preventDefault();
+            search(e);
+          }}
         >
           Search
         </SmallButton>

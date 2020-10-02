@@ -33,7 +33,7 @@ function FLProfile(props) {
       <Header />
       <section className="FLP-image-offer-container">
         <article className="FLP-image-container">
-          <img src={image} className="FLP-ninja" />
+          <img src={image} alt="FLP" className="FLP-ninja" />
         </article>
         <article className="FLP-offer-container">
           {context.user.id != freelanceID && (

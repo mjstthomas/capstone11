@@ -25,7 +25,7 @@ function SendMessage({ receiver_id }) {
       <button
         className="message-btn"
         type="submit"
-        onClick={(e) => {
+        onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}

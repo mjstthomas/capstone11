@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
@@ -14,38 +14,31 @@ import MakeOffer from "./Routes/Business/MakeOffer/MakeOffer";
 import BusinessOffersPage from "./Routes/Business/BusinessOffers/BusinessOffersPage";
 import FreelanceOffersPage from "./Routes/Freelance/FreelanceOffers/FreelanceOffersPage";
 import Messaging from "./Routes/Messaging/Messaging";
-import userArray from "./userArray";
-import searchArray from "./searchArray";
 import AppContext from "./AppContext";
 import AuthApiService from "./services/AuthApiService";
 import ApiService from "./services/ApiService";
 import TokenService from "./services/TokenService";
 import "./App.css";
-import businessOffers from "./businessOffersArray";
 
 class App extends React.Component {
   state = {
     user: {
-      id: 2,
-      nickname: "Test",
-      profile: true,
+      id: null,
+      nickname: "",
+      profile: { id: null, profile: null },
       work: [],
       skills: [{ level: "", skill: "" }],
     },
-    userProfile: false,
+    userProfile: { id: null, profile: null },
     headerToggle: false,
     isNav: false,
-    userArray: [...userArray],
-    searchArray: [...searchArray],
     resultArray: [],
-    MustHaveSkills: [
-      { level: "-", skill: "-" },
-      { level: "-", skill: "-" },
-      { level: "-", skill: "-" },
-    ],
+
+    work: [],
+    MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
+    AddSkills: [{ level: "", skill: "" }],
     error: "",
-    businessOffers: businessOffers,
   };
 
   //Sign in / Sign Up functions
@@ -53,37 +46,44 @@ class App extends React.Component {
   signInUser = (user) => {
     const signedUser = {
       nickname: user.nickname,
-      password: user.password
-    }
-
-   return AuthApiService.postLogin(signedUser)
-    .then(res => {
-      TokenService.saveAuthToken(res.authToken)
-      console.log(res.profile)
-      this.setState({userProfile: res.profile})
-      return ApiService.importUser(res.id)
-        .then(result => result.json())
-        .then(result => {
-          console.log(result)
-          this.setState({user: result})
-        })
-    })
-  }
-
-  signUpUser = (user) => {
-    if (user.profile === "Freelancer") {
-      user.profile = true;
-    } else {
-      user.profile = false;
-    }
-    this.setState({ user: user });
-    return user;
+      password: user.password,
+    };
+    AuthApiService.postLogin(signedUser)
+      .then((res) => {
+        TokenService.saveAuthToken(res.authToken);
+        this.setState({ userProfile: { id: res.id, profile: res.profile } });
+        return res.id;
+      })
+      .then((id) => ApiService.importUser(id))
+      .then((res) => {
+        return res.json();
+      })
+      .then((profile) => {
+        const { history } = this.props;
+        this.setState({ user: profile });
+        if (this.state.userProfile.profile === true) {
+          history.push("/Freelancer");
+        }
+        if (this.state.userProfile.profile === false) {
+          history.push("/Business");
+        }
+      })
+      .catch((e) => {
+        setTimeout(() => {
+          this.setState((PrevState) => {
+            return { ...PrevState, error: "" };
+          });
+        }, 10000);
+        return this.setState((PrevState) => {
+          return { ...PrevState, error: e.message };
+        });
+      });
   };
 
-  //search result functions
-
-  handleResult = (result) => {
-    this.setState({ resultArray: result });
+  setNewUserProfile = (profile) => {
+    const prevState = { ...this.state };
+    prevState.userProfile = profile;
+    this.setState(prevState);
   };
 
   //Skill Search Functions
@@ -103,30 +103,25 @@ class App extends React.Component {
     });
   };
   setLevel = (level, index, typeOfSkill) => {
-    const prevState = { ...this.state.user };
-    prevState[typeOfSkill][index].level = level;
-    this.setState({ user: prevState });
-  };
-
-  searchLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].level = level;
-    this.setState({ user: prevState });
+    this.setState(prevState);
   };
 
   setSkill = (skill, index, typeOfSkill) => {
-    const prevState = { ...this.state.user };
+    const prevState = { ...this.state };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState({ user: prevState });
+    this.setState(prevState);
   };
 
   searchSkill = (skill, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState({ prevState });
+    this.setState(prevState);
   };
 
   addSkill = (skill) => {
+    console.log(skill);
     const prevState = { ...this.state };
     prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
@@ -150,7 +145,6 @@ class App extends React.Component {
     const prevState = { ...this.state };
     prevState.user.work.push(newURL);
     this.setState(prevState);
-    setTimeout(() => console.log(this.state.user), 2000);
   };
 
   removeWork = (index) => {
@@ -181,6 +175,26 @@ class App extends React.Component {
     console.log(offer);
     console.log(newArray);
   };
+
+  // handle adding details to freelance profile
+
+  addFreelanceSkills = () => {
+    for (let skill of this.state.AddSkills) {
+      ApiService.addFreelanceSkill(
+        this.state.userProfile.id,
+        skill.skill,
+        skill.level
+      );
+    }
+  };
+
+  addFreelanceWork = () => {
+    for (let project of this.state.work) {
+      console.log({ project });
+      ApiService.postFreelanceWork(this.state.userProfile.id, project);
+    }
+  };
+
   render(props) {
     let context = {
       user: this.state.user,
@@ -192,13 +206,14 @@ class App extends React.Component {
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
       resultArray: this.state.resultArray,
-      businessOffers: this.state.businessOffers,
       signInUser: this.signInUser,
-      signUpUser: this.signUpUser,
+      setNewUserProfile: this.setNewUserProfile,
       resetSkills: this.resetSkills,
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
+      addFreelanceSkills: this.addFreelanceSkills,
+      addFreelanceWork: this.addFreelanceWork,
       searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
@@ -207,7 +222,6 @@ class App extends React.Component {
       removeWork: this.removeWork,
       setHeaderToggle: this.setHeaderToggle,
       setNav: this.setNav,
-      handleResult: this.handleResult,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
     };
@@ -215,6 +229,7 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
+          {this.state.error && <p className="error">{this.state.error}</p>}
           <Route path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
@@ -256,4 +271,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
