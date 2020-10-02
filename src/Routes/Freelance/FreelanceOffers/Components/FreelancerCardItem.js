@@ -21,9 +21,11 @@ function BusinessCardItem(props) {
     <article className="cards-item" onClick={minimize}>
       <h2 className="cards-header">{props.name}</h2>
       <ProfilePic className="cards-pic" imgSrc={props.src} alt={props.name} />
-      <p className="cards-rating">Rating: {props.rating}</p>
-      <p className="cards-pay">Pay rate: {props.pay}</p>
+      <p className="cards-pay">Pay rate: {props.pay}/hr</p>
+      <section>
+      <p className="cards-job-desc">"{props.info}"</p>
       <p className="cards-job-desc">"{props.text}"</p>
+      </section>
       <SmallButton
         className="btn"
         id="cards-message"
@@ -44,7 +46,13 @@ function BusinessCardItem(props) {
       >
         Accept Offer
       </SmallButton>
-      {modal && <Modal id={props.id} minimize={() => setModal(!modal)} />}
+      {modal && <Modal 
+                    id={props.offer_id}
+                    payrate={props.pay}
+                    dev_id = {props.dev_id}
+                    offer_detail={props.text}
+                    offer_info={props.info}
+                    minimize={() => setModal(!modal)} />}
     </article>
   );
 }
