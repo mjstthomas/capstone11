@@ -37,15 +37,7 @@ function AddSkill(props) {
         <label htmlFor="skill-level">Experience</label>
         <select
           onChange={(e) => {
-            if (props.search !== "true") {
-              context.setLevel(e.target.value, props.index, props.typeOfSkill);
-            } else {
-              context.searchLevel(
-                e.target.value,
-                props.index,
-                props.typeOfSkill
-              );
-            }
+            context.setLevel(e.target.value, props.index, props.typeOfSkill);
           }}
           id="skill-level"
           name="skill-level"

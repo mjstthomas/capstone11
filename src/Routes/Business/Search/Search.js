@@ -9,7 +9,6 @@ import ApiService from "../../../services/ApiService";
 
 function Search(props) {
   const context = useContext(AppContext);
-  const search = (e) => {};
 
   const mustHaveSkills = context.MustHaveSkills.map((skill, index) => (
     <AddSkillComponent
@@ -56,7 +55,13 @@ function Search(props) {
   return (
     <main>
       <Header />
-      <form id="search-form" onSubmit={handleSubmit}>
+      <form
+        id="search-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
         <h1>Looking for Help?</h1>
         <section>
           <article className="skills-container">
@@ -93,7 +98,7 @@ function Search(props) {
           type="Submit"
           onSubmit={(e) => {
             e.preventDefault();
-            search(e);
+            handleSubmit();
           }}
         >
           Search

@@ -33,10 +33,13 @@ class App extends React.Component {
     headerToggle: false,
     isNav: false,
     resultArray: [],
-
     work: [],
-    MustHaveSkills: [{ level: "", skill: "" }],
-    NiceToHaveSkills: [{ level: "", skill: "" }],
+    MustHaveSkills: [
+      { level: "", skill: "" },
+      { level: "", skill: "" },
+      { level: "", skill: "" },
+    ],
+    // NiceToHaveSkills: [{ level: "", skill: "" }],
     AddSkills: [{ level: "", skill: "" }],
     error: "",
   };
@@ -81,7 +84,7 @@ class App extends React.Component {
   };
 
   setNewUserProfile = (profile) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState.userProfile = profile;
     this.setState(prevState);
   };
@@ -103,32 +106,32 @@ class App extends React.Component {
     });
   };
   setLevel = (level, index, typeOfSkill) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState[typeOfSkill][index].level = level;
     this.setState(prevState);
   };
 
   setSkill = (skill, index, typeOfSkill) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState[typeOfSkill][index].skill = skill;
     this.setState(prevState);
   };
 
   searchSkill = (skill, index, typeOfSkill) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState[typeOfSkill][index].skill = skill;
     this.setState(prevState);
   };
 
   addSkill = (skill) => {
     console.log(skill);
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
   };
 
   removeSkill = (index, typeOfSkill) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState[typeOfSkill].splice(index, 1);
     this.setState(prevState);
   };
@@ -140,15 +143,32 @@ class App extends React.Component {
     });
   };
 
+  handleResult = (result) => {
+    const searchedSkillsArray = () => {
+      const array = [];
+      for (let i = 0; i < this.state.MustHaveSkills.length; i++) {
+        array.push(this.state.MustHaveSkills[i].skill);
+      }
+      return array;
+    };
+
+    const newArray = searchedSkillsArray();
+    const newSearchArray = [...searchArray];
+    const searchResult = newSearchArray.filter((item) =>
+      newArray.some((ai) => item.skills.includes(ai))
+    );
+    this.setState({ resultArray: searchResult });
+  };
+
   // handle featured work
   addWork = (newURL) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState.user.work.push(newURL);
     this.setState(prevState);
   };
 
   removeWork = (index) => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState.user.work.splice(index, 1);
     this.setState(prevState);
   };
@@ -156,13 +176,13 @@ class App extends React.Component {
   // handle Header
 
   setHeaderToggle = () => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState.headerToggle = !prevState.headerToggle;
     this.setState(prevState);
   };
 
   setNav = () => {
-    const prevState = { ...this.state };
+    const prevState = this.state;
     prevState.isNav = !prevState.isNav;
     this.setState(prevState);
   };
