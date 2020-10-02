@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import AppContext from "../../../AppContext";
 import Header from "../../../Components/Header/Header";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
+import ApiService from '../../../services/ApiService';
 import "./MakeOffer.css";
 
 export default function MakeOffer(props) {
@@ -13,27 +14,18 @@ export default function MakeOffer(props) {
   const {freelanceID} = useParams()
   const [error, setError] = useState("");
 
-  /* {
-    userImage: "https://via.placeholder.com/85",
-    businessName: "Timothy's",
-    rating: "9",
-    pay: "$18/hr",
-    text: "Need help with UX design",
-    businessID: '4',
-    userID: '1'
-} */
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const newOffer = {
-      userImage: context.user.userImage,
-      businessName: context.user.nickname,
-      rating: context.user.nickname,
-      pay: payrate,
-      text: projectInfo,
-      businessID: context.user.id,
-      userID: freelanceID
+      image: context.user.image,
+      emp_name: context.user.nickname,
+      payrate: payrate,
+      offer_info: projectInfo,
+      offer_detail: jobDetails,
+      dev_id: freelanceID
     }
-    context.handleMakeOffer(newOffer);
+    ApiService.postOffer(newOffer);
     props.history.goBack();
   };
 

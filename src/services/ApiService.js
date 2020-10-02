@@ -65,6 +65,16 @@ acceptOffer(obj, offer_id){
       body: JSON.stringify(obj)
     }
   })
+},
+postOffer(obj){
+  return fetch(`${process.env.REACT_APP_API_URL}api/offers/`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      body: JSON.stringify(obj)
+    }
+  })
 }
 };
 
