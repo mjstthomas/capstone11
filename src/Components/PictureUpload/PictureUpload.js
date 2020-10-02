@@ -1,7 +1,6 @@
 import React from "react";
 import "./PictureUpload.css";
 import { storage } from "../../Firebase";
-import ApiService from "../../services/ApiService";
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
@@ -47,7 +46,7 @@ export default class ImageUpload extends React.Component {
               .getDownloadURL()
               .then((url) => {
                 console.log(url);
-                ApiService.postImage(url);
+                this.props.setImage(url);
               })
               .then(() => {
                 this.setState({

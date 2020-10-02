@@ -29,9 +29,9 @@ const ApiService = {
       body: JSON.stringify(message),
     });
   },
-  postImage(imageUrl) {
+  patchImage(imageUrl) {
     return fetch(`${config.API_ENDPOINT}api/images/`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
         Authorization: `bearer ${TokenService.getAuthToken()}`,
@@ -39,14 +39,14 @@ const ApiService = {
       body: JSON.stringify({ imageLink: imageUrl }),
     }).then((res) => res.json());
   },
-  addProfile(blurb) {
+  addProfile(details) {
     return fetch(`${config.API_ENDPOINT}api/profiles/add`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
         Authorization: `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify(blurb),
+      body: JSON.stringify(details),
     });
   },
   addFreelanceSkill(userID, name, level) {
@@ -63,7 +63,7 @@ const ApiService = {
       }),
     });
   },
-  addFreelanceWork(userID, work) {
+  postFreelanceWork(userID, work) {
     return fetch(`${config.API_ENDPOINT}api/profiles/${userID}/projects`, {
       method: "POST",
       headers: {

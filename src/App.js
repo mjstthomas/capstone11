@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import LandingPage from "./Routes/LandingPage";
 import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
@@ -14,36 +14,30 @@ import MakeOffer from "./Routes/Business/MakeOffer/MakeOffer";
 import BusinessOffersPage from "./Routes/Business/BusinessOffers/BusinessOffersPage";
 import FreelanceOffersPage from "./Routes/Freelance/FreelanceOffers/FreelanceOffersPage";
 import Messaging from "./Routes/Messaging/Messaging";
-import userArray from "./userArray";
-import searchArray from "./searchArray";
 import AppContext from "./AppContext";
 import AuthApiService from "./services/AuthApiService";
 import ApiService from "./services/ApiService";
 import TokenService from "./services/TokenService";
 import "./App.css";
-import businessOffers from "./businessOffersArray";
 
 class App extends React.Component {
   state = {
     user: {
       id: null,
       nickname: "",
-      profile: null,
+      profile: { id: null, profile: null },
       work: [],
       skills: [{ level: "", skill: "" }],
     },
-    userProfile: "",
+    userProfile: { id: null, profile: null },
     headerToggle: false,
     isNav: false,
-    userArray: [...userArray],
-    searchArray: [...searchArray],
     resultArray: [],
     work: [],
     MustHaveSkills: [{ level: "", skill: "" }],
     NiceToHaveSkills: [{ level: "", skill: "" }],
     AddSkills: [{ level: "", skill: "" }],
     error: "",
-    businessOffers: businessOffers,
   };
 
   //Sign in / Sign Up functions
@@ -56,36 +50,39 @@ class App extends React.Component {
     AuthApiService.postLogin(signedUser)
       .then((res) => {
         TokenService.saveAuthToken(res.authToken);
-        this.setState({ userProfile: res.profile });
+        this.setState({ userProfile: { id: res.id, profile: res.profile } });
         return res.id;
       })
       .then((id) => ApiService.importUser(id))
-      .then((res) =>
-        !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
-      )
-      .then((profile) => {
-        this.setState({ user: profile });
+      .then((res) => {
+        return res.json();
       })
-      .catch((e) => console.log(e));
+      .then((profile) => {
+        const { history } = this.props;
+        this.setState({ user: profile });
+        if (this.state.userProfile.profile === true) {
+          history.push("/Freelancer");
+        }
+        if (this.state.userProfile.profile === false) {
+          history.push("/Business");
+        }
+      })
+      .catch((e) => {
+        setTimeout(() => {
+          this.setState((PrevState) => {
+            return { ...PrevState, error: "" };
+          });
+        }, 10000);
+        return this.setState((PrevState) => {
+          return { ...PrevState, error: e.message };
+        });
+      });
   };
 
-  //search result functions
-
-  handleResult = (result) => {
-    const searchedSkillsArray = () => {
-      const array = [];
-      for (let i = 0; i < this.state.MustHaveSkills.length; i++) {
-        array.push(this.state.MustHaveSkills[i].skill);
-      }
-      return array;
-    };
-
-    const newArray = searchedSkillsArray();
-    const newSearchArray = [...searchArray];
-    const searchResult = newSearchArray.filter((item) =>
-      newArray.some((ai) => item.skills.includes(ai))
-    );
-    this.setState({ resultArray: searchResult });
+  setNewUserProfile = (profile) => {
+    const prevState = { ...this.state };
+    prevState.userProfile = profile;
+    this.setState(prevState);
   };
 
   //Skill Search Functions
@@ -105,27 +102,21 @@ class App extends React.Component {
     });
   };
   setLevel = (level, index, typeOfSkill) => {
-    const prevState = { ...this.state.user };
-    prevState[typeOfSkill][index].level = level;
-    this.setState({ user: prevState });
-  };
-
-  searchLevel = (level, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].level = level;
-    this.setState({ user: prevState });
+    this.setState(prevState);
   };
 
   setSkill = (skill, index, typeOfSkill) => {
-    const prevState = { ...this.state.user };
+    const prevState = { ...this.state };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState({ user: prevState });
+    this.setState(prevState);
   };
 
   searchSkill = (skill, index, typeOfSkill) => {
     const prevState = { ...this.state };
     prevState[typeOfSkill][index].skill = skill;
-    this.setState({ prevState });
+    this.setState(prevState);
   };
 
   addSkill = (skill) => {
@@ -187,9 +178,9 @@ class App extends React.Component {
   // handle adding details to freelance profile
 
   addFreelanceSkills = () => {
-    for (let skill of this.state.AddSkill) {
+    for (let skill of this.state.AddSkills) {
       ApiService.addFreelanceSkill(
-        this.state.user.id,
+        this.state.userProfile.id,
         skill.skill,
         skill.level
       );
@@ -198,7 +189,8 @@ class App extends React.Component {
 
   addFreelanceWork = () => {
     for (let project of this.state.work) {
-      ApiService.addFreelanceWork(this.state.user.id, project);
+      console.log({ project });
+      ApiService.postFreelanceWork(this.state.userProfile.id, project);
     }
   };
 
@@ -213,8 +205,8 @@ class App extends React.Component {
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
       resultArray: this.state.resultArray,
-      businessOffers: this.state.businessOffers,
       signInUser: this.signInUser,
+      setNewUserProfile: this.setNewUserProfile,
       resetSkills: this.resetSkills,
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
@@ -229,7 +221,6 @@ class App extends React.Component {
       removeWork: this.removeWork,
       setHeaderToggle: this.setHeaderToggle,
       setNav: this.setNav,
-      handleResult: this.handleResult,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
     };
@@ -237,6 +228,7 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
+          {this.state.error && <p className="error">{this.state.error}</p>}
           <Route path="/" exact component={LandingPage} />
           <Route path="/SignUp" exact component={SignUp} />
           <Route path="/Login" exact component={Login} />
@@ -278,4 +270,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useContext } from "react";
-import TokenService from "../services/TokenService";
 import AppContext from "../AppContext";
 import "./login.css";
 import { Link } from "react-router-dom";
@@ -25,8 +24,7 @@ function Login(props) {
     setUser(newUser);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
     if (user.nickname.length < 1 || user.password.length < 1) {
       setTimeout(() => {
         setError(context.error);
@@ -35,24 +33,6 @@ function Login(props) {
     }
 
     context.signInUser(user);
-    setTimeout(() => {
-      if (context.userProfile === true) {
-        props.history.push("/Freelancer");
-      }
-      if (context.userProfile === false) {
-        props.history.push("/Business");
-      }
-    }, 2000);
-
-    // const newUser = context.signInUser(user);
-    // setTimeout(() => {
-    //   if (newUser.profile === true) {
-    //     props.history.push("/Freelancer");
-    //   }
-    //   if (newUser.profile === false) {
-    //     props.history.push("/Business");
-    //   }
-    // }, 1000);
   };
   return (
     <main className="login-container">
@@ -62,7 +42,13 @@ function Login(props) {
         Need an account? <Link to="/SignUp">Sign up!</Link>
       </p>
       <p className="red">{error}</p>
-      <form className="login-form" onSubmit={handleSubmit}>
+      <form
+        className="login-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
         <article className="input-container">
           <label htmlFor="username">Username:</label>
           <br />
@@ -90,7 +76,10 @@ function Login(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onSubmit={() => props.history.push("/login")}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
           >
             Log In
           </SmallButton>

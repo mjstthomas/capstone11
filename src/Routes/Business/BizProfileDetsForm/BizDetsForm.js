@@ -7,21 +7,28 @@ import ApiService from "../../../services/ApiService";
 
 function BizDetsForm(props) {
   const [textarea, setTextarea] = useState("");
-  const [error, setError] = useState("");
+  const [image, setImage] = useState("");
 
   const saveChanges = () => {
-    ApiService.addProfile({ emp_blurb: textarea }).then((res) =>
-      !res.ok
-        ? setError("Something went wrong")
-        : props.history.push("/Business")
-    );
+    ApiService.addProfile({ emp_blurb: textarea, image: image }).then(() => {
+      props.history.push("/login");
+    });
+  };
+
+  const setProfileImage = (imageURL) => {
+    setImage(imageURL);
   };
 
   return (
     <main>
       <Header />
-      <form id="biz-details-form">
-        {error && <p>{error}</p>}
+      <form
+        id="biz-details-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          saveChanges();
+        }}
+      >
         <h1>Business Details</h1>
         <label className="about-label" htmlFor="about">
           About
@@ -30,12 +37,12 @@ function BizDetsForm(props) {
           id="about"
           name="about"
           cols="40"
-          rows="15"
+          rows="8"
           placeholder="Enter a little something about your business."
           value={textarea}
           onChange={(e) => setTextarea(e.target.value)}
         ></textarea>
-        <PictureUpload />
+        <PictureUpload image={image} setImage={setProfileImage} />
         <SmallButton
           className="btn"
           buttonStyle="btn-outline"
