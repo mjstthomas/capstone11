@@ -18,7 +18,13 @@ function Nav() {
       >
         Profile
       </Link>
-      <Link to="/" onClick={() => TokenService.clearAuthToken()}>
+      <Link
+        to="/"
+        onClick={() => {
+          TokenService.clearAuthToken();
+          context.setNav();
+        }}
+      >
         Log Out
       </Link>
     </nav>

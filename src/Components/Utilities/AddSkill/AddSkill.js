@@ -8,7 +8,19 @@ function getOptions() {
   //then return array of <option>
 
   //for now return example
-  const skills = ["JavaScript", "CSS", "HTML", "React.js", "Node.js"];
+  const skills = [
+    "Node.js",
+    "React",
+    "Postgres",
+    "Python",
+    "HTML",
+    "OAuth",
+    "Shopify",
+    "Java",
+    "Drupal",
+    "C++",
+    "SQL",
+  ];
   const options = skills.map((skill, index) => (
     <option key={index}>{skill}</option>
   ));
@@ -24,21 +36,16 @@ function AddSkill(props) {
       <section className="container">
         <label htmlFor="skill-level">Experience</label>
         <select
-          onChange={(e) =>{
-            if (props.search !== 'true'){
-              context.setLevel(e.target.value, props.index, props.typeOfSkill)
-              }
-            else {
-              context.searchLevel(e.target.value, props.index, props.typeOfSkill)
-            }
+          onChange={(e) => {
+            context.setLevel(e.target.value, props.index, props.typeOfSkill);
           }}
           id="skill-level"
           name="skill-level"
         >
           <option default>---</option>
-          <option>Entry Level</option>
-          <option>Intermediate</option>
-          <option>Expert</option>
+          <option value="entry">Entry Level</option>
+          <option value="mid">Intermediate</option>
+          <option value="expert">Expert</option>
         </select>
       </section>
       <span>in</span>
@@ -49,15 +56,13 @@ function AddSkill(props) {
           id="skill-name"
           name="skill-name"
           list="skill-list"
-          onChange={(e) =>{
-            if (props.search !== 'true'){
-              return context.setSkill(e.target.value, props.index, props.typeOfSkill)
-            }
-            else{
-              return context.searchSkill(e.target.value, props.index, props.typeOfSkill)
-            }
-          } 
-          }
+          onChange={(e) => {
+            return context.setSkill(
+              e.target.value,
+              props.index,
+              props.typeOfSkill
+            );
+          }}
         />
         <datalist id="skill-list">{options}</datalist>
       </section>

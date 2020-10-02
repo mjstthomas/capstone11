@@ -6,6 +6,7 @@ import Header from "../../../Components/Header/Header";
 import ResultCard from "./components/ResultCard";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import "./Results.css";
+import ApiSerice from "../../../services/ApiService";
 
 export default function Results(props) {
   const context = useContext(AppContext);
@@ -24,28 +25,27 @@ export default function Results(props) {
   if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
     allSkills = mustHave.concat(niceToHave);
   }
-  const skills = allSkills.map((item, index) => {
-    if (item.skill !== "") {
-      return (
-        <SkillButton
-          key={index}
-          skill={item.skill}
-          name={item.skill}
-          onClick={deleteSkill}
-        />
-      );
-    } else {
-      return null;
-    }
-  });
+  const skills = allSkills.map((item, index) => (
+    <SkillButton
+      key={index}
+      skill={item.skill}
+      name={item.skill}
+      onClick={deleteSkill}
+    />
+  ));
   const results = context.resultArray.map((item) => {
+    console.log(item);
+    ApiSerice.getUserProfiles(item).then((res) => {
+      console.log(res);
+      context.handleResult(res);
+    });
     return (
       <ResultCard
         key={item.id}
         id={item.id}
         name={item.nickname}
         skills={item.skills}
-        levels={item.levels}
+        rating={item.rating}
       />
     );
   });
@@ -64,7 +64,7 @@ export default function Results(props) {
             context.resetSkills();
           }}
         >
-          <i className="fas fa-undo"></i>
+          <i class="fas fa-undo"></i>
         </SmallButton>
       </article>
       <article className="results">{results}</article>

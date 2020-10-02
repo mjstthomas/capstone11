@@ -1,28 +1,22 @@
 import React from "react";
 import { useState, useContext } from "react";
-import AppContext from "../AppContext";
 import "./signup.css";
 import Header from "../Components/Header/Header";
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
+import AuthApiService from "../services/AuthApiService";
+import AppContext from "../AppContext";
+import TokenService from "../services/TokenService";
+
+const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
 
 export default function SignUp(props) {
-  const [businessType, setBusinessType] = useState("");
-  const [error, setError] = useState("");
-  const [signUp, setSignUp] = useState({
-    nickname: "",
-    fullName: "",
-    password: "",
-    profile: businessType,
-    work: [],
-    skills: []
-  });
-  
+
   const context = useContext(AppContext);
 
-  const handleBusinessType = (event) => {
-    const value = event.target.value;
-    return setBusinessType(value);
-  };
+  const [nickname, setNickname] = useState("");
+  const [password, setPassword] = useState("");
+  const [profile, setProfile] = useState(null);
+  const [error, setError] = useState("");
 
   const clearError = () => {
     setTimeout(() => {
@@ -30,36 +24,53 @@ export default function SignUp(props) {
     }, 3000);
   };
 
-  const handleSignIn = (event) => {
-    let name = event.target.name;
-    let value = event.target.value;
-    let { nickname, password, profile, fullName, work, skills} = signUp;
-    let newUser = { nickname, password, fullName, profile, work, skills };
-    newUser[name] = value;
-    setSignUp(newUser);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (signUp.nickname.length < 7) {
+    if (nickname.length < 6) {
       clearError();
-      return setError("Name must be at least 7 characters long");
+      return setError("Name must be at least 6 characters long");
     }
-    if (signUp.password.length < 7) {
+    if (password.length < 8) {
       clearError();
-      return setError("Password must be at least 7 characters long");
+      return setError("Password must be at least 8 characters long");
     }
-    if (signUp.profile.length < 4) {
+    if (password.length > 56) {
+      return setError("Password must be less than 56 characters");
+    }
+    if (password.startsWith(" ") || password.endsWith(" ")) {
+      return setError("Password must not start or end with empty spaces");
+    }
+    if (!REGEX_UPPER_LOWER_NUMBER_SPECIAL.test(password)) {
+      return setError(
+        "Password must contain 1 upper case, lower case, number and special character"
+      );
+    }
+    if (profile === null) {
       clearError();
       return setError("You must choose a profile type");
     }
-    const newUser = context.signUpUser(signUp);
-    if (newUser.profile === true) {
-      props.history.push("/SignUp/FLDetails");
-    } else {
-      props.history.push("/SignUp/BizDetails");
-    }
+    const newUser = {
+      nickname: nickname,
+      password: password,
+      profile: profile,
+    };
+    AuthApiService.postUser(newUser)
+      .then((res) =>
+        !res.ok ? res.json().then((e) => setError(e)) : res.json()
+      )
+      .then(() =>
+        AuthApiService.postLogin({ nickname: nickname, password: password })
+      )
+      .then((res) => {
+        console.log(res);
+        TokenService.saveAuthToken(res.authToken);
+        context.setNewUserProfile({ id: res.id, profile: res.profile });
+        res.profile
+          ? props.history.push("/SignUp/FLDetails")
+          : props.history.push("/SignUp/BizDetails");
+      });
   };
+
   return (
     <main className="signup-container">
       <Header />
@@ -73,18 +84,8 @@ export default function SignUp(props) {
             name="nickname"
             type="text"
             className="signup-input"
-            onChange={handleSignIn}
-          />
-          <br />
-        </article>
-        <article className="input-container">
-          <label htmlFor="fullName">Full Name:</label>
-          <br />
-          <input
-            name="fullName"
-            type="text"
-            className="signup-input"
-            onChange={handleSignIn}
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
           />
           <br />
         </article>
@@ -95,7 +96,8 @@ export default function SignUp(props) {
             name="password"
             type="password"
             className="signup-input"
-            onChange={handleSignIn}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
         </article>
@@ -105,11 +107,10 @@ export default function SignUp(props) {
           <input
             type="radio"
             className="radio-input"
+            id="Freelancer"
             name="profile"
-            value="Freelancer"
-            checked={businessType === "Freelancer"}
-            onClick={handleBusinessType}
-            onChange={handleSignIn}
+            value={true}
+            onChange={(e) => setProfile(e.target.value)}
           />
           <label htmlFor="Freelancer">Freelancer</label>
           <br />
@@ -117,10 +118,9 @@ export default function SignUp(props) {
             type="radio"
             className="radio-input"
             name="profile"
-            value="Business"
-            checked={businessType === "Business"}
-            onClick={handleBusinessType}
-            onChange={handleSignIn}
+            id="Business"
+            value={false}
+            onChange={(e) => setProfile(e.target.value)}
           />
           <label htmlFor="Business">Business</label>
         </article>
@@ -130,7 +130,7 @@ export default function SignUp(props) {
             buttonStyle="btn-outline"
             buttonSize="btn-large"
             type="submit"
-            onClick={() => handleSubmit}
+            onSubmit={() => handleSubmit}
           >
             Add Details
           </SmallButton>
