@@ -10,6 +10,15 @@ const ApiService = {
       },
     });
   },
+  postUser(user){
+      return fetch(`${config.API_ENDPOINT}api/users/`, {
+        method: "POST",
+        headers: {
+          Authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(user),
+    })
+  },
   getMessages() {
     return fetch(`${process.env.REACT_APP_API_URL}api/messages/myMessages`, {
       headers: {
@@ -57,6 +66,44 @@ const ApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
+  getFreelanceOffers(){
+      return fetch(`${process.env.REACT_APP_API_URL}api/offers/dev`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${TokenService.getAuthToken()}`,
+        }
+      })
+  },
+  getBusinessOffers(){
+    return fetch(`${process.env.REACT_APP_API_URL}api/offers/emp`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      }
+    })
+},
+acceptOffer(obj, offer_id){
+  return fetch(`${process.env.REACT_APP_API_URL}api/offers/${offer_id}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      body: JSON.stringify(obj)
+    }
+  })
+},
+postOffer(obj){
+  return fetch(`${process.env.REACT_APP_API_URL}api/offers/`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      body: JSON.stringify(obj)
+    }
+  })
+}
 };
 
 export default ApiService;

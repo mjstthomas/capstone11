@@ -14,6 +14,7 @@ function FLDetsForm(props) {
   const [workInput, setWorkInput] = useState("");
 
   const saveChanges = (e) => {
+    console.log(context.user)
     props.history.push("/login");
   };
 
@@ -47,7 +48,7 @@ function FLDetsForm(props) {
           <AddButton
             onClick={(e) => {
               e.preventDefault();
-              context.addSkill("AddSkills");
+              context.setSkill("skills");
             }}
           />
         </section>
