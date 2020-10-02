@@ -5,6 +5,7 @@ import AddSkillComponent from "../../../Components/Utilities/AddSkill/AddSkill";
 import AddButton from "../../../Components/Utilities/AddButton/AddButton";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
+import ApiService from "../../../services/ApiService";
 
 function Search(props) {
   const context = useContext(AppContext);
@@ -32,10 +33,24 @@ function Search(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    context.handleResult();
-    setTimeout(() => {
-      props.history.push("/Business/Results");
-    }, 2000);
+    console.log(context.MustHaveSkills[0].skill);
+    console.log(context.MustHaveSkills[1].skill);
+    console.log(context.MustHaveSkills[2].skill);
+
+    ApiService.getProfilesSearch(
+      context.MustHaveSkills[0].skill,
+      context.MustHaveSkills[1].skill,
+      context.MustHaveSkills[2].skill
+    )
+      .then((res) => {
+        console.log(res);
+        context.handleResult(res);
+      })
+      .then(
+        setTimeout(() => {
+          props.history.push("/Business/Results");
+        }, 2000)
+      );
   };
 
   return (

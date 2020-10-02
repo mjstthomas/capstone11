@@ -38,7 +38,11 @@ class App extends React.Component {
     userArray: [...userArray],
     searchArray: [...searchArray],
     resultArray: [],
-    MustHaveSkills: [{ level: "", skill: "" }],
+    MustHaveSkills: [
+      { level: "-", skill: "-" },
+      { level: "-", skill: "-" },
+      { level: "-", skill: "-" },
+    ],
     NiceToHaveSkills: [{ level: "", skill: "" }],
     error: "",
     businessOffers: businessOffers,
@@ -78,20 +82,7 @@ class App extends React.Component {
   //search result functions
 
   handleResult = (result) => {
-    const searchedSkillsArray = () => {
-      const array = [];
-      for (let i = 0; i < this.state.MustHaveSkills.length; i++) {
-        array.push(this.state.MustHaveSkills[i].skill);
-      }
-      return array;
-    };
-
-    const newArray = searchedSkillsArray();
-    const newSearchArray = [...searchArray];
-    const searchResult = newSearchArray.filter((item) =>
-      newArray.some((ai) => item.skills.includes(ai))
-    );
-    this.setState({ resultArray: searchResult });
+    this.setState({ resultArray: result });
   };
 
   //Skill Search Functions
