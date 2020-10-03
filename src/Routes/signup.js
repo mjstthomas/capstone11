@@ -10,7 +10,6 @@ import TokenService from "../services/TokenService";
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
 
 export default function SignUp(props) {
-
   const context = useContext(AppContext);
 
   const [nickname, setNickname] = useState("");
@@ -55,22 +54,21 @@ export default function SignUp(props) {
       profile: profile,
     };
     AuthApiService.postUser(newUser)
-      .then((res) =>{
-        !res.ok ? res.json().then((e) => setError(e)) : res.json()
-        props.history.push('/login')
-        }
+      .then((res) => {
+        !res.ok ? res.json().then((e) => setError(e)) : res.json();
+        props.history.push("/login");
+      })
+      .then(() =>
+        AuthApiService.postLogin({ nickname: nickname, password: password })
       )
-      // .then(() =>
-      //   AuthApiService.postLogin({ nickname: nickname, password: password })
-      // )
-      // .then((res) => {
-      //   console.log(res);
-      //   TokenService.saveAuthToken(res.authToken);
-      //   context.setNewUserProfile({ id: res.id, profile: res.profile });
-      //   res.profile
-      //     ? props.history.push("/SignUp/FLDetails")
-      //     : props.history.push("/SignUp/BizDetails");
-      // });
+      .then((res) => {
+        console.log(res);
+        TokenService.saveAuthToken(res.authToken);
+        context.setNewUserProfile({ id: res.id, profile: res.profile });
+        res.profile
+          ? props.history.push("/SignUp/FLDetails")
+          : props.history.push("/SignUp/BizDetails");
+      });
   };
 
   return (

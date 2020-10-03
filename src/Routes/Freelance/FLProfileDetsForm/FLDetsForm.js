@@ -47,9 +47,6 @@ function FLDetsForm(props) {
 
   return (
     <main>
-<<<<<<< HEAD
-      <form className="fl-details-form">
-=======
       <Header />
       <form
         id="fl-details-form"
@@ -58,7 +55,6 @@ function FLDetsForm(props) {
           saveChanges();
         }}
       >
->>>>>>> 40c9833ecffb391dd7484fba8222289110fc8d69
         <h1>Your Details</h1>
         <label className="about-label" htmlFor="about">
           About
