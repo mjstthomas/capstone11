@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import BusinessCardItem from "./Components/BusinessCardItem";
 import Header from "../../../Components/Header/Header";
 import AppContext from "../../../AppContext";
-import ApiServices from '../../../services/ApiService';
+import ApiServices from "../../../services/ApiService";
 import "./BusinessOffersPage.css";
 
 function BusinessOffersPage(props) {
@@ -10,14 +10,13 @@ function BusinessOffersPage(props) {
 
   const [myOffers, setOffers] = useState([]);
 
-  useEffect(()=>{
-     ApiServices.getBusinessOffers()
-                      .then(result => result.json())
-                      .then(result =>{
-                        console.log(result)
-                        return setOffers(result)
-                  })
-                }, [])
+  useEffect(() => {
+    ApiServices.getBusinessOffers()
+      .then((result) => result.json())
+      .then((result) => {
+        return setOffers(result);
+      });
+  }, []);
 
   const offers = myOffers.map((item) => {
     return (
@@ -28,7 +27,7 @@ function BusinessOffersPage(props) {
         pay={item.payrate}
         info={item.offer_info}
         text={item.offer_detail}
-        response = {item.response}
+        response={item.response}
         freelancerID={item.dev_id}
         businessID={item.employer_id}
         history={props.history}

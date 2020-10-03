@@ -36,7 +36,9 @@ export default class ImageUpload extends React.Component {
           "state_changed",
           (snapshot) => {},
           (error) => {
-            console.log(error);
+            this.setState({
+              error: error.message,
+            });
           },
 
           () => {
@@ -45,7 +47,6 @@ export default class ImageUpload extends React.Component {
               .child(this.state.file.name)
               .getDownloadURL()
               .then((url) => {
-                console.log(url);
                 this.props.setImage(url);
               })
               .then(() => {

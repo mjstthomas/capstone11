@@ -3,39 +3,38 @@ import Header from "../../../Components/Header/Header";
 import AppContext from "../../../AppContext";
 import "./FreelanceOffersPage.css";
 import FreelancerCardItem from "./Components/FreelancerCardItem";
-import ApiService from '../../../services/ApiService';
+import ApiService from "../../../services/ApiService";
 
 function FreelanceOffersPage(props) {
-  const [ myOffers, setOffers] = useState([])
+  const [myOffers, setOffers] = useState([]);
   const context = useContext(AppContext);
-  const [error, setError ] = useState('')
-  useEffect(()=>{
+  const [error, setError] = useState("");
+  useEffect(() => {
     ApiService.getFreelanceOffers()
-                      .then(result => result.json())
-                      .then(result =>{
-                        console.log(result)
-                        if (result.error){
-                          setOffers([]);
-                          return setError(result.error)
-                        }
-                        return setOffers(result)
-                      })
-  }, []) ;
+      .then((result) => result.json())
+      .then((result) => {
+        if (result.error) {
+          setOffers([]);
+          return setError(result.error);
+        }
+        return setOffers(result);
+      });
+  }, []);
 
-const newOffers = myOffers.map((item) => (
-                          <FreelancerCardItem
-                            name={item.emp_name}
-                            dev_id={item.dev_id}
-                            src={item.image}
-                            offer_id={item.id}
-                            pay={item.payrate}
-                            info = {item.offer_info}
-                            text={item.offer_detail}
-                            key={item.employer_id}
-                            id={item.employer_id}
-                            history={props.history}
-                          />
-                          ))
+  const newOffers = myOffers.map((item) => (
+    <FreelancerCardItem
+      name={item.emp_name}
+      dev_id={item.dev_id}
+      src={item.image}
+      offer_id={item.id}
+      pay={item.payrate}
+      info={item.offer_info}
+      text={item.offer_detail}
+      key={item.employer_id}
+      id={item.employer_id}
+      history={props.history}
+    />
+  ));
   return (
     <main>
       <Header />

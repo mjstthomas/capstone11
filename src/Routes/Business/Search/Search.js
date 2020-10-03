@@ -31,16 +31,11 @@ function Search(props) {
   // ));
 
   const handleSubmit = () => {
-    console.log(context.MustHaveSkills[0].skill);
-    console.log(context.MustHaveSkills[1].skill);
-    console.log(context.MustHaveSkills[2].skill);
-
     ApiService.getProfilesSearch(
       context.MustHaveSkills[0].skill,
       context.MustHaveSkills[1].skill || "-",
       context.MustHaveSkills[2].skill || "-"
     ).then((res) => {
-      console.log(res);
       context.handleResult(res);
       props.history.push("/Business/Results");
     });

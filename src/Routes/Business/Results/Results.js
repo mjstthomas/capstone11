@@ -40,7 +40,6 @@ export default function Results(props) {
     }
   });
   const results = context.resultArray.map((item, index) => {
-    console.log({ item });
     return (
       <ResultCard
         key={index}

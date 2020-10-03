@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import {useParams} from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import AppContext from "../../../AppContext";
 import Header from "../../../Components/Header/Header";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
-import ApiService from '../../../services/ApiService';
+import ApiService from "../../../services/ApiService";
 import "./MakeOffer.css";
 
 export default function MakeOffer(props) {
@@ -11,10 +11,9 @@ export default function MakeOffer(props) {
   const [payrate, setPayrate] = useState("");
   const [projectInfo, setProjectInfo] = useState("");
   const [jobDetails, setJobDetails] = useState("");
-  const {freelanceID} = useParams()
+  const { freelanceID } = useParams();
   const [error, setError] = useState("");
 
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     const newOffer = {
@@ -23,9 +22,8 @@ export default function MakeOffer(props) {
       payrate: payrate,
       offer_info: projectInfo,
       offer_detail: jobDetails,
-      dev_id: freelanceID
-    }
-    console.log(newOffer)
+      dev_id: freelanceID,
+    };
     ApiService.postOffer(newOffer);
     props.history.goBack();
   };

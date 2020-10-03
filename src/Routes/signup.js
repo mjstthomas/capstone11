@@ -63,7 +63,6 @@ export default function SignUp(props) {
         AuthApiService.postLogin({ nickname: nickname, password: password })
       )
       .then((res) => {
-        console.log(res);
         TokenService.saveAuthToken(res.authToken);
         context.setNewUserProfile({ id: res.id, profile: res.profile });
         res.profile

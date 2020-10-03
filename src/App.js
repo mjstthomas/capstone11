@@ -56,15 +56,13 @@ class App extends React.Component {
     };
     AuthApiService.postLogin(signedUser)
       .then((res) => {
-        console.log(res)
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
-        console.log(res.id)
         ApiService.importUser(res.id)
           .then((res) => res.json())
           .then((res) => {
-            if (res.error){
-              return this.setState({error: res.error})
+            if (res.error) {
+              return this.setState({ error: res.error });
             }
             const { history } = this.props;
             this.setState({ user: res });
@@ -129,7 +127,6 @@ class App extends React.Component {
   };
 
   addSkill = (skill) => {
-    console.log(skill);
     const prevState = this.state;
     prevState[skill].push({ level: "", skill: "" });
     this.setState(prevState);
@@ -192,8 +189,6 @@ class App extends React.Component {
   handleMakeOffer = (offer) => {
     const newArray = [...this.state.businessOffers, offer];
     this.setState({ businessOffers: newArray });
-    console.log(offer);
-    console.log(newArray);
   };
 
   // handle adding details to freelance profile
@@ -210,7 +205,6 @@ class App extends React.Component {
 
   addFreelanceWork = () => {
     for (let project of this.state.work) {
-      console.log({ project });
       ApiService.postFreelanceWork(this.state.userProfile.id, project);
     }
   };

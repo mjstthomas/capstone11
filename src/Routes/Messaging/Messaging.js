@@ -12,14 +12,12 @@ function Messaging() {
 
   useEffect(() => {
     ApiService.getMessages().then((messages) => {
-      console.log({ messages });
       const filterMessages = (message) => {
         return (
           message.sender_id == recipientID || message.receiver_id == recipientID
         );
       };
       const filteredBySender = messages.filter(filterMessages);
-      console.log({ filteredBySender });
       setMessages(filteredBySender);
     });
   }, []);
