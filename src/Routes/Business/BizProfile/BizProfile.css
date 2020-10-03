@@ -1,0 +1,51 @@
+:root {
+  --primary-color: lawngreen;
+  --secondary-color: yellow;
+  --main-bg-color: linear-gradient(#222, #000);
+  --error-color: red;
+  --normal-size: 1.125rem;
+  --heading-size: 2.5rem;
+  --main-margin: 0;
+  --main-padding: 0.625em;
+  --box-shadow: -3px 5px 5px 0px black;
+}
+
+.Biz-container {
+  height: 100%;
+  width: 100%;
+}
+
+.Biz-image-offer-container {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.Biz-image-container {
+  text-align: center;
+  height: 10em;
+  padding: 1.5em;
+}
+
+.Biz-info-container {
+  background-image: linear-gradient(#242424, #111);
+  width: 90%;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 10px;
+  background: #242424;
+  box-shadow: -3px 5px 5px 0px var(--primary-color);
+}
+
+.info-container-label {
+  margin-top: 0;
+}
+
+.fas {
+  margin: auto;
+}
+.edit-btn-container {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  float: right;
+}

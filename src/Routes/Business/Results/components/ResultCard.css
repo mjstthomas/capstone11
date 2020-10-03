@@ -9,27 +9,42 @@
   --main-padding: 0.625em;
   --box-shadow: -3px 5px 5px 0px black;
 }
-.fa-user-ninja {
-  width: 100%;
-  height: 100%;
-}
 .result-card-header {
   margin: 0;
+  border-bottom: 1px solid var(--primary-color);
 }
-.rating {
+
+.result-card > a:link {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.result-card > a:visited {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
+.result-card > a:hover {
+  text-decoration: underline;
+  font-style: italic;
+  color: cyan;
+}
+/* .rating {
   float: right;
-}
+} */
 .result-card {
-  background: gray;
+  background: linear-gradient(#242424, #111);
   margin: auto;
   border-radius: 10px;
   width: 80%;
   min-height: 50px;
   text-align: center;
-  color: black;
+  color: var(--primary-color);
   padding: 0.5em 0;
   font-weight: 700;
-  box-shadow: 0px 5px 15px 5px var(--primary-color);
+  border-top: 1px solid var(--primary-color);
+  border-right: 1px solid var(--primary-color);
+  box-shadow: -3px 5px 5px 0px var(--primary-color);
 }
 
 .result-card-container {
@@ -40,28 +55,35 @@
 .result-card-image-container {
   box-sizing: border-box;
   width: 100%;
-  background-color: purple;
+  background-color: none;
   height: 10em;
   border-radius: 10px;
   margin-top: 5px;
   padding-top: 1em;
 }
-.result-card-rating {
+
+.result-card-image-container > .result-image {
+  width: 200px;
+  height: 200px;
+}
+
+/* .result-card-rating {
   text-align: left;
   padding: 0 0.5em;
   font-size: 1rem;
   border-bottom: 2px solid black;
-}
+} */
 
 .skills {
   text-align: left;
   min-height: 50px;
   padding: 1em;
-  background: gray;
+  border-top: 1px solid var(--primary-color);
 }
 .skill {
   display: inline-block;
   min-width: 20%;
   margin: 0 0.3em;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: 1.25rem;
 }

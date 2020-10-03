@@ -1,28 +1,32 @@
 import React from "react";
 import "./ResultCard.css";
-import { Link } from 'react-router-dom';
-import ninja from "../../../../imgs/ninja.png";
+import { Link } from "react-router-dom";
 
 export default function ResultCard(props) {
   const skill =
-    props.skills.map((skill) => <p className="skill">{skill}</p>) || "";
+    props.skills.map((skill, index) => (
+      <p key={index} className="skill">
+        {skill}
+      </p>
+    )) || "";
   return (
-    <Link to={`/Business/Results/${props.id}`}>
-        <section className="result-card-container">
-        <section className="result-card">
-            <h5 className="result-card-header">{props.name}</h5>
+    <section className="result-card-container">
+      <section className="result-card">
+        <Link className="result-link" to={`/Business/Results/${props.id}`}>
+          <h3 className="result-card-header">{props.name}</h3>
 
-            <article className="result-card-image-container">
-            <img className="result-image" src={ninja} alt="result" />
-            </article>
-            <article className="result-card-rating">
+          <article className="result-card-image-container">
+            <img className="result-image" src={props.image} alt="result" />
+          </article>
+        </Link>
+        {/* TO DO add rating system
+           <article className="result-card-rating">
             <p>
-                Rating: <span className="rating">{props.rating}</span>
+              Rating: <span className="rating">{props.rating}</span>
             </p>
-            </article>
-            <article className="skills">{skill}</article>
-        </section>
-        </section>
-    </Link>
+          </article> */}
+        <article className="skills">{skill}</article>
+      </section>
+    </section>
   );
 }
