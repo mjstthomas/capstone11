@@ -24,15 +24,15 @@ function FreelanceOffersPage(props) {
 
 const newOffers = myOffers.map((item) => (
                           <FreelancerCardItem
-                            name={item.businessName}
+                            name={item.emp_name}
                             dev_id={item.dev_id}
-                            src={item.userImage}
+                            src={item.image}
                             offer_id={item.id}
                             pay={item.payrate}
                             info = {item.offer_info}
                             text={item.offer_detail}
-                            key={item.businessID}
-                            id={item.businessID}
+                            key={item.employer_id}
+                            id={item.employer_id}
                             history={props.history}
                           />
                           ))
