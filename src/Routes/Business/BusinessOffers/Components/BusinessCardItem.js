@@ -25,13 +25,20 @@ function BusinessCardItem(props) {
         <p className="offer-pay">Pay rate: ${props.pay}/hr</p>
       </section>
       <section>
-      <p className="offer-job-desc">{props.info}</p>
-      <p className="offer-job-desc">{props.text}</p>
+        <p className="offer-job-desc">{props.info}</p>
+        <br />
+        <p className="offer-job-desc">Details: {props.text}</p>
       </section>
       <section className="bottom-card">
-      {props.response.length > 1 
-                      ? (props.response === 'Accepted' ? <p className="offer-green">{props.response}</p> :  <p className="offer-red">{props.response}</p>) 
-                      : <p className="offer-green">         </p>}
+        {props.response.length > 1 ? (
+          props.response === "Accepted" ? (
+            <p className="offer-green">{props.response}</p>
+          ) : (
+            <p className="offer-red">{props.response}</p>
+          )
+        ) : (
+          <p className="offer-green"> </p>
+        )}
         <SmallButton
           className="btn"
           id="cards-message"

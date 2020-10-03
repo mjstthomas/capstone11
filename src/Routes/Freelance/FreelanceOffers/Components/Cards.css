@@ -22,7 +22,7 @@
   border-top: 2px solid var(--primary-color);
   box-shadow: 0 2px 2px 1px var(--primary-color);
   justify-content: center;
-  align-items: center;
+  align-items: start;
 }
 
 .cards-item > h2,
@@ -45,6 +45,7 @@ p {
   grid-row-end: 3;
   margin: var(--main-padding);
   padding: 0.5em;
+  justify-self: flex-start;
 }
 
 .fl-right {

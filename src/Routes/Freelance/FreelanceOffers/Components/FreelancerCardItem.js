@@ -23,10 +23,11 @@ function BusinessCardItem(props) {
       <ProfilePic className="cards-pic" imgSrc={props.src} alt={props.name} />
       <section className="fl-right">
         <p className="cards-pay">Pay rate: {props.pay}/hr</p>
-        <section>
-          <p className="cards-job-desc">"{props.info}"</p>
-          <p className="cards-job-desc">"{props.text}"</p>
-        </section>
+        <br />
+        <p className="cards-job-desc">{props.info}</p>
+        <br />
+        <p className="cards-job-desc">Details: {props.text}</p>
+        <br />
       </section>
       <section className="fl-bottom">
         <SmallButton
