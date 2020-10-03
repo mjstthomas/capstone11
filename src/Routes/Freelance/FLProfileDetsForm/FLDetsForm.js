@@ -49,7 +49,7 @@ function FLDetsForm(props) {
     <main>
       <Header />
       <form
-        id="fl-details-form"
+        className="fl-details-form"
         onSubmit={(e) => {
           e.preventDefault();
           saveChanges();

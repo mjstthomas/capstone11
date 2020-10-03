@@ -23,7 +23,7 @@ function BizDetsForm(props) {
     <main>
       <Header />
       <form
-        id="biz-details-form"
+        className="biz-details-form"
         onSubmit={(e) => {
           e.preventDefault();
           saveChanges();

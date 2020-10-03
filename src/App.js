@@ -56,28 +56,19 @@ class App extends React.Component {
       .then((res) => {
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
-        return res.id;
-      })
-      .then((id) => ApiService.importUser(id))
-      .then((res) => {
-        return res.json();
-      })
-      .then((profile) => {
-        const { history } = this.props;
-        this.setState({ user: profile });
-        if (this.state.userProfile.profile === true) {
-          history.push("/Freelancer");
-        }
-        if (this.state.userProfile.profile === true && this.state.user.skills.length < 1){
-          history.push("/SignUp/FLDetails")
-        }
-        if (this.state.userProfile.profile === false) {
-          history.push("/Business");
-        }
-        if (this.state.userProfile.profile === false && this.state.user.emp_blurb.length < 1){
-          history.push("/SignUp/BizDetails")
-        }
-      })
+        ApiService.importUser(res.id)
+          .then((res) => res.json())
+          .then((profile) => {
+            const { history } = this.props;
+            this.setState({ user: profile });
+            if (this.state.userProfile.profile === true) {
+              history.push("/Freelancer");
+            }
+            if (this.state.userProfile.profile === false) {
+              history.push("/Business");
+            }
+        })
+    })
       .catch((e) => {
         setTimeout(() => {
           this.setState((PrevState) => {
@@ -89,6 +80,7 @@ class App extends React.Component {
         });
       });
   };
+
 
   setNewUserProfile = (profile) => {
     const prevState = this.state;
@@ -251,6 +243,7 @@ class App extends React.Component {
       setNav: this.setNav,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
+      newUserId: this.state.userProfile.id,
     };
 
     return (

@@ -16,7 +16,7 @@ const ApiService = {
         headers: {
           Authorization: `bearer ${TokenService.getAuthToken()}`,
         },
-        body: JSON.stringify(user),
+        body: user,
     })
   },
   getMessages() {

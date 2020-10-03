@@ -55,8 +55,9 @@ export default function SignUp(props) {
     };
     AuthApiService.postUser(newUser)
       .then((res) => {
-        !res.ok ? res.json().then((e) => setError(e)) : res.json();
-        props.history.push("/login");
+        if (!res.ok) {
+          res.json().then((e) => setError(e.message));
+        }
       })
       .then(() =>
         AuthApiService.postLogin({ nickname: nickname, password: password })
