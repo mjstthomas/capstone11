@@ -26,17 +26,20 @@
 
 .landing-container > h1 {
   color: var(--primary-color);
+  background-color: #222222ee;
   font-size: 5rem;
   margin-top: 0.5em;
+  padding: 0.1125em;
+  border-radius: 15px;
   font-family: "Audiowide", cursive;
   text-shadow: -3px 4px black;
 }
 
 .landing-container > p {
-  margin-top: 0.5em;
+  background-color: #222222ee;
   color: var(--primary-color);
   text-align: center;
-  text-shadow: -3px 4px black;
+  text-shadow: -2px 2px black;
   font-size: 1.5rem;
 }
 
