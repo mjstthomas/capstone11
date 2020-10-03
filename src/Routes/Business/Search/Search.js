@@ -37,8 +37,8 @@ function Search(props) {
 
     ApiService.getProfilesSearch(
       context.MustHaveSkills[0].skill,
-      context.MustHaveSkills[1].skill,
-      context.MustHaveSkills[2].skill
+      context.MustHaveSkills[1].skill || "-",
+      context.MustHaveSkills[2].skill || "-"
     ).then((res) => {
       console.log(res);
       context.handleResult(res);

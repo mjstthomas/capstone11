@@ -8,6 +8,7 @@ import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 import ApiService from "../../../services/ApiService";
+import TokenService from "../../../services/TokenService";
 
 function FLDetsForm(props) {
   const context = useContext(AppContext);
@@ -20,6 +21,7 @@ function FLDetsForm(props) {
       .then(() => context.addFreelanceSkills())
       // .then(() => context.addFreelanceWork())
       .then(() => {
+        TokenService.clearAuthToken();
         props.history.push("/login");
       });
   };

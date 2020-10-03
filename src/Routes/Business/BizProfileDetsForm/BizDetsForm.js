@@ -4,6 +4,7 @@ import PictureUpload from "../../../Components/PictureUpload/PictureUpload";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import "./BizDetsForm.css";
 import ApiService from "../../../services/ApiService";
+import TokenService from "../../../services/TokenService";
 
 function BizDetsForm(props) {
   const [textarea, setTextarea] = useState("");
@@ -11,6 +12,7 @@ function BizDetsForm(props) {
 
   const saveChanges = () => {
     ApiService.addProfile({ emp_blurb: textarea, image: image }).then(() => {
+      TokenService.clearAuthToken();
       props.history.push("/login");
     });
   };
