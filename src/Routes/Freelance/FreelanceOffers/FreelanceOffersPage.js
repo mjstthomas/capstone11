@@ -8,14 +8,16 @@ import ApiService from '../../../services/ApiService';
 function FreelanceOffersPage(props) {
   const [ myOffers, setOffers] = useState([])
   const context = useContext(AppContext);
+  const [error, setError ] = useState('')
   useEffect(()=>{
     ApiService.getFreelanceOffers()
                       .then(result => result.json())
                       .then(result =>{
-                        if (result.length < 1){
-                          return setOffers([]);
-                        }
                         console.log(result)
+                        if (result.error){
+                          setOffers([]);
+                          return setError(result.error)
+                        }
                         return setOffers(result)
                       })
   }, []) ;
@@ -38,6 +40,7 @@ const newOffers = myOffers.map((item) => (
     <main>
       <Header />
       <h1 className="offer-header">{context.user.nickname}'s Offers</h1>
+      <h3>{error}</h3>
       <section className="offers-container">{newOffers}</section>
     </main>
   );

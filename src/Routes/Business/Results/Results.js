@@ -21,9 +21,9 @@ export default function Results(props) {
   const mustHave = context.MustHaveSkills;
   const niceToHave = context.NiceToHaveSkills;
   let allSkills = mustHave;
-  if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
-    allSkills = mustHave.concat(niceToHave);
-  }
+  // if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
+  //   allSkills = mustHave.concat(niceToHave);
+  // }
   const skills = allSkills.map((item, index) => {
     if (item.skill !== "") {
       return (

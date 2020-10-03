@@ -31,7 +31,6 @@ function Search(props) {
   // ));
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     console.log(context.MustHaveSkills[0].skill);
     console.log(context.MustHaveSkills[1].skill);
     console.log(context.MustHaveSkills[2].skill);
