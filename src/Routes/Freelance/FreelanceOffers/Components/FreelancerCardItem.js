@@ -21,40 +21,48 @@ function BusinessCardItem(props) {
     <article className="cards-item" onClick={minimize}>
       <h2 className="cards-header">{props.name}</h2>
       <ProfilePic className="cards-pic" imgSrc={props.src} alt={props.name} />
-      <p className="cards-pay">Pay rate: {props.pay}/hr</p>
-      <section>
-      <p className="cards-job-desc">"{props.info}"</p>
-      <p className="cards-job-desc">"{props.text}"</p>
+      <section className="fl-right">
+        <p className="cards-pay">Pay rate: {props.pay}/hr</p>
+        <br />
+        <p className="cards-job-desc">{props.info}</p>
+        <br />
+        <p className="cards-job-desc">Details: {props.text}</p>
+        <br />
       </section>
-      <SmallButton
-        className="btn"
-        id="cards-message"
-        buttonStyle="btn-outline"
-        buttonSize="btn-large"
-        type="button"
-        onClick={() =>
-          props.history.push(`/Messaging/${context.user.id}/${props.id}`)
-        }
-      >
-        <i className="fas fa-comments"></i>
-      </SmallButton>
-      <SmallButton
-        className="btn"
-        id="cards-accept"
-        buttonStyle="btn-outline"
-        buttonSize="btn-large"
-        type="button"
-        onClick={() => setModal(!modal)}
-      >
-        Accept Offer
-      </SmallButton>
-      {modal && <Modal 
-                    id={props.offer_id}
-                    payrate={props.pay}
-                    dev_id = {props.dev_id}
-                    offer_detail={props.text}
-                    offer_info={props.info}
-                    minimize={() => setModal(!modal)} />}
+      <section className="fl-bottom">
+        <SmallButton
+          className="btn"
+          id="cards-message"
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
+          type="button"
+          onClick={() =>
+            props.history.push(`/Messaging/${context.user.id}/${props.id}`)
+          }
+        >
+          <i className="fas fa-comments"></i>
+        </SmallButton>
+        <SmallButton
+          className="btn"
+          id="cards-accept"
+          buttonStyle="btn-outline"
+          buttonSize="btn-large"
+          type="button"
+          onClick={() => setModal(!modal)}
+        >
+          Accept Offer
+        </SmallButton>
+      </section>
+      {modal && (
+        <Modal
+          id={props.offer_id}
+          payrate={props.pay}
+          dev_id={props.dev_id}
+          offer_detail={props.text}
+          offer_info={props.info}
+          minimize={() => setModal(!modal)}
+        />
+      )}
     </article>
   );
 }

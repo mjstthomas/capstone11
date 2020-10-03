@@ -9,6 +9,9 @@ function Nav() {
   return (
     <nav>
       <i className="fas fa-times" onClick={() => context.setNav()}></i>
+      <Link to={context.user.profile ? `/Freelancer` : `/Business`}>
+        Dashboard
+      </Link>
       <Link
         to={
           context.user.profile

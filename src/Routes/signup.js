@@ -10,7 +10,6 @@ import TokenService from "../services/TokenService";
 const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&])[\S]+/;
 
 export default function SignUp(props) {
-
   const context = useContext(AppContext);
 
   const [nickname, setNickname] = useState("");
@@ -55,9 +54,9 @@ export default function SignUp(props) {
       profile: profile,
     };
     AuthApiService.postUser(newUser)
-      .then((res) =>{
-          if (!res.ok){
-          res.json().then((e) => setError(e.message))
+      .then((res) => {
+        if (!res.ok) {
+          res.json().then((e) => setError(e.message));
         }
       })
       .then(() =>

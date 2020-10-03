@@ -47,6 +47,7 @@ function FLDetsForm(props) {
 
   return (
     <main>
+      <Header />
       <form
         className="fl-details-form"
         onSubmit={(e) => {

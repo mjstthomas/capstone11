@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import AppContext from "../../../AppContext";
 import SkillButton from "../../../Components/Utilities/SkillButton/SkillButton";
 import Header from "../../../Components/Header/Header";
@@ -19,7 +19,8 @@ export default function Results(props) {
   };
 
   const mustHave = context.MustHaveSkills;
-  const niceToHave = context.NiceToHaveSkills;
+  // TO DO add nice to have skills feature
+  // const niceToHave = context.NiceToHaveSkills;
   let allSkills = mustHave;
   // if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
   //   allSkills = mustHave.concat(niceToHave);
@@ -38,11 +39,13 @@ export default function Results(props) {
       return null;
     }
   });
-  const results = context.resultArray.map((item) => {
+  const results = context.resultArray.map((item, index) => {
+    console.log({ item });
     return (
       <ResultCard
-        key={item.id}
+        key={index}
         id={item.id}
+        image={item.image}
         name={item.nickname}
         skills={item.skills}
         levels={item.levels}

@@ -1,5 +1,5 @@
-import firebase from 'firebase'
-import 'firebase/storage'
+import firebase from "firebase/app";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyClqX60Rb6JpCVwu0x1PtUstZGhH9sc-GA",
@@ -8,11 +8,11 @@ const firebaseConfig = {
   projectId: "dev-it-58d22",
   storageBucket: "dev-it-58d22.appspot.com",
   messagingSenderId: "503067208671",
-  appId: "1:503067208671:web:623eca30e3878690fd326a"
+  appId: "1:503067208671:web:623eca30e3878690fd326a",
 };
 
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(firebaseConfig);
 
 const storage = firebase.storage();
 
-export {storage, firebase as default};
+export { storage, firebase as default };

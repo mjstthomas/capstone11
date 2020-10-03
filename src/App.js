@@ -33,7 +33,7 @@ class App extends React.Component {
     headerToggle: false,
     isNav: false,
     resultArray: [],
-    searchArray: [],
+    resultProfiles: [],
     work: [],
     MustHaveSkills: [
       { level: "", skill: "" },
@@ -67,8 +67,8 @@ class App extends React.Component {
             if (this.state.userProfile.profile === false) {
               history.push("/Business");
             }
-        })
-    })
+          });
+      })
       .catch((e) => {
         setTimeout(() => {
           this.setState((PrevState) => {
@@ -80,7 +80,6 @@ class App extends React.Component {
         });
       });
   };
-
 
   setNewUserProfile = (profile) => {
     const prevState = this.state;
@@ -143,20 +142,15 @@ class App extends React.Component {
   };
 
   handleResult = (result) => {
-    const searchedSkillsArray = () => {
-      const array = [];
-      for (let i = 0; i < this.state.MustHaveSkills.length; i++) {
-        array.push(this.state.MustHaveSkills[i].skill);
-      }
-      return array;
-    };
+    const prevState = this.state;
+    prevState.resultArray.push(...result);
+    this.setState(prevState);
+  };
 
-    const newArray = searchedSkillsArray();
-    const newSearchArray = [...this.state.searchArray];
-    const searchResult = newSearchArray.filter((item) =>
-      newArray.some((ai) => item.skills.includes(ai))
-    );
-    this.setState({ resultArray: searchResult });
+  handleResultProfiles = (result) => {
+    const prevState = this.state;
+    prevState.resultProfiles.push(result);
+    this.setState(prevState);
   };
 
   // handle featured work
@@ -225,22 +219,25 @@ class App extends React.Component {
       MustHaveSkills: this.state.MustHaveSkills,
       NiceToHaveSkills: this.state.NiceToHaveSkills,
       resultArray: this.state.resultArray,
+      resultProfiles: this.state.resultProfiles,
       signInUser: this.signInUser,
       setNewUserProfile: this.setNewUserProfile,
+      setHeaderToggle: this.setHeaderToggle,
+      setNav: this.setNav,
       resetSkills: this.resetSkills,
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
       addFreelanceSkills: this.addFreelanceSkills,
-      addFreelanceWork: this.addFreelanceWork,
+      // to do add featured work feature
+      // addFreelanceWork: this.addFreelanceWork,
       searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
-      searchLevel: this.searchLevel,
-      addWork: this.addWork,
-      removeWork: this.removeWork,
-      setHeaderToggle: this.setHeaderToggle,
-      setNav: this.setNav,
+      handleResult: this.handleResult,
+      handleResultProfiles: this.handleResultProfiles,
+      // addWork: this.addWork,
+      // removeWork: this.removeWork,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
       newUserId: this.state.userProfile.id,
