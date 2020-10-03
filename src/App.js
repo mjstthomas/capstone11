@@ -18,6 +18,8 @@ import AppContext from "./AppContext";
 import AuthApiService from "./services/AuthApiService";
 import ApiService from "./services/ApiService";
 import TokenService from "./services/TokenService";
+import PublicRoute from "./Utilis/PublicRoute";
+import PrivateRoute from "./Utilis/PrivateRoute";
 import "./App.css";
 
 class App extends React.Component {
@@ -67,8 +69,8 @@ class App extends React.Component {
             if (this.state.userProfile.profile === false) {
               history.push("/Business");
             }
-        })
-    })
+          });
+      })
       .catch((e) => {
         setTimeout(() => {
           this.setState((PrevState) => {
@@ -80,7 +82,6 @@ class App extends React.Component {
         });
       });
   };
-
 
   setNewUserProfile = (profile) => {
     const prevState = this.state;
@@ -251,36 +252,47 @@ class App extends React.Component {
         <div className="App">
           {this.state.error && <p className="error">{this.state.error}</p>}
           <Route path="/" exact component={LandingPage} />
-          <Route path="/SignUp" exact component={SignUp} />
-          <Route path="/Login" exact component={Login} />
-          <Route path="/SignUp/FLDetails" exact component={FLDetailForm} />
-          <Route path="/SignUp/BizDetails" component={BizDetailForm} />
-          <Route path="/Business" exact component={BizDash} />
-          <Route path="/Business/Search" component={Search} />
-          <Route path="/Business/Profile/:businessID" component={BizProfile} />
-          <Route
+          <PublicRoute path="/SignUp" exact component={SignUp} />
+          <PublicRoute path="/Login" exact component={Login} />
+          <PrivateRoute
+            path="/SignUp/FLDetails"
+            exact
+            component={FLDetailForm}
+          />
+          <PrivateRoute path="/SignUp/BizDetails" component={BizDetailForm} />
+          <PrivateRoute path="/Business" exact component={BizDash} />
+          <PrivateRoute path="/Business/Search" component={Search} />
+          <PrivateRoute
+            path="/Business/Profile/:businessID"
+            component={BizProfile}
+          />
+          <PrivateRoute
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
           />
-          <Route path="/Business/Results" exact component={Results} />
-          <Route
+          <PrivateRoute path="/Business/Results" exact component={Results} />
+          <PrivateRoute
             path="/Business/Results/:freelanceID"
             exact
             component={FLProfile}
           />
-          <Route
+          <PrivateRoute
             path="/Business/Results/:freelanceID/MakeOffer"
             exact
             component={MakeOffer}
           />
-          <Route
+          <PrivateRoute
             path="/Business/BusinessOffersPage"
             exact
             component={BusinessOffersPage}
           />
-          <Route path="/Freelancer" exact component={FreelanceOffersPage} />
+          <PrivateRoute
+            path="/Freelancer"
+            exact
+            component={FreelanceOffersPage}
+          />
 
-          <Route
+          <PrivateRoute
             path="/Messaging/:senderID/:recipientID"
             exact
             component={Messaging}
