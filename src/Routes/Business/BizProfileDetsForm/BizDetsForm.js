@@ -21,18 +21,14 @@ function BizDetsForm(props) {
 
   return (
     <main>
-<<<<<<< HEAD
-      <form id="biz-details-form">
-=======
       <Header />
       <form
-        id="biz-details-form"
+        className="biz-details-form"
         onSubmit={(e) => {
           e.preventDefault();
           saveChanges();
         }}
       >
->>>>>>> 40c9833ecffb391dd7484fba8222289110fc8d69
         <h1>Business Details</h1>
         <label className="about-label" htmlFor="about">
           About

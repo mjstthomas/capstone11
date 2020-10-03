@@ -57,6 +57,7 @@ export default function SignUp(props) {
     AuthApiService.postUser(newUser)
       .then((res) =>{
         !res.ok ? res.json().then((e) => setError(e)) : res.json()
+        console.log(res)
         props.history.push('/login')
         }
       )
