@@ -24,6 +24,7 @@ function BusinessOffersPage(props) {
       <BusinessCardItem
         date={item.date_created}
         rating={item.rating}
+        image={item.image}
         pay={item.payrate}
         info={item.offer_info}
         text={item.offer_detail}

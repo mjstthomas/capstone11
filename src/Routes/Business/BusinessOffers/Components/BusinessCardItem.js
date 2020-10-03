@@ -16,7 +16,7 @@ function BusinessCardItem(props) {
       <section className="left-card">
         <ProfilePic
           className="offer-pic"
-          imgSrc={props.freelancerURL}
+          imgSrc={props.image}
           imgAlt={props.freelancerName}
         />
       </section>

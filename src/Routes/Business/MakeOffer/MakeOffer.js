@@ -25,6 +25,7 @@ export default function MakeOffer(props) {
       offer_detail: jobDetails,
       dev_id: freelanceID
     }
+    console.log(newOffer)
     ApiService.postOffer(newOffer);
     props.history.goBack();
   };

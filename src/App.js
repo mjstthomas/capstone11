@@ -54,13 +54,18 @@ class App extends React.Component {
     };
     AuthApiService.postLogin(signedUser)
       .then((res) => {
+        console.log(res)
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
+        console.log(res.id)
         ApiService.importUser(res.id)
           .then((res) => res.json())
-          .then((profile) => {
+          .then((res) => {
+            if (res.error){
+              return this.setState({error: res.error})
+            }
             const { history } = this.props;
-            this.setState({ user: profile });
+            this.setState({ user: res });
             if (this.state.userProfile.profile === true) {
               history.push("/Freelancer");
             }

@@ -43,7 +43,7 @@ function Login(props) {
       <p>
         Need an account? <Link to="/SignUp">Sign up!</Link>
       </p>
-      <p className="red">{error}</p>
+      <p className="red">{error}{context.error}</p>
       <form
         className="login-form"
         onSubmit={(e) => {
