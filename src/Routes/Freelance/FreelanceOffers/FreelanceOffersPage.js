@@ -12,6 +12,10 @@ function FreelanceOffersPage(props) {
     ApiService.getFreelanceOffers()
                       .then(result => result.json())
                       .then(result =>{
+                        if (result.length < 1){
+                          return setOffers([]);
+                        }
+                        console.log(result)
                         return setOffers(result)
                       })
   }, []) ;

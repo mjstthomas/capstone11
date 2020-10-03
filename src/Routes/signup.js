@@ -56,22 +56,21 @@ export default function SignUp(props) {
     };
     AuthApiService.postUser(newUser)
       .then((res) =>{
-        !res.ok ? res.json().then((e) => setError(e)) : res.json()
-        console.log(res)
-        props.history.push('/login')
+          if (!res.ok){
+          res.json().then((e) => setError(e.message))
         }
+      })
+      .then(() =>
+        AuthApiService.postLogin({ nickname: nickname, password: password })
       )
-      // .then(() =>
-      //   AuthApiService.postLogin({ nickname: nickname, password: password })
-      // )
-      // .then((res) => {
-      //   console.log(res);
-      //   TokenService.saveAuthToken(res.authToken);
-      //   context.setNewUserProfile({ id: res.id, profile: res.profile });
-      //   res.profile
-      //     ? props.history.push("/SignUp/FLDetails")
-      //     : props.history.push("/SignUp/BizDetails");
-      // });
+      .then((res) => {
+        console.log(res);
+        TokenService.saveAuthToken(res.authToken);
+        context.setNewUserProfile({ id: res.id, profile: res.profile });
+        res.profile
+          ? props.history.push("/SignUp/FLDetails")
+          : props.history.push("/SignUp/BizDetails");
+      });
   };
 
   return (
