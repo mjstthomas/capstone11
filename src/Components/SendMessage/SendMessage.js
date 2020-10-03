@@ -14,7 +14,13 @@ function SendMessage({ receiver_id }) {
     setMessage("");
   };
   return (
-    <form id="send-message">
+    <form
+      id="send-message"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
       <textarea
         className="message-textarea"
         value={message}
