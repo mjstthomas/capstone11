@@ -8,14 +8,17 @@ import "./Messaging.css";
 
 function Messaging() {
   const [filteredMessages, setMessages] = useState([]);
-  const { senderID, recipientID } = useParams();
+  const { recipientID } = useParams();
 
   useEffect(() => {
     ApiService.getMessages().then((messages) => {
       console.log({ messages });
-      const filteredBySender = messages.filter(
-        (message) => message.sender_id === (recipientID || senderID)
-      );
+      const filterMessages = (message) => {
+        return (
+          message.sender_id == recipientID || message.receiver_id == recipientID
+        );
+      };
+      const filteredBySender = messages.filter(filterMessages);
       console.log({ filteredBySender });
       setMessages(filteredBySender);
     });
