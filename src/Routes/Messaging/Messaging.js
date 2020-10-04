@@ -14,7 +14,8 @@ function Messaging() {
     ApiService.getMessages().then((messages) => {
       const filterMessages = (message) => {
         return (
-          message.sender_id == recipientID || message.receiver_id == recipientID
+          message.sender_id === Number(recipientID) ||
+          message.receiver_id === Number(recipientID)
         );
       };
       const filteredBySender = messages.filter(filterMessages);
