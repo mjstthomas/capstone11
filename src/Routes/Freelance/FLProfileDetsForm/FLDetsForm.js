@@ -50,7 +50,7 @@ function FLDetsForm(props) {
           name="about"
           cols="40"
           rows="8"
-          placeholder="Enter a little something about your business."
+          placeholder="Enter a little something about yourself."
           value={textarea}
           onChange={(e) => setTextarea(e.target.value)}
         ></textarea>
@@ -62,7 +62,7 @@ function FLDetsForm(props) {
           <AddButton
             onClick={(e) => {
               e.preventDefault();
-              context.setSkill("skills");
+              context.addSkill("AddSkills");
             }}
           />
         </section>

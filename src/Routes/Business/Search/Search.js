@@ -41,8 +41,8 @@ function Search(props) {
           handleSubmit();
         }}
       >
-        <h1>Looking for Help?</h1>
         <section className="search-container">
+          <h1>Looking for Help?</h1>
           <article className="search-skills-container">
             <h2>Must Have Skills</h2>
             <p>You can add up to three</p>
