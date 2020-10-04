@@ -10,24 +10,14 @@ import "./Results.css";
 export default function Results(props) {
   const context = useContext(AppContext);
 
-  const deleteSkill = (event) => {
-    let name = event.target.name;
-    context.deleteSkill(name);
-    setTimeout(() => {
-      context.handleResult();
-    }, 1000);
-  };
-
-  const mustHave = context.MustHaveSkills;
-  let allSkills = mustHave;
-  const skills = allSkills.map((item, index) => {
-    if (item.skill !== "") {
+  const skills = context.MustHaveSkills.map((item, index) => {
+    if (item.skill !== "-") {
       return (
         <SkillButton
           key={index}
+          index={index}
           skill={item.skill}
           name={item.skill}
-          onClick={deleteSkill}
         />
       );
     } else {

@@ -10,22 +10,24 @@
   --box-shadow: -3px 5px 5px 0px black;
 }
 
-article > .skills-container {
+.search-container > .search-skills-container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-gap: 1em;
+  grid-auto-rows: max-content;
+  justify-content: center;
+  align-content: center;
 }
 
-.skills-container > h2 {
+.search-skills-container > h2 {
   margin: 0.5em 0 0;
 }
 
-.skills-container > p {
+.search-skills-container > p {
   font-style: italic;
   margin-bottom: 0.5em;
 }
 
-.skills-container > article {
+.search-skills-container > article {
   margin: 0.5em;
 }
 

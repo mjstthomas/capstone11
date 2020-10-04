@@ -38,9 +38,9 @@ class App extends React.Component {
     resultProfiles: [],
 
     MustHaveSkills: [
-      { level: "", skill: "" },
-      { level: "", skill: "" },
-      { level: "", skill: "" },
+      { level: "", skill: "-" },
+      { level: "", skill: "-" },
+      { level: "", skill: "-" },
     ],
     AddSkills: [{ level: "", skill: "" }],
     error: "",
@@ -95,13 +95,9 @@ class App extends React.Component {
 
   deleteSkill = (skill) => {
     const mustHave = this.state.MustHaveSkills;
-
-    let allSkills = mustHave;
-
-    const filteredSkillList = allSkills.filter((item) => item.skill !== skill);
-    const newSkills = [...filteredSkillList];
+    const filteredSkillList = mustHave.filter((item) => item.skill !== skill);
     this.setState({
-      MustHaveSkills: newSkills,
+      MustHaveSkills: filteredSkillList,
     });
   };
   setLevel = (level, index, typeOfSkill) => {

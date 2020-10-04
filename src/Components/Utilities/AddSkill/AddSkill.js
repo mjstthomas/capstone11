@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import Cancel from "../DenyButton/DenyButton";
 import "./AddSkill.css";
 import AppContext from "../../../AppContext";
 
 function getOptions() {
-  //fetch skills from server
+  //TO DO fetch skills from server
   //then return array of <option>
 
   //for now return example
@@ -30,6 +31,7 @@ function getOptions() {
 function AddSkill(props) {
   const context = useContext(AppContext);
   const options = getOptions();
+  const location = useLocation();
 
   return (
     <article className="skill-input">
@@ -66,12 +68,14 @@ function AddSkill(props) {
         />
         <datalist id="skill-list">{options}</datalist>
       </section>
-      <Cancel
-        onClick={(e) => {
-          e.preventDefault();
-          context.removeSkill(props.index, props.typeOfSkill);
-        }}
-      />
+      {location.pathname !== "/Business/Search" && (
+        <Cancel
+          onClick={(e) => {
+            e.preventDefault();
+            context.removeSkill(props.index, props.typeOfSkill);
+          }}
+        />
+      )}
     </article>
   );
 }

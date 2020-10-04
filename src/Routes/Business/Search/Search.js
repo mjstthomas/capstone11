@@ -23,8 +23,8 @@ function Search(props) {
   const handleSubmit = () => {
     ApiService.getProfilesSearch(
       context.MustHaveSkills[0].skill,
-      context.MustHaveSkills[1].skill || "-",
-      context.MustHaveSkills[2].skill || "-"
+      context.MustHaveSkills[1].skill,
+      context.MustHaveSkills[2].skill
     ).then((res) => {
       context.handleResult(res);
       props.history.push("/Business/Results");
@@ -42,34 +42,26 @@ function Search(props) {
         }}
       >
         <h1>Looking for Help?</h1>
-        <section>
-          <article className="skills-container">
+        <section className="search-container">
+          <article className="search-skills-container">
             <h2>Must Have Skills</h2>
             <p>You can add up to three</p>
             {mustHaveSkills}
-          </article>
-          {context.MustHaveSkills.length < 3 && (
-            <AddButton
-              onClick={(e) => {
+
+            <SmallButton
+              className="btn"
+              buttonStyle="btn-outline"
+              buttonSize="btn-large"
+              type="Submit"
+              onSubmit={(e) => {
                 e.preventDefault();
-                context.addSkill("MustHaveSkills");
+                handleSubmit();
               }}
-            />
-          )}
+            >
+              Search
+            </SmallButton>
+          </article>
         </section>
-        <br />
-        <SmallButton
-          className="btn"
-          buttonStyle="btn-outline"
-          buttonSize="btn-large"
-          type="Submit"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-        >
-          Search
-        </SmallButton>
       </form>
     </main>
   );
