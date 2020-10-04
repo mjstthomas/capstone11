@@ -9,7 +9,9 @@ const AuthApiService = {
         "content-type": "application/json",
       },
       body: JSON.stringify(credentials),
-    });
+    }).then((res) =>
+      !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
+    );
   },
   postRefresh() {
     return fetch(`${config.API_ENDPOINT}api/auth/refresh`, {

@@ -55,9 +55,7 @@ class App extends React.Component {
     };
     AuthApiService.postLogin(signedUser)
       .then(res =>{
-        if (!res.ok){
-          throw Error(res.error)
-        }
+        console.log(res)
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
         ApiService.importUser(res.id)
