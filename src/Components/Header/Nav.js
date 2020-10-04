@@ -6,22 +6,30 @@ import "./Nav.css";
 
 function Nav() {
   const context = useContext(AppContext);
+
+  const navUserType = () => {
+    if (
+      (context.userProfile.profile === true &&
+        context.headerToggle === false) ||
+      (context.userProfile.profile === false && context.headerToggle === true)
+    ) {
+      return "Freelancer";
+    } else if (
+      (context.userProfile.profile === true && context.headerToggle === true) ||
+      (context.userProfile.profile === false && context.headerToggle === false)
+    ) {
+      return "Business";
+    }
+  };
   return (
     <nav>
       <i className="fas fa-times" onClick={() => context.setNav()}></i>
-      <Link
-        onClick={() => context.setNav()}
-        to={context.userProfile.profile ? `/Freelancer` : `/Business`}
-      >
+      <Link onClick={() => context.setNav()} to={`/${navUserType()}`}>
         Dashboard
       </Link>
       <Link
         onClick={() => context.setNav()}
-        to={
-          context.userProfile.profile
-            ? `/Freelancer/Profile/${context.user.id}`
-            : `/Business/Profile/${context.user.id}`
-        }
+        to={`/${navUserType()}/Profile/${context.user.user_id}`}
       >
         Profile
       </Link>
