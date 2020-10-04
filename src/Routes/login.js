@@ -13,7 +13,7 @@ function Login(props) {
     nickname: "",
     password: "",
   });
-  const [error, setError] = useState(context.error);
+  const [error, setError] = useState('');
 
   const handleSignIn = (event) => {
     let name = event.target.name;
@@ -43,7 +43,7 @@ function Login(props) {
       <p>
         Need an account? <Link to="/SignUp">Sign up!</Link>
       </p>
-      <p className="red">{error}{context.error}</p>
+      <p className="error-message">{error}{context.error}</p>
       <form
         className="login-form"
         onSubmit={(e) => {

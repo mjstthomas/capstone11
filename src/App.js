@@ -54,15 +54,15 @@ class App extends React.Component {
       password: user.password,
     };
     AuthApiService.postLogin(signedUser)
-      .then((res) => {
+      .then(res =>{
+        if (!res.ok){
+          throw Error(res.error)
+        }
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
         ApiService.importUser(res.id)
           .then((res) => res.json())
           .then((res) => {
-            if (res.error) {
-              return this.setState({ error: res.error });
-            }
             const { history } = this.props;
             this.setState({ user: res });
             if (this.state.userProfile.profile === true) {
@@ -73,15 +73,11 @@ class App extends React.Component {
             }
           });
       })
-      .catch((e) => {
+      .catch((Error) => {
         setTimeout(() => {
-          this.setState((PrevState) => {
-            return { ...PrevState, error: "" };
-          });
+          this.setState({error: ""});
         }, 10000);
-        return this.setState((PrevState) => {
-          return { ...PrevState, error: e.message };
-        });
+        this.setState({error: "Wrong UserName or Password"});
       });
   };
 
@@ -213,7 +209,6 @@ class App extends React.Component {
     return (
       <AppContext.Provider value={context}>
         <div className="App">
-          {this.state.error && <p className="error">{this.state.error}</p>}
           <Route path="/" exact component={LandingPage} />
           <PublicRoute path="/SignUp" exact component={SignUp} />
           <PublicRoute path="/Login" exact component={Login} />
