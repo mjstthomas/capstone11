@@ -23,6 +23,10 @@ function Messaging() {
     });
   }, []);
 
+  const handleOnLoad = () => {
+    window.scrollTo(0, document.body.scrollHeight);
+  };
+
   const messageBubbles = filteredMessages.map((message, index) => (
     <MessageBubble
       key={index}
@@ -34,7 +38,7 @@ function Messaging() {
   ));
 
   return (
-    <main>
+    <main onLoad={() => handleOnLoad()}>
       <Header />
       <section className="message-container">{messageBubbles}</section>
       <SendMessage receiver_id={recipientID} />

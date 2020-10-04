@@ -14,31 +14,34 @@ function SendMessage({ receiver_id }) {
     setMessage("");
   };
   return (
-    <form
-      id="send-message"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-    >
-      <textarea
-        className="message-textarea"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        col="25"
-        rows="6"
-      />
-      <button
-        className="message-btn"
-        type="submit"
+    <footer>
+      <form
+        id="send-message"
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
         }}
       >
-        <i className="fas fa-play"></i>
-      </button>
-    </form>
+        <textarea
+          autoFocus
+          className="message-textarea"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          col="25"
+          rows="6"
+        />
+        <button
+          className="message-btn"
+          type="submit"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <i className="fas fa-play"></i>
+        </button>
+      </form>
+    </footer>
   );
 }
 export default SendMessage;
