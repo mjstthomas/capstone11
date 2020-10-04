@@ -29,9 +29,7 @@
   font-style: italic;
   color: cyan;
 }
-/* .rating {
-  float: right;
-} */
+
 .result-card {
   background: linear-gradient(#242424, #111);
   margin: auto;
@@ -66,13 +64,6 @@
   width: 200px;
   height: 200px;
 }
-
-/* .result-card-rating {
-  text-align: left;
-  padding: 0 0.5em;
-  font-size: 1rem;
-  border-bottom: 2px solid black;
-} */
 
 .skills {
   text-align: left;

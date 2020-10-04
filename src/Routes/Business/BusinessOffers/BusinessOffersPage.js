@@ -22,7 +22,6 @@ function BusinessOffersPage(props) {
     return (
       <BusinessCardItem
         date={item.date_created}
-        rating={item.rating}
         image={item.image}
         pay={item.payrate}
         info={item.offer_info}

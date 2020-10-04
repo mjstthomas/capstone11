@@ -20,16 +20,6 @@ function Search(props) {
     />
   ));
 
-  // const niceToHaveSkills = context.NiceToHaveSkills.map((skill, index) => (
-  //   <AddSkillComponent
-  //     typeOfSkill="NiceToHaveSkills"
-  //     search='true'
-  //     skill={skill}
-  //     key={index}
-  //     index={index}
-  //   />
-  // ));
-
   const handleSubmit = () => {
     ApiService.getProfilesSearch(
       context.MustHaveSkills[0].skill,
@@ -68,18 +58,6 @@ function Search(props) {
           )}
         </section>
         <br />
-        {/* <section>
-          <article className="skills-container">
-            <h2>Nice To Have Skills</h2>
-            {niceToHaveSkills}
-          </article>
-          <AddButton
-            onClick={(e) => {
-              e.preventDefault();
-              context.addSkill("NiceToHaveSkills");
-            }}
-          />
-        </section> */}
         <SmallButton
           className="btn"
           buttonStyle="btn-outline"

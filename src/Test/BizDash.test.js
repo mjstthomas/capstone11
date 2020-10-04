@@ -14,7 +14,7 @@ it("renders without crashing", () => {
             id: null,
             nickname: "",
             profile: { id: null, profile: null },
-            work: [],
+
             skills: [{ level: "", skill: "" }],
           },
           userProfile: { id: null, profile: null },
@@ -22,13 +22,12 @@ it("renders without crashing", () => {
           isNav: false,
           resultArray: [],
           resultProfiles: [],
-          work: [],
+
           MustHaveSkills: [
             { level: "", skill: "" },
             { level: "", skill: "" },
             { level: "", skill: "" },
           ],
-          // NiceToHaveSkills: [{ level: "", skill: "" }],
           AddSkills: [{ level: "", skill: "" }],
           error: "",
         }}

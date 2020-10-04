@@ -28,7 +28,7 @@ class App extends React.Component {
       id: null,
       nickname: "",
       profile: { id: null, profile: null },
-      work: [],
+
       skills: [{ level: "", skill: "" }],
     },
     userProfile: { id: null, profile: null },
@@ -36,13 +36,12 @@ class App extends React.Component {
     isNav: false,
     resultArray: [],
     resultProfiles: [],
-    work: [],
+
     MustHaveSkills: [
       { level: "", skill: "" },
       { level: "", skill: "" },
       { level: "", skill: "" },
     ],
-    // NiceToHaveSkills: [{ level: "", skill: "" }],
     AddSkills: [{ level: "", skill: "" }],
     error: "",
   };
@@ -96,16 +95,13 @@ class App extends React.Component {
 
   deleteSkill = (skill) => {
     const mustHave = this.state.MustHaveSkills;
-    const niceToHave = this.state.NiceToHaveSkills;
+
     let allSkills = mustHave;
-    if (niceToHave.length > 0 && niceToHave[0].skill !== "") {
-      allSkills = mustHave.concat(niceToHave);
-    }
+
     const filteredSkillList = allSkills.filter((item) => item.skill !== skill);
     const newSkills = [...filteredSkillList];
     this.setState({
       MustHaveSkills: newSkills,
-      NiceToHaveSkills: [{ level: "", skill: "" }],
     });
   };
   setLevel = (level, index, typeOfSkill) => {
@@ -141,7 +137,6 @@ class App extends React.Component {
   resetSkills = () => {
     this.setState({
       MustHaveSkills: [{ level: "", skill: "" }],
-      NiceToHaveSkills: [{ level: "", skill: "" }],
     });
   };
 
@@ -154,19 +149,6 @@ class App extends React.Component {
   handleResultProfiles = (result) => {
     const prevState = this.state;
     prevState.resultProfiles.push(result);
-    this.setState(prevState);
-  };
-
-  // handle featured work
-  addWork = (newURL) => {
-    const prevState = this.state;
-    prevState.user.work.push(newURL);
-    this.setState(prevState);
-  };
-
-  removeWork = (index) => {
-    const prevState = this.state;
-    prevState.user.work.splice(index, 1);
     this.setState(prevState);
   };
 
@@ -203,22 +185,14 @@ class App extends React.Component {
     }
   };
 
-  addFreelanceWork = () => {
-    for (let project of this.state.work) {
-      ApiService.postFreelanceWork(this.state.userProfile.id, project);
-    }
-  };
-
   render(props) {
     let context = {
       user: this.state.user,
       userProfile: this.state.userProfile,
-      work: this.state.work,
       headerToggle: this.state.headerToggle,
       isNav: this.state.isNav,
       AddSkills: this.state.AddSkills,
       MustHaveSkills: this.state.MustHaveSkills,
-      NiceToHaveSkills: this.state.NiceToHaveSkills,
       resultArray: this.state.resultArray,
       resultProfiles: this.state.resultProfiles,
       signInUser: this.signInUser,
@@ -230,15 +204,11 @@ class App extends React.Component {
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
       addFreelanceSkills: this.addFreelanceSkills,
-      // to do add featured work feature
-      // addFreelanceWork: this.addFreelanceWork,
       searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
       handleResult: this.handleResult,
       handleResultProfiles: this.handleResultProfiles,
-      // addWork: this.addWork,
-      // removeWork: this.removeWork,
       handleMakeOffer: this.handleMakeOffer,
       error: this.state.error,
       newUserId: this.state.userProfile.id,

@@ -10,14 +10,14 @@ const ApiService = {
       },
     });
   },
-  postUser(user){
-      return fetch(`${config.API_ENDPOINT}api/users/`, {
-        method: "POST",
-        headers: {
-          Authorization: `bearer ${TokenService.getAuthToken()}`,
-        },
-        body: user,
-    })
+  postUser(user) {
+    return fetch(`${config.API_ENDPOINT}api/users/`, {
+      method: "POST",
+      headers: {
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: user,
+    });
   },
   getMessages() {
     return fetch(`${config.API_ENDPOINT}api/messages/myMessages`, {
@@ -72,18 +72,6 @@ const ApiService = {
       }),
     });
   },
-  postFreelanceWork(userID, work) {
-    return fetch(`${config.API_ENDPOINT}api/profiles/${userID}/projects`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify({
-        details: work,
-      }),
-    });
-  },
   deleteOffer(offerID) {
     return fetch(`${config.API_ENDPOINT}api/offers/${offerID}`, {
       method: "DELETE",
@@ -123,44 +111,44 @@ const ApiService = {
       !res.ok ? res.json().then((e) => Promise.reject(e)) : res.json()
     );
   },
-  getFreelanceOffers(){
-      return fetch(`${process.env.REACT_APP_API_URL}api/offers/dev`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${TokenService.getAuthToken()}`,
-        }
-      })
+  getFreelanceOffers() {
+    return fetch(`${process.env.REACT_APP_API_URL}api/offers/dev`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    });
   },
-  getBusinessOffers(){
+  getBusinessOffers() {
     return fetch(`${process.env.REACT_APP_API_URL}api/offers/emp`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
         Authorization: `Bearer ${TokenService.getAuthToken()}`,
-      }
-    })
-},
-acceptOffer(obj, offer_id){
-  return fetch(`${process.env.REACT_APP_API_URL}api/offers/${offer_id}`, {
-    method: "PATCH",
-    headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${TokenService.getAuthToken()}`,
-    },
-    body: JSON.stringify(obj),
-  })
-},
-postOffer(obj){
-  return fetch(`${process.env.REACT_APP_API_URL}api/offers/`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      Authorization: `Bearer ${TokenService.getAuthToken()}`,
-    },
-    body: JSON.stringify(obj),
-  })
-}
+      },
+    });
+  },
+  acceptOffer(obj, offer_id) {
+    return fetch(`${process.env.REACT_APP_API_URL}api/offers/${offer_id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(obj),
+    });
+  },
+  postOffer(obj) {
+    return fetch(`${process.env.REACT_APP_API_URL}api/offers/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(obj),
+    });
+  },
 };
 
 export default ApiService;

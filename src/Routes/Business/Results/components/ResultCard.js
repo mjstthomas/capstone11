@@ -19,12 +19,6 @@ export default function ResultCard(props) {
             <img className="result-image" src={props.image} alt="result" />
           </article>
         </Link>
-        {/* TO DO add rating system
-           <article className="result-card-rating">
-            <p>
-              Rating: <span className="rating">{props.rating}</span>
-            </p>
-          </article> */}
         <article className="skills">{skill}</article>
       </section>
     </section>
