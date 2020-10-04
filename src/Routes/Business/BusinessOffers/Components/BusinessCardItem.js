@@ -36,9 +36,7 @@ function BusinessCardItem(props) {
           ) : (
             <p className="offer-red">{props.response}</p>
           )
-        ) : (
-          <p className="offer-green"> </p>
-        )}
+        ) : null}
         <SmallButton
           className="btn"
           id="cards-message"

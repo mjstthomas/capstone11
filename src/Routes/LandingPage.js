@@ -12,7 +12,7 @@ function LandingPage(props) {
           className="btn"
           buttonStyle="btn-outline"
           buttonSize="btn-large"
-          type="submit"
+          type="button"
           onClick={() => props.history.push("/login")}
         >
           Enter

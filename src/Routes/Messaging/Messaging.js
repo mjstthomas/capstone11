@@ -24,7 +24,8 @@ function Messaging() {
   }, []);
 
   const handleOnLoad = () => {
-    window.scrollTo(0, document.body.scrollHeight);
+    let scrollingElement = document.scrollingElement || document.body;
+    scrollingElement.scrollTop = scrollingElement.scrollHeight;
   };
 
   const messageBubbles = filteredMessages.map((message, index) => (

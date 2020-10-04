@@ -139,14 +139,4 @@
     justify-content: center;
     align-items: baseline;
   }
-
-  .fas {
-    margin: auto;
-  }
-  .edit-btn-container {
-    display: flex;
-    flex-direction: row-reverse;
-    width: 100%;
-    float: right;
-  }
 }
