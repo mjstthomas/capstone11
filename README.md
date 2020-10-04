@@ -15,10 +15,10 @@ To view the repo for the API used in this app click [here](https://github.com/tt
 This app was created to connect businesses with freelancers to help with coding problems. With Dev.it the user can log in and if they are a business they can search for a freelancer by skill. If the user is a freelancer they can look at all of their offers and accept or deny them. When an offer is submitted the business and freelancer are able to message each other.
 
 ![Landing page](./src/imgs/landing.png)
-![Freelance Offers page](.src/imgs/floffers.png)
-![Business Dashboard](.src/imgs/bizdash.png)
-![Search page](.src/imgs/search.png)
-![Results page](.src/imgs/result.png)
+![Freelance Offers page](./src/imgs/floffers.png)
+![Business Dashboard](./src/imgs/bizdash.png)
+![Search page](./src/imgs/search.png)
+![Results page](./src/imgs/result.png)
 
 ## Technology Used
 
