@@ -54,7 +54,7 @@ function Header(props) {
               />
             </article>
           )}
-      {context.isNav && <Nav />}
+      {context.isNav && <Nav userType={userType} />}
     </header>
   );
 }
