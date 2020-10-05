@@ -131,6 +131,7 @@ class App extends React.Component {
 
   handleResult = (result) => {
     const prevState = this.state;
+    console.log(result)
     prevState.resultArray.push(...result);
     this.setState(prevState);
   };
