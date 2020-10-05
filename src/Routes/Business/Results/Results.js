@@ -28,7 +28,7 @@ export default function Results(props) {
     return (
       <ResultCard
         key={index}
-        id={item.id}
+        id={item.user_id}
         image={item.image}
         name={item.nickname}
         skills={item.skills}
