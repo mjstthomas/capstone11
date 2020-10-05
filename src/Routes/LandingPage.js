@@ -25,7 +25,7 @@ function LandingPage(props) {
       <p>Use ScreenName: DemoFreelancer, Password: password to view the app as a freelancer</p>
       
       <p>Use ScreeName: DemoBusiness, Password: password, to view the app as a business</p>
-     </div>
+    </div>
   );
 }
 

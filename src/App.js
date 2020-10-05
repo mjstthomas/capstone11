@@ -55,7 +55,6 @@ class App extends React.Component {
     };
     AuthApiService.postLogin(signedUser)
       .then(res =>{
-        console.log(res)
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
         ApiService.importUser(res.id)
@@ -208,8 +207,8 @@ class App extends React.Component {
       <AppContext.Provider value={context}>
         <div className="App">
           <Route path="/" exact component={LandingPage} />
-          <PublicRoute path="/SignUp" exact component={SignUp} />
-          <PublicRoute path="/Login" exact component={Login} />
+          <Route path="/SignUp" exact component={SignUp} />
+          <Route path="/Login" exact component={Login} />
           <PrivateRoute
             path="/SignUp/FLDetails"
             exact
