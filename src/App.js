@@ -87,8 +87,11 @@ class App extends React.Component {
   //Skill Search Functions
 
   deleteSkill = (skill) => {
+    const newSkill = { level: "", skill: "-" }
     const mustHave = this.state.MustHaveSkills;
     const filteredSkillList = mustHave.filter((item) => item.skill !== skill);
+    filteredSkillList.push(newSkill)
+    console.log(filteredSkillList)
     this.setState({
       MustHaveSkills: filteredSkillList,
     });
@@ -131,8 +134,7 @@ class App extends React.Component {
 
   handleResult = (result) => {
     const prevState = this.state;
-    console.log(result)
-    prevState.resultArray.push(...result);
+    prevState.resultArray = result;
     this.setState(prevState);
   };
 

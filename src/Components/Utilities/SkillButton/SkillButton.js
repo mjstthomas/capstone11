@@ -8,17 +8,17 @@ export default function SkillButton(props) {
 
   const handleDelete = () => {
     ApiService.getProfilesSearch(
-      context.MustHaveSkills[0].skill,
+      context.MustHaveSkills[0].skill ? context.MustHaveSkills[0].skill : "-",
       context.MustHaveSkills[1].skill ? context.MustHaveSkills[1].skill : "-",
       context.MustHaveSkills[2].skill ? context.MustHaveSkills[2].skill : "-"
     ).then((res) => {
       context.handleResult(res);
-      props.history.push("/Business/Results");
     });
   };
 
   const deleteSkillOnClick = () => {
-    context.deleteSkill(props.name).then(() => handleDelete());
+    context.deleteSkill(props.name);
+    handleDelete();
   };
   return (
     <section className="skill-btn-container">

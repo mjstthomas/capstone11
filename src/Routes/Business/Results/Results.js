@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import AppContext from "../../../AppContext";
 import SkillButton from "../../../Components/Utilities/SkillButton/SkillButton";
 import Header from "../../../Components/Header/Header";
@@ -9,6 +9,7 @@ import "./Results.css";
 
 export default function Results(props) {
   const context = useContext(AppContext);
+  const [results , setResults] = useState([])
 
   const skills = context.MustHaveSkills.map((item, index) => {
     if (item.skill !== "-") {
@@ -24,18 +25,23 @@ export default function Results(props) {
       return null;
     }
   });
-  const results = context.resultArray.map((item, index) => {
-    return (
-      <ResultCard
-        key={index}
-        id={item.user_id}
-        image={item.image}
-        name={item.nickname}
-        skills={item.skills}
-        levels={item.levels}
-      />
-    );
-  });
+
+  useEffect(()=>{
+    const result = context.resultArray.map((item, index) => {
+      return (
+        <ResultCard
+          key={index}
+          id={item.user_id}
+          image={item.image}
+          name={item.nickname}
+          skills={item.skills}
+          levels={item.levels}
+        />
+      );
+    });
+    console.log(context.resultArray)
+    return setResults(result)
+  }, context.resultArray)
 
   return (
     <section className="result-container">
