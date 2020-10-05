@@ -10,7 +10,7 @@ function Messaging() {
   const [filteredMessages, setMessages] = useState([]);
   const { recipientID } = useParams();
 
-  useEffect(() => {
+  const getMessages = () => {
     ApiService.getMessages().then((messages) => {
       const filterMessages = (message) => {
         return (
@@ -21,7 +21,9 @@ function Messaging() {
       const filteredBySender = messages.filter(filterMessages);
       setMessages(filteredBySender);
     });
-  }, []);
+  };
+
+  useEffect(() => getMessages(), []);
 
   const handleOnLoad = () => {
     let scrollingElement = document.scrollingElement || document.body;
@@ -42,7 +44,7 @@ function Messaging() {
     <main onLoad={() => handleOnLoad()}>
       <Header />
       <section className="message-container">{messageBubbles}</section>
-      <SendMessage receiver_id={recipientID} />
+      <SendMessage getMessages={getMessages} receiver_id={recipientID} />
     </main>
   );
 }

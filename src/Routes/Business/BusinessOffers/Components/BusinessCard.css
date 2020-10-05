@@ -13,7 +13,7 @@
 .offer-item {
   background-image: linear-gradient(#242424, #111);
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: repeat(2, max-content);
   grid-template-rows: repeat(4, max-content);
   grid-gap: 0.5em;
   padding: var(--main-padding);
@@ -55,7 +55,7 @@ p {
   font-weight: 900;
 }
 
-.offer-red{
+.offer-red {
   color: red;
   font-weight: 900;
 }
@@ -69,7 +69,7 @@ p {
   padding: 0.5em;
 }
 
-.offer-item > .offer-job-desc {
+.offer-item > .middle-card {
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 3;

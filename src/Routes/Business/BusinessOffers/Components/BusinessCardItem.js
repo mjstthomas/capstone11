@@ -24,7 +24,7 @@ function BusinessCardItem(props) {
         <p className="offer-date">{newDate}</p>
         <p className="offer-pay">Pay rate: ${props.pay}/hr</p>
       </section>
-      <section>
+      <section className="middle-card">
         <p className="offer-job-desc">{props.info}</p>
         <br />
         <p className="offer-job-desc">Details: {props.text}</p>

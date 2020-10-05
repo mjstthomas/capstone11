@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import "./SendMessage.css";
 import ApiService from "../../services/ApiService";
 
-function SendMessage({ receiver_id }) {
+function SendMessage(props) {
   const [message, setMessage] = useState("");
 
   const handleSubmit = () => {
     const preppedMessage = {
-      receiver_id,
+      receiver_id: props.receiver_id,
       message,
     };
-    ApiService.postMessage(preppedMessage);
-    setMessage("");
+    ApiService.postMessage(preppedMessage).then(() => {
+      setMessage("");
+      props.getMessages();
+    });
   };
   return (
     <footer>

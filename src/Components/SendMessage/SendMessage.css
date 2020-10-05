@@ -33,7 +33,7 @@
 #send-message {
   background-color: #111;
   display: flex;
-  position: relative;
+  position: absolute;
   bottom: 0;
   width: 100%;
   color: black;

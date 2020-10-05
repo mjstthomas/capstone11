@@ -9,7 +9,7 @@ import "./Results.css";
 
 export default function Results(props) {
   const context = useContext(AppContext);
-  const [results , setResults] = useState([])
+  const [results, setResults] = useState([]);
 
   const skills = context.MustHaveSkills.map((item, index) => {
     if (item.skill !== "-") {
@@ -26,7 +26,7 @@ export default function Results(props) {
     }
   });
 
-  useEffect(()=>{
+  useEffect(() => {
     const result = context.resultArray.map((item, index) => {
       return (
         <ResultCard
@@ -39,9 +39,8 @@ export default function Results(props) {
         />
       );
     });
-    console.log(context.resultArray)
-    return setResults(result)
-  }, context.resultArray)
+    return setResults(result);
+  }, context.resultArray);
 
   return (
     <section className="result-container">
