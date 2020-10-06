@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, Link } from "react-router-dom";
 import Header from "../../../Components/Header/Header";
 import ApiService from "../../../services/ApiService";
 import AppContext from "../../../AppContext";
@@ -36,13 +36,19 @@ function BizProfile(props) {
 
   return (
     <main>
-      {context.user.id === businessID &&
-      (profile.emp_blurb === null || profile.emp_blurb === "") ? (
+      {context.user.id === businessID && context.user.emp_blurb === null ? (
         <Redirect to="/SignUp/BizDetails" />
       ) : (
         <section className="profile-wrapper">
           <Header />
-          <h1 className="profile-header">{profile.nickname}</h1>
+          <section className="profile-header">
+            <h1>{profile.nickname}</h1>
+            {context.user.user_id == businessID && (
+              <Link to="/Business/Edit">
+                <i className="fas fa-edit"></i>
+              </Link>
+            )}
+          </section>
           <section className="Biz-image-offer-container">
             <article className="Biz-image-container">
               <img src={profile.image} className="Biz" alt={profile.nickname} />

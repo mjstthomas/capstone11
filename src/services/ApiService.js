@@ -58,6 +58,16 @@ const ApiService = {
       body: JSON.stringify(details),
     });
   },
+  patchProfile(details) {
+    return fetch(`${config.API_ENDPOINT}api/profiles/add`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+      body: JSON.stringify(details),
+    });
+  },
   addFreelanceSkill(userID, name, level) {
     return fetch(`${config.API_ENDPOINT}api/skills/add/${userID}`, {
       method: "POST",

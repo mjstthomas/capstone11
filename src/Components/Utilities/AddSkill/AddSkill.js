@@ -38,6 +38,15 @@ function AddSkill(props) {
       <section className="container">
         <label htmlFor="skill-level">Experience</label>
         <select
+          onLoad={() =>
+            location.pathname === "/Freelancer/Edit"
+              ? context.setLevel(
+                  props.skill.level,
+                  props.index,
+                  props.typeOfSkill
+                )
+              : null
+          }
           onChange={(e) => {
             context.setLevel(e.target.value, props.index, props.typeOfSkill);
           }}
@@ -58,21 +67,34 @@ function AddSkill(props) {
           id="skill-name"
           name="skill-name"
           list="skill-list"
-          onChange={(e) => {
-            return context.setSkill(
-              e.target.value,
-              props.index,
-              props.typeOfSkill
-            );
-          }}
+          onLoad={() =>
+            location.pathname === "/Freelancer/Edit"
+              ? context.setSkill(
+                  props.skill.skill,
+                  props.index,
+                  props.typeOfSkill
+                )
+              : null
+          }
+          onChange={(e) =>
+            context.setSkill(e.target.value, props.index, props.typeOfSkill)
+          }
         />
         <datalist id="skill-list">{options}</datalist>
       </section>
-      {location.pathname !== "/Business/Search" && (
+      {location.pathname === "/SignUp/FLDetails" && (
         <Cancel
           onClick={(e) => {
             e.preventDefault();
             context.removeSkill(props.index, props.typeOfSkill);
+          }}
+        />
+      )}
+      {location.pathname === "/Freelancer/Edit" && (
+        <Cancel
+          onClick={(e) => {
+            e.preventDefault();
+            context.editRemoveSkill(props.index);
           }}
         />
       )}

@@ -5,6 +5,8 @@ import SignUp from "./Routes/signup";
 import Login from "./Routes/login";
 import FLDetailForm from "./Routes/Freelance/FLProfileDetsForm/FLDetsForm";
 import BizDetailForm from "./Routes/Business/BizProfileDetsForm/BizDetsForm";
+import EditBizProfile from "./Routes/EditBizProfile/EditBizProfile";
+import EditFLProfile from "./Routes/EditFLProfile/EditFLProfile";
 import BizDash from "./Routes/Business/BizDash/BizDash";
 import Search from "./Routes/Business/Search/Search";
 import Results from "./Routes/Business/Results/Results";
@@ -18,7 +20,6 @@ import AppContext from "./AppContext";
 import AuthApiService from "./services/AuthApiService";
 import ApiService from "./services/ApiService";
 import TokenService from "./services/TokenService";
-import PublicRoute from "./Utilis/PublicRoute";
 import PrivateRoute from "./Utilis/PrivateRoute";
 import "./App.css";
 
@@ -36,7 +37,7 @@ class App extends React.Component {
     isNav: false,
     resultArray: [],
     resultProfiles: [],
-
+    EditSkills: [],
     MustHaveSkills: [
       { level: "", skill: "-" },
       { level: "", skill: "-" },
@@ -125,9 +126,27 @@ class App extends React.Component {
     this.setState(prevState);
   };
 
+  createEditSkills = () => {
+    let skills = [];
+    for (let i = 0; i < this.state.user.skills; i++) {
+      let skillObj = {
+        level: this.state.user.level[i],
+        skill: this.state.user.skills[i],
+      };
+      skills.push(skillObj);
+    }
+    const prevState = this.state;
+    prevState.EditSkills = skills;
+    this.setState(prevState);
+  };
+
   resetSkills = () => {
     this.setState({
-      MustHaveSkills: [{ level: "", skill: "" }],
+      MustHaveSkills: [
+        { level: "", skill: "-" },
+        { level: "", skill: "-" },
+        { level: "", skill: "-" },
+      ],
     });
   };
 
@@ -176,6 +195,16 @@ class App extends React.Component {
     }
   };
 
+  saveFreelanceSkills = () => {
+    for (let skill of this.state.user.skills) {
+      ApiService.addFreelanceSkill(
+        this.state.userProfile.id,
+        skill.skill,
+        skill.level
+      );
+    }
+  };
+
   render(props) {
     let context = {
       user: this.state.user,
@@ -183,6 +212,7 @@ class App extends React.Component {
       headerToggle: this.state.headerToggle,
       isNav: this.state.isNav,
       AddSkills: this.state.AddSkills,
+      EditSkills: this.EditSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       resultArray: this.state.resultArray,
       resultProfiles: this.state.resultProfiles,
@@ -194,7 +224,9 @@ class App extends React.Component {
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
+      createEditSkills: this.createEditSkills,
       addFreelanceSkills: this.addFreelanceSkills,
+      saveFreelanceSkills: this.saveFreelanceSkills,
       searchSkill: this.searchSkill,
       setSkill: this.setSkill,
       setLevel: this.setLevel,
@@ -220,12 +252,24 @@ class App extends React.Component {
           <PrivateRoute path="/Business" exact component={BizDash} />
           <PrivateRoute path="/Business/Search" component={Search} />
           <PrivateRoute
+            exact
             path="/Business/Profile/:businessID"
             component={BizProfile}
           />
           <PrivateRoute
+            exact
             path="/Freelancer/Profile/:freelanceID"
             component={FLProfile}
+          />
+          <PrivateRoute
+            exact
+            path="/Business/Edit"
+            component={EditBizProfile}
+          />
+          <PrivateRoute
+            exact
+            path="/Freelancer/Edit"
+            component={EditFLProfile}
           />
           <PrivateRoute path="/Business/Results" exact component={Results} />
           <PrivateRoute

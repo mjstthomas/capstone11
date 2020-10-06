@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, Redirect, Link } from "react-router-dom";
 import Header from "../../../Components/Header/Header";
 import AppContext from "../../../AppContext";
 import "./FLProfile.css";
@@ -37,18 +36,23 @@ function FLProfile(props) {
 
   return (
     <main className="FLP-container">
-      {context.user.id === freelanceID &&
-      (profile.dev_blurb === null || profile.dev_blurb === "") ? (
+      {context.user.id === freelanceID && context.user.dev_blurb === null ? (
         <Redirect to="/SignUp/FLDetails" />
       ) : (
         <section className="profile-wrapper">
           <Header />
-          <h1 className="profile-header">{profile.nickname}</h1>
+          <section className="profile-header">
+            <h1>{profile.nickname}</h1>
+            {context.user.user_id == freelanceID && (
+              <Link to="/Freelancer/Edit">
+                <i className="fas fa-edit"></i>
+              </Link>
+            )}
+          </section>
           <section className="FLP-image-offer-container">
             <article className="FLP-image-container">
               <img className="FLP" src={profile.image} alt={profile.nickname} />
             </article>
-            {/* <article className="FLP-offer-container"> */}
             {context.user.id !== freelanceID && (
               <button
                 className="FLP-make-offer-btn"
@@ -61,10 +65,6 @@ function FLProfile(props) {
                 Make Offer
               </button>
             )}
-            {/* {context.user.id == freelanceID && <section className="edit-btn-container">
-                                                  <i class="fas fa-edit"></i>
-                                                </section>} */}
-            {/* </article> */}
           </section>
           <section className="FLP-info-container">
             <h3 className="info-container-label">About Me:</h3>
