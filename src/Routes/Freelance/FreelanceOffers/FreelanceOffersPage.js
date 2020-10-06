@@ -21,6 +21,15 @@ function FreelanceOffersPage(props) {
       });
   }, []);
 
+  const acceptOffer = (offerID, response) => {
+    const newArray = [...myOffers];
+    newArray.map(item =>{
+      if (item.id === offerID){
+        item.response = response;
+      }
+    })
+    setOffers(newArray)
+  }
   const newOffers = myOffers.map((item) => (
     <FreelancerCardItem
       name={item.emp_name}
@@ -32,6 +41,8 @@ function FreelanceOffersPage(props) {
       text={item.offer_detail}
       key={item.employer_id}
       id={item.employer_id}
+      acceptOffer = {acceptOffer}
+      response = {item.response}
       history={props.history}
     />
   ));
