@@ -16,11 +16,15 @@ export default function Modal(props) {
   const handleAccept = (obj) => {
     obj.response = "Accepted";
     ApiService.acceptOffer(obj, props.id);
+    props.acceptOffer(props.id, 'Accepted');
+    props.minimize();
   };
   const handleDeny = (obj) => {
     obj.response = "Denied";
     obj.dev_id = 0;
     ApiService.acceptOffer(obj, props.id);
+    props.acceptOffer(props.id, 'Denied');
+    props.minimize();
   };
   return (
     <section className="modal-container" onClick={props.minimize}>
