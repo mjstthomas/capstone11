@@ -44,7 +44,7 @@ function FLProfile(props) {
           <section className="profile-header">
             <h1>{profile.nickname}</h1>
             {context.user.user_id == freelanceID && (
-              <Link to="/Freelancer/Edit">
+              <Link to={`/Freelancer/Profile/Edit/${freelanceID}`}>
                 <i className="fas fa-edit"></i>
               </Link>
             )}

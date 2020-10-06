@@ -62,6 +62,18 @@ class App extends React.Component {
           .then((res) => res.json())
           .then((res) => {
             const { history } = this.props;
+            let skills = [];
+            let skillObj = { level: "", skill: "" };
+            for (let i = 0; i < res.skills.length; i++) {
+              skillObj.level = res.level[i];
+              skillObj.skill = res.skills[i];
+
+              skills.push(skillObj);
+            }
+            console.log(skills);
+            const prevState = this.state;
+            prevState.EditSkills = skills;
+            this.setState(prevState);
             this.setState({ user: res });
             if (this.state.userProfile.profile === true) {
               history.push("/Freelancer");
@@ -123,20 +135,6 @@ class App extends React.Component {
   removeSkill = (index, typeOfSkill) => {
     const prevState = this.state;
     prevState[typeOfSkill].splice(index, 1);
-    this.setState(prevState);
-  };
-
-  createEditSkills = () => {
-    let skills = [];
-    for (let i = 0; i < this.state.user.skills; i++) {
-      let skillObj = {
-        level: this.state.user.level[i],
-        skill: this.state.user.skills[i],
-      };
-      skills.push(skillObj);
-    }
-    const prevState = this.state;
-    prevState.EditSkills = skills;
     this.setState(prevState);
   };
 
@@ -212,7 +210,7 @@ class App extends React.Component {
       headerToggle: this.state.headerToggle,
       isNav: this.state.isNav,
       AddSkills: this.state.AddSkills,
-      EditSkills: this.EditSkills,
+      EditSkills: this.state.EditSkills,
       MustHaveSkills: this.state.MustHaveSkills,
       resultArray: this.state.resultArray,
       resultProfiles: this.state.resultProfiles,
@@ -224,7 +222,6 @@ class App extends React.Component {
       removeSkill: this.removeSkill,
       deleteSkill: this.deleteSkill,
       addSkill: this.addSkill,
-      createEditSkills: this.createEditSkills,
       addFreelanceSkills: this.addFreelanceSkills,
       saveFreelanceSkills: this.saveFreelanceSkills,
       searchSkill: this.searchSkill,
@@ -263,12 +260,12 @@ class App extends React.Component {
           />
           <PrivateRoute
             exact
-            path="/Business/Edit"
+            path="/Business/Profile/Edit/:businessID"
             component={EditBizProfile}
           />
           <PrivateRoute
             exact
-            path="/Freelancer/Edit"
+            path="/Freelancer/Profile/Edit/:freelanceID"
             component={EditFLProfile}
           />
           <PrivateRoute path="/Business/Results" exact component={Results} />

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./EditFLProfile.css";
 import Header from "../../Components/Header/Header";
 import AddSkill from "../../Components/Utilities/AddSkill/AddSkill";
@@ -25,16 +25,16 @@ function FLDetsForm(props) {
     setImage(imageURL);
   };
 
-  const editSkills = context.EditSkills.map((skill, index) => (
-    <AddSkill
-      typeOfSkill="EditSkills"
-      skill={skill}
-      key={index}
-      index={index}
-    />
-  ));
-
-  useEffect(() => context.createEditSkills(), []);
+  const makeSkills = () => {
+    context.EditSkills.map((skill, index) => (
+      <AddSkill
+        typeOfSkill="EditSkills"
+        skill={skill}
+        key={index}
+        index={index}
+      />
+    ));
+  };
 
   return (
     <main>
@@ -62,7 +62,7 @@ function FLDetsForm(props) {
         <section>
           <article className="skills-container">
             <h2>Edit Skills</h2>
-            {editSkills}
+            {makeSkills()}
           </article>
           <AddButton
             onClick={(e) => {

@@ -39,13 +39,9 @@ function AddSkill(props) {
         <label htmlFor="skill-level">Experience</label>
         <select
           onLoad={() =>
-            location.pathname === "/Freelancer/Edit"
-              ? context.setLevel(
-                  props.skill.level,
-                  props.index,
-                  props.typeOfSkill
-                )
-              : null
+            location.pathname ===
+              `/Freelancer/Profile/Edit/${context.user.user_id}` &&
+            context.setLevel(props.skill.level, props.index, props.typeOfSkill)
           }
           onChange={(e) => {
             context.setLevel(e.target.value, props.index, props.typeOfSkill);
@@ -68,13 +64,9 @@ function AddSkill(props) {
           name="skill-name"
           list="skill-list"
           onLoad={() =>
-            location.pathname === "/Freelancer/Edit"
-              ? context.setSkill(
-                  props.skill.skill,
-                  props.index,
-                  props.typeOfSkill
-                )
-              : null
+            location.pathname ===
+              `/Freelancer/Profile/Edit/${context.user.user_id}` &&
+            context.setSkill(props.skill.skill, props.index, props.typeOfSkill)
           }
           onChange={(e) =>
             context.setSkill(e.target.value, props.index, props.typeOfSkill)

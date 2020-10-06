@@ -44,7 +44,7 @@ function BizProfile(props) {
           <section className="profile-header">
             <h1>{profile.nickname}</h1>
             {context.user.user_id == businessID && (
-              <Link to="/Business/Edit">
+              <Link to={`/Business/Profile/Edit/${businessID}`}>
                 <i className="fas fa-edit"></i>
               </Link>
             )}
