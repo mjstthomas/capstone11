@@ -9,6 +9,7 @@ function FreelanceOffersPage(props) {
   const [myOffers, setOffers] = useState([]);
   const context = useContext(AppContext);
   const [error, setError] = useState("");
+  
   useEffect(() => {
     ApiService.getFreelanceOffers()
       .then((result) => result.json())
@@ -39,7 +40,7 @@ function FreelanceOffersPage(props) {
       pay={item.payrate}
       info={item.offer_info}
       text={item.offer_detail}
-      key={item.employer_id}
+      key={item.id}
       id={item.employer_id}
       acceptOffer = {acceptOffer}
       response = {item.response}

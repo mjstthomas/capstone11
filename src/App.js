@@ -20,6 +20,7 @@ import AppContext from "./AppContext";
 import AuthApiService from "./services/AuthApiService";
 import ApiService from "./services/ApiService";
 import TokenService from "./services/TokenService";
+import PublicRoute from "./Utilis/PublicRoute";
 import PrivateRoute from "./Utilis/PrivateRoute";
 import "./App.css";
 
@@ -37,7 +38,7 @@ class App extends React.Component {
     isNav: false,
     resultArray: [],
     resultProfiles: [],
-    EditSkills: [],
+
     MustHaveSkills: [
       { level: "", skill: "-" },
       { level: "", skill: "-" },
@@ -55,7 +56,7 @@ class App extends React.Component {
       password: user.password,
     };
     AuthApiService.postLogin(signedUser)
-      .then((res) => {
+      .then(res =>{
         TokenService.saveAuthToken(res.authToken);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
         ApiService.importUser(res.id)
@@ -63,14 +64,13 @@ class App extends React.Component {
           .then((res) => {
             const { history } = this.props;
             let skills = [];
-            let skillObj = { level: "", skill: "" };
             for (let i = 0; i < res.skills.length; i++) {
+              let skillObj = { level: "", skill: "" };
               skillObj.level = res.level[i];
               skillObj.skill = res.skills[i];
 
               skills.push(skillObj);
             }
-            console.log(skills);
             const prevState = this.state;
             prevState.EditSkills = skills;
             this.setState(prevState);
@@ -85,9 +85,9 @@ class App extends React.Component {
       })
       .catch((Error) => {
         setTimeout(() => {
-          this.setState({ error: "" });
+          this.setState({error: ""});
         }, 10000);
-        this.setState({ error: "Wrong UserName or Password" });
+        this.setState({error: "Wrong UserName or Password"});
       });
   };
 
@@ -100,10 +100,10 @@ class App extends React.Component {
   //Skill Search Functions
 
   deleteSkill = (skill) => {
-    const newSkill = { level: "", skill: "-" };
+    const newSkill = { level: "", skill: "-" }
     const mustHave = this.state.MustHaveSkills;
     const filteredSkillList = mustHave.filter((item) => item.skill !== skill);
-    filteredSkillList.push(newSkill);
+    filteredSkillList.push(newSkill)
     this.setState({
       MustHaveSkills: filteredSkillList,
     });
@@ -140,11 +140,7 @@ class App extends React.Component {
 
   resetSkills = () => {
     this.setState({
-      MustHaveSkills: [
-        { level: "", skill: "-" },
-        { level: "", skill: "-" },
-        { level: "", skill: "-" },
-      ],
+      MustHaveSkills: [{ level: "", skill: "" }],
     });
   };
 
