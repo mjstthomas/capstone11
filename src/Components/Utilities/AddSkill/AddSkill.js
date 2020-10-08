@@ -32,6 +32,8 @@ function AddSkill(props) {
   const context = useContext(AppContext);
   const options = getOptions();
   const location = useLocation();
+  const level = props.skill.level ? props.skill.level : '---';
+  const skill = props.skill.skill ? props.skill.skill : '---';
 
   return (
     <article className="skill-input">
@@ -49,7 +51,7 @@ function AddSkill(props) {
           id="skill-level"
           name="skill-level"
         >
-          <option default>---</option>
+          <option default>{level}</option>
           <option value="entry">Entry Level</option>
           <option value="mid">Intermediate</option>
           <option value="expert">Expert</option>
@@ -63,6 +65,7 @@ function AddSkill(props) {
           id="skill-name"
           name="skill-name"
           list="skill-list"
+          default={skill}
           onLoad={() =>
             location.pathname ===
               `/Freelancer/Profile/Edit/${context.user.user_id}` &&

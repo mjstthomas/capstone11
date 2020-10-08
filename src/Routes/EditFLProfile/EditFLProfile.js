@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./EditFLProfile.css";
 import Header from "../../Components/Header/Header";
 import AddSkill from "../../Components/Utilities/AddSkill/AddSkill";
@@ -20,6 +20,7 @@ function FLDetsForm(props) {
         props.history.push(`/Freelancer/Profile/${context.user.user_id}`);
       });
   };
+
 
   const setProfileImage = (imageURL) => {
     setImage(imageURL);
@@ -55,7 +56,7 @@ function FLDetsForm(props) {
           cols="40"
           rows="8"
           placeholder="Enter a little something about yourself."
-          value={textarea}
+          value={context.user.dev_blurb}
           onChange={(e) => setTextarea(e.target.value)}
         ></textarea>
         <section>
@@ -70,7 +71,7 @@ function FLDetsForm(props) {
             }}
           />
         </section>
-        <PictureUpload image={image} setImage={setProfileImage} />
+        <PictureUpload image={image} setImage={context.user.image} />
         <SmallButton
           className="btn"
           buttonStyle="btn-outline"

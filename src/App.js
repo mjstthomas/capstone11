@@ -46,6 +46,7 @@ class App extends React.Component {
     ],
     AddSkills: [{ level: "", skill: "" }],
     error: "",
+    EditSkills: [],
   };
 
 
@@ -56,11 +57,24 @@ class App extends React.Component {
       ApiService.importUser(Id)
         .then(result => result.json())
         .then(result =>{
-          console.log(result)
-          this.setState({user: result})
+          let skills = [];
+            for (let i = 0; i < result.skills.length; i++) {
+              let skillObj = { level: "", skill: "" };
+              skillObj.level = result.level[i];
+              skillObj.skill = result.skills[i];
+
+              skills.push(skillObj);
+            }
+            const prevState = this.state;
+            prevState.EditSkills = skills;
+            this.setState(prevState);
+          this.setState({
+            user: result})
+            console.log(this.state)
         })
     }
   }
+
   //Sign in / Sign Up functions
 
   signInUser = (user) => {
@@ -77,9 +91,10 @@ class App extends React.Component {
         ApiService.importUser(res.id)
           .then((res) => res.json())
           .then((res) => {
+            console.log(res)
             const { history } = this.props;
             let skills = [];
-            for (let i = 0; i < res.skills.length || [].length; i++) {
+            for (let i = 0; i < res.skills.length; i++) {
               let skillObj = { level: "", skill: "" };
               skillObj.level = res.level[i];
               skillObj.skill = res.skills[i];

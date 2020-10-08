@@ -17,7 +17,9 @@ function Nav() {
       return "Business";
     }
   };
+
   const UserType = navUserType();
+  
   return (
     <nav>
       <i className="fas fa-times" onClick={() => context.setNav()}></i>
