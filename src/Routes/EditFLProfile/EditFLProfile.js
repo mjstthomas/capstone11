@@ -25,7 +25,7 @@ function FLDetsForm(props) {
     setImage(imageURL);
   };
 
-  const makeSkills = () => {
+  const makeSkills = 
     context.EditSkills.map((skill, index) => (
       <AddSkill
         typeOfSkill="EditSkills"
@@ -34,7 +34,6 @@ function FLDetsForm(props) {
         index={index}
       />
     ));
-  };
 
   return (
     <main>
@@ -62,7 +61,7 @@ function FLDetsForm(props) {
         <section>
           <article className="skills-container">
             <h2>Edit Skills</h2>
-            {makeSkills()}
+            {makeSkills}
           </article>
           <AddButton
             onClick={(e) => {

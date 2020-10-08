@@ -6,21 +6,18 @@ import "./Nav.css";
 
 function Nav() {
   const context = useContext(AppContext);
-
+  const isItAFL = TokenService.getProfileToken()
+  
+  
   const navUserType = () => {
-    if (
-      (context.userProfile.profile === true &&
-        context.headerToggle === false) ||
-      (context.userProfile.profile === false && context.headerToggle === true)
-    ) {
+    console.log(isItAFL)
+    if (isItAFL === 'true') {
       return "Freelancer";
-    } else if (
-      (context.userProfile.profile === true && context.headerToggle === true) ||
-      (context.userProfile.profile === false && context.headerToggle === false)
-    ) {
+    } else {
       return "Business";
     }
   };
+  const UserType = navUserType();
   return (
     <nav>
       <i className="fas fa-times" onClick={() => context.setNav()}></i>
@@ -29,7 +26,7 @@ function Nav() {
       </Link>
       <Link
         onClick={() => context.setNav()}
-        to={`/${navUserType()}/Profile/${context.user.user_id}`}
+        to={`/${UserType}/Profile/${context.user.user_id}`}
       >
         Profile
       </Link>
@@ -37,6 +34,8 @@ function Nav() {
         to="/"
         onClick={() => {
           TokenService.clearAuthToken();
+          TokenService.clearIdToken();
+          TokenService.clearProfileToken();
           context.setNav();
         }}
       >
