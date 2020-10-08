@@ -70,7 +70,7 @@ class App extends React.Component {
 
               skills.push(skillObj);
             }
-            console.log(skills);
+
             const prevState = this.state;
             prevState.EditSkills = skills;
             this.setState(prevState);
