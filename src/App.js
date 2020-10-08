@@ -48,6 +48,19 @@ class App extends React.Component {
     error: "",
   };
 
+
+  componentDidMount(){
+    if (TokenService.hasIdToken()){
+      const Id = TokenService.getIdToken();
+
+      ApiService.importUser(Id)
+        .then(result => result.json())
+        .then(result =>{
+          console.log(result)
+          this.setState({user: result})
+        })
+    }
+  }
   //Sign in / Sign Up functions
 
   signInUser = (user) => {
@@ -58,13 +71,15 @@ class App extends React.Component {
     AuthApiService.postLogin(signedUser)
       .then(res =>{
         TokenService.saveAuthToken(res.authToken);
+        TokenService.saveIdToken(res.id);
+        TokenService.saveProfileToken(res.profile);
         this.setState({ userProfile: { id: res.id, profile: res.profile } });
         ApiService.importUser(res.id)
           .then((res) => res.json())
           .then((res) => {
             const { history } = this.props;
             let skills = [];
-            for (let i = 0; i < res.skills.length; i++) {
+            for (let i = 0; i < res.skills.length || [].length; i++) {
               let skillObj = { level: "", skill: "" };
               skillObj.level = res.level[i];
               skillObj.skill = res.skills[i];

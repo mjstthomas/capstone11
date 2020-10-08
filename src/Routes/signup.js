@@ -64,6 +64,8 @@ export default function SignUp(props) {
       )
       .then((res) => {
         TokenService.saveAuthToken(res.authToken);
+        TokenService.saveIdToken(res.id);
+        TokenService.saveProfileToken(res.profile);
         context.setNewUserProfile({ id: res.id, profile: res.profile });
         res.profile
           ? props.history.push("/SignUp/FLDetails")
