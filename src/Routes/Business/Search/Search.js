@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "./Search.css";
 import Header from "../../../Components/Header/Header";
 import AddSkillComponent from "../../../Components/Utilities/AddSkill/AddSkill";
-import AddButton from "../../../Components/Utilities/AddButton/AddButton";
 import SmallButton from "../../../Components/Utilities/SmallButton/SmallButton";
 import AppContext from "../../../AppContext";
 import ApiService from "../../../services/ApiService";

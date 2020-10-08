@@ -49,9 +49,8 @@ class App extends React.Component {
     EditSkills: [],
   };
 
-
-  componentDidMount(){
-    if (TokenService.hasIdToken()){
+  componentDidMount() {
+    if (TokenService.hasIdToken()) {
       const Id = TokenService.getIdToken();
 
       ApiService.importUser(Id)
@@ -70,7 +69,7 @@ class App extends React.Component {
             this.setState(prevState);
           this.setState({
             user: result})
-            console.log(this.state)
+
         })
     }
   }
@@ -83,7 +82,7 @@ class App extends React.Component {
       password: user.password,
     };
     AuthApiService.postLogin(signedUser)
-      .then(res =>{
+      .then((res) => {
         TokenService.saveAuthToken(res.authToken);
         TokenService.saveIdToken(res.id);
         TokenService.saveProfileToken(res.profile);
@@ -115,9 +114,9 @@ class App extends React.Component {
       })
       .catch((Error) => {
         setTimeout(() => {
-          this.setState({error: ""});
+          this.setState({ error: "" });
         }, 10000);
-        this.setState({error: "Wrong UserName or Password"});
+        this.setState({ error: "Wrong UserName or Password" });
       });
   };
 
@@ -130,10 +129,10 @@ class App extends React.Component {
   //Skill Search Functions
 
   deleteSkill = (skill) => {
-    const newSkill = { level: "", skill: "-" }
+    const newSkill = { level: "", skill: "-" };
     const mustHave = this.state.MustHaveSkills;
     const filteredSkillList = mustHave.filter((item) => item.skill !== skill);
-    filteredSkillList.push(newSkill)
+    filteredSkillList.push(newSkill);
     this.setState({
       MustHaveSkills: filteredSkillList,
     });

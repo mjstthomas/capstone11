@@ -45,13 +45,10 @@ function Header(props) {
         ? null
         : TokenService.hasAuthToken() && (
             <article
-              className="header-profile-pic"
+              className="header-menu-icon"
               onClick={() => context.setNav()}
             >
-              <ProfilePic
-                imgSrc={context.user.image}
-                imgAlt={context.user.nickname}
-              />
+              <i className="fas fa-bars"></i>
             </article>
           )}
       {context.isNav && <Nav userType={userType} />}
