@@ -59,7 +59,7 @@ const ApiService = {
     });
   },
   patchProfile(details) {
-    return fetch(`${config.API_ENDPOINT}api/profiles/add`, {
+    return fetch(`${config.API_ENDPOINT}api/profiles/${TokenService.getIdToken()}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

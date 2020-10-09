@@ -28,7 +28,7 @@ function Nav() {
       </Link>
       <Link
         onClick={() => context.setNav()}
-        to={`/${UserType}/Profile/${context.user.user_id}`}
+        to={`/${UserType}/Profile/${TokenService.getIdToken()}`}
       >
         Profile
       </Link>

@@ -5,6 +5,7 @@ import SmallButton from "../../Components/Utilities/SmallButton/SmallButton";
 import "./EditBizProfile.css";
 import ApiService from "../../services/ApiService";
 import AppContext from "../../AppContext";
+import TokenService from "../../services/TokenService";
 
 function EditBizProfile(props) {
   const context = useContext(AppContext);
@@ -13,7 +14,9 @@ function EditBizProfile(props) {
 
   const saveChanges = () => {
     ApiService.patchProfile({ emp_blurb: textarea, image: image }).then(() => {
-      props.history.push(`/Business/Profile/${context.user.user_id}`);
+      setTimeout(()=>{
+        props.history.push(`/Business/Profile/${TokenService.getIdToken()}`);
+      }, 2000)
     });
   };
 

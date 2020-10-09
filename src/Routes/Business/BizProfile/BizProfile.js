@@ -4,6 +4,7 @@ import Header from "../../../Components/Header/Header";
 import ApiService from "../../../services/ApiService";
 import AppContext from "../../../AppContext";
 import "./BizProfile.css";
+import TokenService from "../../../services/TokenService";
 
 function BizProfile(props) {
   const context = useContext(AppContext);
@@ -42,8 +43,8 @@ function BizProfile(props) {
         <section className="profile-wrapper">
           <Header />
           <section className="profile-header">
-            <h1>{profile.nickname}</h1>
-            {context.user.user_id == businessID && (
+            <h1>{context.user.nickname}</h1>
+            {TokenService.getIdToken() == businessID && (
               <Link to={`/Business/Profile/Edit/${businessID}`}>
                 <i className="fas fa-edit"></i>
               </Link>

@@ -58,6 +58,7 @@ class App extends React.Component {
         .then(result =>{
           console.log(result)
           let skills = [];
+          if (result.skills){
             for (let i = 0; i < result.skills.length; i++) {
               let skillObj = { level: "", skill: "" };
               skillObj.level = result.level[i];
@@ -65,6 +66,7 @@ class App extends React.Component {
 
               skills.push(skillObj);
             }
+          }
             const prevState = this.state;
             prevState.EditSkills = skills;
             this.setState(prevState);
@@ -94,12 +96,14 @@ class App extends React.Component {
             console.log(res)
             const { history } = this.props;
             let skills = [];
-            for (let i = 0; i < res.skills.length; i++) {
-              let skillObj = { level: "", skill: "" };
-              skillObj.level = res.level[i];
-              skillObj.skill = res.skills[i];
+            if (res.skills){
+              for (let i = 0; i < res.skills.length; i++) {
+                let skillObj = { level: "", skill: "" };
+                skillObj.level = res.level[i];
+                skillObj.skill = res.skills[i];
 
-              skills.push(skillObj);
+                skills.push(skillObj);
+              }
             }
             const prevState = this.state;
             prevState.EditSkills = skills;
