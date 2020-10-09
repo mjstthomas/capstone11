@@ -56,6 +56,7 @@ class App extends React.Component {
       ApiService.importUser(Id)
         .then(result => result.json())
         .then(result =>{
+          console.log(result)
           let skills = [];
             for (let i = 0; i < result.skills.length; i++) {
               let skillObj = { level: "", skill: "" };
@@ -219,13 +220,16 @@ class App extends React.Component {
   };
 
   saveFreelanceSkills = () => {
-    for (let skill of this.state.user.skills) {
-      ApiService.addFreelanceSkill(
-        this.state.userProfile.id,
-        skill.skill,
-        skill.level
-      );
-    }
+    ApiService.deleteFreelanceSkills(TokenService.getIdToken())
+    .then(()=>{
+      for (let skill of this.state.EditSkills) {
+        ApiService.addFreelanceSkill(
+          TokenService.getIdToken(),
+          skill.skill,
+          skill.level
+        );
+      }
+    })
   };
 
   render(props) {

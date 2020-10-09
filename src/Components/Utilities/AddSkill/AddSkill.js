@@ -60,12 +60,10 @@ function AddSkill(props) {
       <span>in</span>
       <section className="container">
         <label htmlFor="skill-name">Skill</label>
-        <input
+        <select
           type="text"
           id="skill-name"
           name="skill-name"
-          list="skill-list"
-          default={skill}
           onLoad={() =>
             location.pathname ===
               `/Freelancer/Profile/Edit/${context.user.user_id}` &&
@@ -74,8 +72,10 @@ function AddSkill(props) {
           onChange={(e) =>
             context.setSkill(e.target.value, props.index, props.typeOfSkill)
           }
-        />
-        <datalist id="skill-list">{options}</datalist>
+        >
+        <option default>{skill}</option>
+        {options}
+      </select>
       </section>
       {location.pathname === "/SignUp/FLDetails" && (
         <Cancel

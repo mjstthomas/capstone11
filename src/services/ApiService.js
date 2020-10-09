@@ -82,6 +82,15 @@ const ApiService = {
       }),
     });
   },
+  deleteFreelanceSkills(userID) {
+    return fetch(`${config.API_ENDPOINT}api/skills/delete/${userID}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `bearer ${TokenService.getAuthToken()}`,
+      },
+    });
+  },
   deleteOffer(offerID) {
     return fetch(`${config.API_ENDPOINT}api/offers/${offerID}`, {
       method: "DELETE",
