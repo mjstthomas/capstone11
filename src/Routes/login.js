@@ -13,7 +13,7 @@ function Login(props) {
     nickname: "",
     password: "",
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleSignIn = (event) => {
     let name = event.target.name;
@@ -32,7 +32,6 @@ function Login(props) {
       return setError("UserName and Password must be filled out");
     }
 
-    
     context.signInUser(user);
   };
 
@@ -43,7 +42,10 @@ function Login(props) {
       <p>
         Need an account? <Link to="/SignUp">Sign up!</Link>
       </p>
-      <p className="error-message">{error}{context.error}</p>
+      <p className="error-message">
+        {error}
+        {context.error}
+      </p>
       <form
         className="login-form"
         onSubmit={(e) => {

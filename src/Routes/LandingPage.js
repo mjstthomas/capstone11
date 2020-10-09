@@ -1,23 +1,23 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "../App.css";
 import "./LandingPage.css";
 import SmallButton from "../Components/Utilities/SmallButton/SmallButton";
-import TokenService from '../services/TokenService';
-import AppContext from '../AppContext'
+import TokenService from "../services/TokenService";
+import AppContext from "../AppContext";
 
 function LandingPage(props) {
   const context = useContext(AppContext);
-  const handleLocation = () =>{
-    if (TokenService.hasIdToken()){
-      if (TokenService.getProfileToken()){
-        props.history.push('/Freelancer')
+  const handleLocation = () => {
+    if (TokenService.hasIdToken()) {
+      if (TokenService.getProfileToken()) {
+        props.history.push("/Freelancer");
       } else {
-        props.history.push('/Business')
+        props.history.push("/Business");
       }
     } else {
-      props.history.push('/Login')
+      props.history.push("/Login");
     }
-  }
+  };
   return (
     <div className="landing-container">
       <h1>DEV.IT</h1>

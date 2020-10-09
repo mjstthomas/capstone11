@@ -11,17 +11,16 @@ For a view of a freelance profile
 Screen Name: DemoFreelancer
 Password: password
 
-This will take you to the freelancer offers page.  This is where any offers a business might send you will be located, giving you the ability to message the business about the offer or accept or deny it.
+This will take you to the freelancer offers page. This is where any offers a business might send you will be located, giving you the ability to message the business about the offer or accept or deny it.
 
 For a view of a business profile
 
-Screen Name:  DemoBusiness
+Screen Name: DemoBusiness
 Password: password
 
 This will take you to the business's dashboard where you can search for freelancers based on skills you need, view the resulting freelancers profiles, and make offers to those freelancers.
 
-you can also look at any offers that you have previously made.  allowing you to view messages between that freelancer and yourself, see whether the offer was accepted/denied, or even delete the offer all together.  
-
+you can also look at any offers that you have previously made. allowing you to view messages between that freelancer and yourself, see whether the offer was accepted/denied, or even delete the offer all together.
 
 ## API documentation
 

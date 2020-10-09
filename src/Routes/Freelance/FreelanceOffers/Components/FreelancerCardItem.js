@@ -42,17 +42,29 @@ function BusinessCardItem(props) {
         >
           <i className="fas fa-comments"></i>
         </SmallButton>
-        {props.response.length < 1 && <SmallButton
-          className="btn"
-          id="cards-accept"
-          buttonStyle="btn-outline"
-          buttonSize="btn-large"
-          type="button"
-          onClick={() => setModal(!modal)}
-        >
-          Accept Offer
-        </SmallButton>}
-        {props.response.length > 1 && <p className={props.response === 'Accepted' ? "offer-response" : 'offer-response red' }>{props.response}</p>}
+        {props.response.length < 1 && (
+          <SmallButton
+            className="btn"
+            id="cards-accept"
+            buttonStyle="btn-outline"
+            buttonSize="btn-large"
+            type="button"
+            onClick={() => setModal(!modal)}
+          >
+            Accept Offer
+          </SmallButton>
+        )}
+        {props.response.length > 1 && (
+          <p
+            className={
+              props.response === "Accepted"
+                ? "offer-response"
+                : "offer-response red"
+            }
+          >
+            {props.response}
+          </p>
+        )}
       </section>
       {modal && (
         <Modal
@@ -61,7 +73,7 @@ function BusinessCardItem(props) {
           dev_id={props.dev_id}
           offer_detail={props.text}
           offer_info={props.info}
-          acceptOffer = {props.acceptOffer}
+          acceptOffer={props.acceptOffer}
           minimize={() => setModal(!modal)}
         />
       )}

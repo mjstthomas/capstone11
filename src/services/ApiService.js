@@ -59,14 +59,17 @@ const ApiService = {
     });
   },
   patchProfile(details) {
-    return fetch(`${config.API_ENDPOINT}api/profiles/${TokenService.getIdToken()}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        Authorization: `bearer ${TokenService.getAuthToken()}`,
-      },
-      body: JSON.stringify(details),
-    });
+    return fetch(
+      `${config.API_ENDPOINT}api/profiles/${TokenService.getIdToken()}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(details),
+      }
+    );
   },
   addFreelanceSkill(userID, name, level) {
     return fetch(`${config.API_ENDPOINT}api/skills/add/${userID}`, {

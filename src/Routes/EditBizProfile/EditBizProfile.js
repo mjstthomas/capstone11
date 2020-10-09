@@ -14,9 +14,9 @@ function EditBizProfile(props) {
 
   const saveChanges = () => {
     ApiService.patchProfile({ emp_blurb: textarea, image: image }).then(() => {
-      setTimeout(()=>{
+      setTimeout(() => {
         props.history.push(`/Business/Profile/${TokenService.getIdToken()}`);
-      }, 2000)
+      }, 2000);
     });
   };
 

@@ -32,8 +32,8 @@ function AddSkill(props) {
   const context = useContext(AppContext);
   const options = getOptions();
   const location = useLocation();
-  const level = props.skill.level ? props.skill.level : '---';
-  const skill = props.skill.skill ? props.skill.skill : '---';
+  const level = props.skill.level ? props.skill.level : "---";
+  const skill = props.skill.skill ? props.skill.skill : "---";
 
   return (
     <article className="skill-input">
@@ -73,9 +73,9 @@ function AddSkill(props) {
             context.setSkill(e.target.value, props.index, props.typeOfSkill)
           }
         >
-        <option default>{skill}</option>
-        {options}
-      </select>
+          <option default>{skill}</option>
+          {options}
+        </select>
       </section>
       {location.pathname === "/SignUp/FLDetails" && (
         <Cancel

@@ -6,12 +6,11 @@ import "./Nav.css";
 
 function Nav() {
   const context = useContext(AppContext);
-  const isItAFL = TokenService.getProfileToken()
-  
-  
+  const isItAFL = TokenService.getProfileToken();
+
   const navUserType = () => {
-    console.log(isItAFL)
-    if (isItAFL === 'true') {
+    console.log(isItAFL);
+    if (isItAFL === "true") {
       return "Freelancer";
     } else {
       return "Business";
@@ -19,7 +18,7 @@ function Nav() {
   };
 
   const UserType = navUserType();
-  
+
   return (
     <nav>
       <i className="fas fa-times" onClick={() => context.setNav()}></i>

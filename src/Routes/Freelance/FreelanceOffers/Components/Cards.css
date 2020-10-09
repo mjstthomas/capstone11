@@ -64,10 +64,10 @@ p {
   grid-row-start: 3;
   grid-row-end: 4;
 }
-.red{
+.red {
   color: red;
 }
-.offer-response{
+.offer-response {
   font-size: 1.2rem;
   font-weight: 800;
 }

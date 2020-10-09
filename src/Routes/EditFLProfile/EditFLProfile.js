@@ -10,25 +10,25 @@ import ApiService from "../../services/ApiService";
 
 function FLDetsForm(props) {
   const context = useContext(AppContext);
-  const [textArea, setTextarea] = useState('');
+  const [textArea, setTextarea] = useState("");
   const [image, setImage] = useState(context.user.image);
 
   const textarea = context.user.dev_blurb;
 
-  const handleClick = () =>{
-    setTextarea(textarea)
-  }
+  const handleClick = () => {
+    setTextarea(textarea);
+  };
 
   const saveChanges = () => {
-    const newUser = {...context.user};
+    const newUser = { ...context.user };
     newUser.level = [];
     newUser.skills = [];
-    console.log(context.EditSkills[0].level)  
-    context.EditSkills.map(item =>{
-      console.log(item)
-      newUser.level.push(item.level)
-      newUser.skills.push(item.skills)
-    })
+    console.log(context.EditSkills[0].level);
+    context.EditSkills.map((item) => {
+      console.log(item);
+      newUser.level.push(item.level);
+      newUser.skills.push(item.skills);
+    });
     // for (let i = 0; i < context.EditSkills.length; i++){
     //   newUser.level.push(context.Editskills[i].level)
     //   newUser.skills.push(context.EditSkills[i].skills)
@@ -37,26 +37,24 @@ function FLDetsForm(props) {
     ApiService.patchProfile(newUser)
       .then(() => context.saveFreelanceSkills())
       .then(() => {
-        setTimeout(()=>{
-        props.history.push(`/Freelancer/Profile/${context.user.user_id}`);
-        }, 2000)
+        setTimeout(() => {
+          props.history.push(`/Freelancer/Profile/${context.user.user_id}`);
+        }, 2000);
       });
   };
-
 
   const setProfileImage = (imageURL) => {
     setImage(imageURL);
   };
 
-  const makeSkills = 
-    context.EditSkills.map((skill, index) => (
-      <AddSkill
-        typeOfSkill="EditSkills"
-        skill={skill}
-        key={index}
-        index={index}
-      />
-    ));
+  const makeSkills = context.EditSkills.map((skill, index) => (
+    <AddSkill
+      typeOfSkill="EditSkills"
+      skill={skill}
+      key={index}
+      index={index}
+    />
+  ));
 
   return (
     <main>

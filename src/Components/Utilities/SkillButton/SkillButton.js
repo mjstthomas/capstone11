@@ -7,22 +7,22 @@ export default function SkillButton(props) {
   const context = useContext(AppContext);
 
   const handleDelete = () => {
-    console.log(context.MustHaveSkills)
+    console.log(context.MustHaveSkills);
     ApiService.getProfilesSearch(
       context.MustHaveSkills[0].skill ? context.MustHaveSkills[0].skill : "-",
       context.MustHaveSkills[1].skill ? context.MustHaveSkills[1].skill : "-",
       context.MustHaveSkills[2].skill ? context.MustHaveSkills[2].skill : "-"
     ).then((res) => {
-      console.log(res)
+      console.log(res);
       context.handleResult(res);
     });
   };
 
   const deleteSkillOnClick = () => {
     context.deleteSkill(props.name);
-    setTimeout(()=>{
+    setTimeout(() => {
       handleDelete();
-    }, 2000)
+    }, 2000);
   };
   return (
     <section className="skill-btn-container">

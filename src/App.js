@@ -54,11 +54,11 @@ class App extends React.Component {
       const Id = TokenService.getIdToken();
 
       ApiService.importUser(Id)
-        .then(result => result.json())
-        .then(result =>{
-          console.log(result)
+        .then((result) => result.json())
+        .then((result) => {
+          console.log(result);
           let skills = [];
-          if (result.skills){
+          if (result.skills) {
             for (let i = 0; i < result.skills.length; i++) {
               let skillObj = { level: "", skill: "" };
               skillObj.level = result.level[i];
@@ -67,13 +67,13 @@ class App extends React.Component {
               skills.push(skillObj);
             }
           }
-            const prevState = this.state;
-            prevState.EditSkills = skills;
-            this.setState(prevState);
+          const prevState = this.state;
+          prevState.EditSkills = skills;
+          this.setState(prevState);
           this.setState({
-            user: result})
-
-        })
+            user: result,
+          });
+        });
     }
   }
 
@@ -93,10 +93,10 @@ class App extends React.Component {
         ApiService.importUser(res.id)
           .then((res) => res.json())
           .then((res) => {
-            console.log(res)
+            console.log(res);
             const { history } = this.props;
             let skills = [];
-            if (res.skills){
+            if (res.skills) {
               for (let i = 0; i < res.skills.length; i++) {
                 let skillObj = { level: "", skill: "" };
                 skillObj.level = res.level[i];
@@ -224,8 +224,7 @@ class App extends React.Component {
   };
 
   saveFreelanceSkills = () => {
-    ApiService.deleteFreelanceSkills(TokenService.getIdToken())
-    .then(()=>{
+    ApiService.deleteFreelanceSkills(TokenService.getIdToken()).then(() => {
       for (let skill of this.state.EditSkills) {
         ApiService.addFreelanceSkill(
           TokenService.getIdToken(),
@@ -233,7 +232,7 @@ class App extends React.Component {
           skill.level
         );
       }
-    })
+    });
   };
 
   render(props) {

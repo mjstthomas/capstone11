@@ -9,7 +9,7 @@ function FreelanceOffersPage(props) {
   const [myOffers, setOffers] = useState([]);
   const context = useContext(AppContext);
   const [error, setError] = useState("");
-  
+
   useEffect(() => {
     ApiService.getFreelanceOffers()
       .then((result) => result.json())
@@ -24,13 +24,13 @@ function FreelanceOffersPage(props) {
 
   const acceptOffer = (offerID, response) => {
     const newArray = [...myOffers];
-    newArray.map(item =>{
-      if (item.id === offerID){
+    newArray.map((item) => {
+      if (item.id === offerID) {
         item.response = response;
       }
-    })
-    setOffers(newArray)
-  }
+    });
+    setOffers(newArray);
+  };
   const newOffers = myOffers.map((item) => (
     <FreelancerCardItem
       name={item.emp_name}
@@ -42,8 +42,8 @@ function FreelanceOffersPage(props) {
       text={item.offer_detail}
       key={item.id}
       id={item.employer_id}
-      acceptOffer = {acceptOffer}
-      response = {item.response}
+      acceptOffer={acceptOffer}
+      response={item.response}
       history={props.history}
     />
   ));
