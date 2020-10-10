@@ -56,7 +56,6 @@ class App extends React.Component {
       ApiService.importUser(Id)
         .then((result) => result.json())
         .then((result) => {
-          console.log(result);
           let skills = [];
           if (result.skills) {
             for (let i = 0; i < result.skills.length; i++) {

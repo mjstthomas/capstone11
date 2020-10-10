@@ -22,16 +22,20 @@ function BusinessOffersPage(props) {
     return (
       <BusinessCardItem
         date={item.date_created}
+        key={item.id}
         image={item.image}
         pay={item.payrate}
         info={item.offer_info}
         text={item.offer_detail}
         response={item.response}
+        offerID={item.id}
         freelancerID={item.dev_id}
         businessID={item.employer_id}
         history={props.history}
         freelancerName={item.name}
         freelancerURL={item.url}
+        myOffers = {myOffers}
+        setOffers = {setOffers}
       />
     );
   });

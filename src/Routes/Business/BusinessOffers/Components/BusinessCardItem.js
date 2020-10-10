@@ -58,7 +58,9 @@ function BusinessCardItem(props) {
           buttonSize="btn-large"
           type="button"
           onClick={() => {
-            ApiService.deleteOffer(props.offerID);
+            const newOffers = props.myOffers.filter(item => props.offerID !== item.id)
+            ApiService.deleteOffer(props.offerID)
+            props.setOffers(newOffers);
           }}
         >
           <i className="fas fa-trash-alt"></i>

@@ -21,9 +21,9 @@ function FLDetsForm(props) {
 
   const saveChanges = () => {
     const newUser = { ...context.user };
+    newUser.dev_blurb = textArea;
     newUser.level = [];
     newUser.skills = [];
-    console.log(context.EditSkills[0].level);
     context.EditSkills.map((item) => {
       console.log(item);
       newUser.level.push(item.level);
@@ -33,7 +33,7 @@ function FLDetsForm(props) {
     //   newUser.level.push(context.Editskills[i].level)
     //   newUser.skills.push(context.EditSkills[i].skills)
     // }
-
+    console.log(newUser)
     ApiService.patchProfile(newUser)
       .then(() => context.saveFreelanceSkills())
       .then(() => {

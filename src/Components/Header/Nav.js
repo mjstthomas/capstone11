@@ -9,7 +9,6 @@ function Nav() {
   const isItAFL = TokenService.getProfileToken();
 
   const navUserType = () => {
-    console.log(isItAFL);
     if (isItAFL === "true") {
       return "Freelancer";
     } else {
