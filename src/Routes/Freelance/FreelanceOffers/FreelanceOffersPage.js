@@ -52,7 +52,13 @@ function FreelanceOffersPage(props) {
       <Header />
       <h1 className="offer-header">{context.user.nickname}'s Offers</h1>
       <h3>{error}</h3>
-      <section className="offers-container">{newOffers}</section>
+      <section className={newOffers.length !== 0 && "offers-container"}>
+        {newOffers.length !== 0 ? (
+          newOffers
+        ) : (
+          <h3 className="offer-default">No offers yet...</h3>
+        )}
+      </section>
     </main>
   );
 }

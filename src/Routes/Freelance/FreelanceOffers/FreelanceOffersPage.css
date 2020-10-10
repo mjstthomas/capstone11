@@ -14,6 +14,10 @@ main > .offer-header {
   text-align: center;
 }
 
+section > .offer-default {
+  text-align: center;
+}
+
 @media screen and (min-width: 600px) {
   .offers-container {
     display: grid;

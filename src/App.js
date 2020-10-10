@@ -173,7 +173,11 @@ class App extends React.Component {
 
   resetSkills = () => {
     this.setState({
-      MustHaveSkills: [{ level: "", skill: "" }],
+      MustHaveSkills: [
+        { level: "", skill: "-" },
+        { level: "", skill: "-" },
+        { level: "", skill: "-" },
+      ],
     });
   };
 

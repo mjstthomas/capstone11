@@ -34,8 +34,8 @@ function BusinessOffersPage(props) {
         history={props.history}
         freelancerName={item.name}
         freelancerURL={item.url}
-        myOffers = {myOffers}
-        setOffers = {setOffers}
+        myOffers={myOffers}
+        setOffers={setOffers}
       />
     );
   });
@@ -44,7 +44,13 @@ function BusinessOffersPage(props) {
     <main className="business-offers-container">
       <Header />
       <h1 className="offer-header">{context.user.nickname}'s Offers</h1>
-      <section className="offers-container">{offers}</section>
+      <section className={offers.length !== 0 && "offers-container"}>
+        {offers.length !== 0 ? (
+          offers
+        ) : (
+          <h3 className="offer-default">No offers yet...</h3>
+        )}
+      </section>
     </main>
   );
 }
