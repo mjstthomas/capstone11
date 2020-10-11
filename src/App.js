@@ -20,7 +20,6 @@ import AppContext from "./AppContext";
 import AuthApiService from "./services/AuthApiService";
 import ApiService from "./services/ApiService";
 import TokenService from "./services/TokenService";
-import PublicRoute from "./Utilis/PublicRoute";
 import PrivateRoute from "./Utilis/PrivateRoute";
 import "./App.css";
 
@@ -92,7 +91,6 @@ class App extends React.Component {
         ApiService.importUser(res.id)
           .then((res) => res.json())
           .then((res) => {
-            console.log(res);
             const { history } = this.props;
             let skills = [];
             if (res.skills) {
@@ -294,16 +292,14 @@ class App extends React.Component {
             component={FLProfile}
           />
           <PrivateRoute
-            exact
             path="/Business/Profile/Edit/:businessID"
             component={EditBizProfile}
           />
           <PrivateRoute
-            exact
             path="/Freelancer/Profile/Edit/:freelanceID"
             component={EditFLProfile}
           />
-          <PrivateRoute path="/Business/Results" exact component={Results} />
+          <PrivateRoute exact path="/Business/Results" component={Results} />
           <PrivateRoute
             path="/Business/Results/:freelanceID"
             exact

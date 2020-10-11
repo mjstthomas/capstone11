@@ -11,14 +11,17 @@ function Header(props) {
   const location = useLocation();
   const userType = () => {
     if (
-      (context.userProfile.profile === true && context.headerToggle === true) ||
-      (context.userProfile.profile === false && context.headerToggle === false)
+      (TokenService.getProfileToken() === "true" &&
+        context.headerToggle === true) ||
+      (TokenService.getProfileToken() === "false" &&
+        context.headerToggle === false)
     ) {
       return "Freelancer";
     } else if (
-      (context.userProfile.profile === true &&
+      (TokenService.getProfileToken() === "true" &&
         context.headerToggle === false) ||
-      (context.userProfile.profile === false && context.headerToggle === true)
+      (TokenService.getProfileToken() === "false" &&
+        context.headerToggle === true)
     ) {
       return "Business";
     }

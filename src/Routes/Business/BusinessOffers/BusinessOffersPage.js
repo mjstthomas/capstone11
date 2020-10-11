@@ -44,7 +44,7 @@ function BusinessOffersPage(props) {
     <main className="business-offers-container">
       <Header />
       <h1 className="offer-header">{context.user.nickname}'s Offers</h1>
-      <section className={offers.length !== 0 && "offers-container"}>
+      <section className={offers.length !== 0 ? "offers-container" : ""}>
         {offers.length !== 0 ? (
           offers
         ) : (

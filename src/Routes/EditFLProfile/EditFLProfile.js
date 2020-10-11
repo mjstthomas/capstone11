@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./EditFLProfile.css";
 import Header from "../../Components/Header/Header";
 import AddSkill from "../../Components/Utilities/AddSkill/AddSkill";
@@ -24,16 +24,12 @@ function FLDetsForm(props) {
     newUser.dev_blurb = textArea;
     newUser.level = [];
     newUser.skills = [];
-    context.EditSkills.map((item) => {
-      console.log(item);
-      newUser.level.push(item.level);
-      newUser.skills.push(item.skills);
-    });
-    // for (let i = 0; i < context.EditSkills.length; i++){
-    //   newUser.level.push(context.Editskills[i].level)
-    //   newUser.skills.push(context.EditSkills[i].skills)
-    // }
-    console.log(newUser)
+
+    for (let i = 0; i < context.EditSkills.length; i++) {
+      newUser.level.push(context.EditSkills[i].level);
+      newUser.skills.push(context.EditSkills[i].skills);
+    }
+
     ApiService.patchProfile(newUser)
       .then(() => context.saveFreelanceSkills())
       .then(() => {
@@ -92,7 +88,7 @@ function FLDetsForm(props) {
             }}
           />
         </section>
-        <PictureUpload image={image} setImage={context.user.image} />
+        <PictureUpload image={image} setImage={setProfileImage} />
         <SmallButton
           className="btn"
           buttonStyle="btn-outline"

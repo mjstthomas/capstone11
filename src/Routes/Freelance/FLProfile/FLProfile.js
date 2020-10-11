@@ -53,7 +53,7 @@ function FLProfile(props) {
             <article className="FLP-image-container">
               <img className="FLP" src={profile.image} alt={profile.nickname} />
             </article>
-            {context.user.id != freelanceID && (
+            {context.user.id !== freelanceID && (
               <button
                 className="FLP-make-offer-btn"
                 onClick={() =>

@@ -77,19 +77,11 @@ function AddSkill(props) {
           {options}
         </select>
       </section>
-      {location.pathname === "/SignUp/FLDetails" && (
+      {location.pathname !== "/Business/Search" && (
         <Cancel
           onClick={(e) => {
             e.preventDefault();
             context.removeSkill(props.index, props.typeOfSkill);
-          }}
-        />
-      )}
-      {location.pathname === "/Freelancer/Edit" && (
-        <Cancel
-          onClick={(e) => {
-            e.preventDefault();
-            context.editRemoveSkill(props.index);
           }}
         />
       )}

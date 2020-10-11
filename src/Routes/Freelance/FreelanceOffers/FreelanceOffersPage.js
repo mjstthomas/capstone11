@@ -24,11 +24,13 @@ function FreelanceOffersPage(props) {
 
   const acceptOffer = (offerID, response) => {
     const newArray = [...myOffers];
-    newArray.map((item) => {
-      if (item.id === offerID) {
-        item.response = response;
+
+    for (let i = 0; i < newArray; i++) {
+      if (newArray[i].id === offerID) {
+        newArray[i].response = response;
       }
-    });
+    }
+
     setOffers(newArray);
   };
   const newOffers = myOffers.map((item) => (
@@ -52,7 +54,7 @@ function FreelanceOffersPage(props) {
       <Header />
       <h1 className="offer-header">{context.user.nickname}'s Offers</h1>
       <h3>{error}</h3>
-      <section className={newOffers.length !== 0 && "offers-container"}>
+      <section className={newOffers.length !== 0 ? "offers-container" : ""}>
         {newOffers.length !== 0 ? (
           newOffers
         ) : (
