@@ -67,7 +67,13 @@ export default class ImageUpload extends React.Component {
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (
-        <img className="preview" src={imagePreviewUrl} alt="preview" />
+        <img
+          className="preview"
+          height="200"
+          width="200"
+          src={imagePreviewUrl}
+          alt="preview"
+        />
       );
     } else {
       $imagePreview = (
