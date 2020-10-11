@@ -25,26 +25,18 @@ nav {
   height: max-content;
 }
 
-nav > i {
-  color: var(--secondary-color);
-  margin-right: 0px;
-  margin-left: 4em;
-  margin-top: 0.25em;
-}
-
 nav > .fas {
-  margin-right: 0px;
-  margin-left: 4em;
-  margin-top: 0.25em;
+  color: var(--secondary-color);
+  margin-right: 10px;
 }
 
-nav > a {
+nav > i ~ .nav {
   color: var(--secondary-color);
   padding: 0.25em 1.5em 0.5em 1em;
   text-decoration: none;
 }
 
-nav > a:hover {
+nav > i ~ .nav:hover {
   color: cyan;
   font-style: italic;
 }

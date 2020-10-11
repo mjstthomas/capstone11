@@ -29,17 +29,23 @@ function Nav() {
 
   return (
     <nav>
-      <i className="fas fa-times" onClick={() => context.setNav()}></i>
-      <Link onClick={() => context.setNav()} to={`/${navUserType()}`}>
+      <i className="nav fas fa-times" onClick={() => context.setNav()}></i>
+      <Link
+        className="nav"
+        onClick={() => context.setNav()}
+        to={`/${navUserType()}`}
+      >
         Dashboard
       </Link>
       <Link
+        className="nav"
         onClick={() => context.setNav()}
         to={`/${UserType}/Profile/${TokenService.getIdToken()}`}
       >
         Profile
       </Link>
       <Link
+        className="nav"
         to="/"
         onClick={() => {
           TokenService.clearAuthToken();
