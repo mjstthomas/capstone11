@@ -6,12 +6,21 @@ import "./Nav.css";
 
 function Nav() {
   const context = useContext(AppContext);
-  const isItAFL = TokenService.getProfileToken();
 
   const navUserType = () => {
-    if (isItAFL === "true") {
+    if (
+      (TokenService.getProfileToken() === "false" &&
+        context.headerToggle === true) ||
+      (TokenService.getProfileToken() === "true" &&
+        context.headerToggle === false)
+    ) {
       return "Freelancer";
-    } else {
+    } else if (
+      (TokenService.getProfileToken() === "false" &&
+        context.headerToggle === false) ||
+      (TokenService.getProfileToken() === "true" &&
+        context.headerToggle === true)
+    ) {
       return "Business";
     }
   };
